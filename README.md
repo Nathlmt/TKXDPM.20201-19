@@ -1,9 +1,9 @@
 # LAB 00 - ECOBIKE RENTAL
 ## Tasks
 * Task 1: Đặc tả usecase
- * View Bike in Station and/or View Bike Information 
- * Rent Bike
- * Return Bike
+	* View Bike in Station and/or View Bike Information 
+ 	* Rent Bike
+ 	* Return Bike
 
 * Task 2: Tài liệu SRS
 
