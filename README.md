@@ -20,3 +20,10 @@
 * Bui Thanh Tung
 	 * Task 1: Return Bike
 	 * Task 2: Mục 1 Giới thiệu, Mục 4 Các yêu cầu khác tài liệu SRS
+## Revisions
+* Truong: ✅ finish
+* L.Minh.Tuan: ✅ finish
+* Ly Ba Tuan: ✅ finish
+* Bui Thanh Tung: ❌ Not finish
+	* Task 1: 40% (completed by L. Minh Tuan)
+	* Task 2: 0%  (completed by L. Minh Tuan)
