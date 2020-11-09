@@ -1,4 +1,4 @@
-package com.tkxdpm20201.N19.ecoBikeRental;
+package com.tkxdpm2020.Nhom19.ecoBikeRental;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
