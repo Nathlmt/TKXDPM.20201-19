@@ -8,14 +8,14 @@
 		<version>2.4.0-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.20201-19</groupId>
+	<groupId>com.tkxdpm20201.N19</groupId>
 	<artifactId>ecoBikeRental</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ecoBikeRental</name>
-	<description>project capstone Group 19</description>
+	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
