@@ -1,4 +1,4 @@
-package org.tkxdpm20201.Nhom19;
+package test.Nhom19;
 
 import javafx.application.Application;
 
@@ -14,15 +14,10 @@ import javafx.stage.Stage;
 
 
 
-public class App extends Application {
-    @Override
-    public void start(Stage stage) {
-
-    }
-
+public class AppTest {
 
     public static void main(String[] args) {
-        launch(args);
+
     }
 
 
