@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="433.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1">
+   <Pane layoutX="216.0" layoutY="4.0" prefHeight="200.0" prefWidth="200.0">
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="OK"/>
+      <ColorPicker layoutX="78.0" layoutY="75.0"/>
+      <DatePicker layoutX="14.0" layoutY="141.0"/>
+   </Pane>
+</AnchorPane>
