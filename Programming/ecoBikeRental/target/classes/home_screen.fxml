@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="433.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1">
-   <Pane layoutX="216.0" layoutY="4.0" prefHeight="200.0" prefWidth="200.0">
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="OK"/>
-      <ColorPicker layoutX="78.0" layoutY="75.0"/>
-      <DatePicker layoutX="14.0" layoutY="141.0"/>
-   </Pane>
+<AnchorPane prefHeight="513.0" prefWidth="452.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.HomeScreen">
+   <children>
+      <Button layoutX="194.0" layoutY="421.0" mnemonicParsing="false" text="OK" />
+      <Label layoutX="112.0" layoutY="14.0" prefHeight="52.0" prefWidth="221.0" text="Ecobike Rental" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Circle fill="DODGERBLUE" layoutX="47.0" layoutY="78.0" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="78.0" layoutY="66.0" prefHeight="25.0" prefWidth="92.0" text="Account: " />
+      <Label layoutX="162.0" layoutY="66.0" prefHeight="25.0" prefWidth="153.0" text="+09876543321" />
+      <Line endX="100.0" layoutX="112.0" layoutY="114.0" startX="-100.0" />
+      <Label layoutX="86.0" layoutY="135.0" prefHeight="31.0" prefWidth="169.0" text="Find Station" textFill="#1b0404">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Box layoutX="39.0" layoutY="151.0" />
+      <Box layoutX="40.0" layoutY="159.0" />
+      <Hyperlink id="returnBike" layoutX="86.0" layoutY="191.0" onAction="#returnBikeHyp" text="Return Bike" textFill="#171616">
+         <font>
+            <Font size="20.0" />
+         </font></Hyperlink>
+   </children>
 </AnchorPane>
