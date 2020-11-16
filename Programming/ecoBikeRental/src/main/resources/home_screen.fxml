@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="513.0" prefWidth="452.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.HomeScreen">
+<AnchorPane prefHeight="660.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.HomeScreen">
    <children>
-      <Button layoutX="194.0" layoutY="421.0" mnemonicParsing="false" text="OK" />
+      <Button layoutX="220.0" layoutY="493.0" mnemonicParsing="false" text="OK" />
       <Label layoutX="112.0" layoutY="14.0" prefHeight="52.0" prefWidth="221.0" text="Ecobike Rental" textAlignment="CENTER">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Circle fill="DODGERBLUE" layoutX="47.0" layoutY="78.0" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
       <Label layoutX="78.0" layoutY="66.0" prefHeight="25.0" prefWidth="92.0" text="Account: " />
       <Label layoutX="162.0" layoutY="66.0" prefHeight="25.0" prefWidth="153.0" text="+09876543321" />
       <Line endX="100.0" layoutX="112.0" layoutY="114.0" startX="-100.0" />
@@ -25,9 +25,14 @@
       </Label>
       <Box layoutX="39.0" layoutY="151.0" />
       <Box layoutX="40.0" layoutY="159.0" />
-      <Hyperlink id="returnBike" layoutX="86.0" layoutY="191.0" onAction="#returnBikeHyp" text="Return Bike" textFill="#171616">
+      <Hyperlink id="returnBike" layoutX="78.0" layoutY="177.0" onAction="#requestReturnBike" text="Return Bike" textFill="#171616">
          <font>
             <Font size="20.0" />
          </font></Hyperlink>
+      <ImageView fitHeight="45.0" fitWidth="50.0" layoutX="25.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" styleClass="image-account">
+         <image>
+            <Image url="@images/account.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

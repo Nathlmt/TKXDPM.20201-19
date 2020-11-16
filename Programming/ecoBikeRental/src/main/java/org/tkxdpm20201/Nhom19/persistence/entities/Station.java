@@ -12,6 +12,16 @@ public class Station extends BaseEntity{
     private String status;
     private Date lastUpdate;
 
+    public Station(String stationName, String address, String acreage, Integer availableBike, Integer availableRack, String status, Date lastUpdate) {
+        this.stationName = stationName;
+        this.address = address;
+        this.acreage = acreage;
+        this.availableBike = availableBike;
+        this.availableRack = availableRack;
+        this.status = status;
+        this.lastUpdate = lastUpdate;
+    }
+
     public void addBike(Bike bike){
 
     }
