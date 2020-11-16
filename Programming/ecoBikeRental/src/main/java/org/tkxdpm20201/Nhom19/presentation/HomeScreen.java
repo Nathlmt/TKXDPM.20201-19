@@ -7,9 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import org.tkxdpm20201.Nhom19.App;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,10 +19,17 @@ import java.util.ResourceBundle;
 public class HomeScreen implements Initializable {
 
     @FXML
-    private Circle circleProfile;
+    private Label rentedTime;
 
     @FXML
-    private ImageView imageView;
+    private Label fee;
+
+    @FXML
+    private Label status;
+
+    @FXML
+    private ImageView bikeImageView;
+
 
 
 
@@ -32,8 +40,7 @@ public class HomeScreen implements Initializable {
         loader.setLocation(getClass().getResource("/station_list_screen.fxml"));
         Parent viewListStation = loader.load();
         Scene scene = new Scene(viewListStation);
-
-
+        App.setSizeForWindow(stage);
         stage.setScene(scene);
         stage.show();
 
