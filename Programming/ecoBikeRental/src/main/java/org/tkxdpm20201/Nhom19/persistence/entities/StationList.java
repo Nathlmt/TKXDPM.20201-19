@@ -5,12 +5,10 @@ import java.util.List;
 public class StationList {
     private List<Station> stationList;
 
+    public StationList(){}
+
     public StationList(List<Station> stationList) {
         this.stationList = stationList;
-    }
-
-    public StationList(){
-
     }
 
     public List<Station> getStationList() {
