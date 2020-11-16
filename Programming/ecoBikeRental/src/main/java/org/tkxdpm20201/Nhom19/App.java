@@ -11,6 +11,9 @@ import java.io.IOException;
 
 public class App extends Application {
 
+    public static final int WIDTH = 400;
+    public static final int HEIGHT = 660;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -20,7 +23,14 @@ public class App extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/home_screen.fxml"));
         stage.setScene(new Scene(root));
         stage.setTitle("Home");
+        setSizeForWindow(stage);
+        stage.setResizable(false);
         stage.show();
+    }
+
+    public static void setSizeForWindow(Stage stage){
+        stage.setWidth(WIDTH);
+        stage.setHeight(HEIGHT);
     }
 
 
