@@ -1,5 +1,6 @@
 package org.tkxdpm20201.Nhom19;
 
+import com.zaxxer.hikari.HikariConfig;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +11,6 @@ import java.io.IOException;
 
 
 public class App extends Application {
-
     public static void main(String[] args) {
         launch(args);
     }
