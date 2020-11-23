@@ -10,7 +10,7 @@ import java.util.List;
 public class StationDao extends Dao{
     public List<Station> getAll() throws SQLException {
         String sqlSelect = "SELECT * from STATION";
-        List<Station> stationlist = new ArrayList<>();
+        List<Station> stationList = new ArrayList<>();
         ResultSet rs = execQuery(sqlSelect);
         while(rs.next()){
             Station station = new Station(rs.getString("STATION_NAME"),
@@ -21,9 +21,9 @@ public class StationDao extends Dao{
                     rs.getString("STATUS"),
                     rs.getDate("LASTEST_UPDATE")
                     );
-            stationlist.add(station);
+            stationList.add(station);
         }
-        return stationlist;
+        return stationList;
     }
 
     public Station getOne(Integer id){
