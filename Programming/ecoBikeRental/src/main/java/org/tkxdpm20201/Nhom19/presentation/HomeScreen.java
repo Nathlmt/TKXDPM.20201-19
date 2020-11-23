@@ -31,32 +31,24 @@ public class HomeScreen implements Initializable {
     private ImageView bikeImageView;
 
 
+    public HomeScreen(){
 
+    }
 
 
     public void requestReturnBike(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/station_list_screen.fxml"));
+        loader.setLocation(getClass().getResource("/popup_list_station_return.fxml"));
         Parent viewListStation = loader.load();
         Scene scene = new Scene(viewListStation);
         App.setSizeForWindow(stage);
+        stage.setTitle(" Return Bike");
         stage.setScene(scene);
         stage.show();
 
     }
 
-    public void requestRentBike(){
-
-    }
-
-    public void displaySuccessTransaction(){
-
-    }
-
-    public void showRentingBikeInfo(){
-
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

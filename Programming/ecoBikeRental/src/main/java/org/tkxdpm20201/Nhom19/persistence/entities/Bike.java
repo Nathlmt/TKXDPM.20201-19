@@ -14,6 +14,12 @@ public class Bike  extends BaseEntity{
     private Date lastUpdate;
     private Integer presentStation;     // TODO: object Station
 
+    public Bike(Integer id, String type, Integer battery){
+        this.setId(id);
+        this.type = type;
+        this.battery = battery;
+    }
+
     public String getName() {
         return name;
     }

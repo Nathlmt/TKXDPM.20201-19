@@ -1,5 +1,7 @@
 package org.tkxdpm20201.Nhom19.persistence;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.tkxdpm20201.Nhom19.persistence.daos.Dao;
 
 import java.sql.Connection;
@@ -23,6 +25,15 @@ public class Connect {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private static HikariConfig config = new HikariConfig();
+
+    private static HikariDataSource ds;
+
+
+    public static Connection getConnection() throws SQLException {
+        return ds.getConnection();
     }
 
 

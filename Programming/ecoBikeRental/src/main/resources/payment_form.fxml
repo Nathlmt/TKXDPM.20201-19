@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.tkxdpm20201.Nhom19.presentation.PaymentForm">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="120.0" layoutY="79.0" prefHeight="35.0" prefWidth="161.0" text="Payment Form">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="122.0" prefHeight="52.0" prefWidth="293.0" text="Thanks for protecting our Earth, this is end step to use service" textAlignment="CENTER" wrapText="true" />
+      <TextField layoutX="41.0" layoutY="228.0" prefHeight="35.0" prefWidth="307.0" />
+      <Label layoutX="41.0" layoutY="205.0" text="Card Number" />
+      <TextField layoutX="41.0" layoutY="301.0" prefHeight="35.0" prefWidth="307.0" />
+      <Label layoutX="41.0" layoutY="278.0" text="Card Holder Name" />
+      <TextField layoutX="41.0" layoutY="383.0" prefHeight="35.0" prefWidth="213.0" />
+      <Label layoutX="41.0" layoutY="360.0" text="Expriration Date" />
+      <TextField layoutX="276.0" layoutY="383.0" prefHeight="35.0" prefWidth="55.0" />
+      <Label layoutX="276.0" layoutY="360.0" text="CVV" />
+      <TextField layoutX="42.0" layoutY="463.0" prefHeight="35.0" prefWidth="213.0" />
+      <Label layoutX="42.0" layoutY="440.0" text="Issusing Bank" />
+      <Button layoutX="157.0" layoutY="537.0" mnemonicParsing="false" text="Submit" />
+   </children>
 </AnchorPane>

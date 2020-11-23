@@ -27,8 +27,6 @@ public class ItemStationListView extends ListCell<Station> {
     @FXML
     private FlowPane flowPane;
 
-
-
     @Override
     public void updateItem(Station station, boolean empty){
         super.updateItem(station, empty);
