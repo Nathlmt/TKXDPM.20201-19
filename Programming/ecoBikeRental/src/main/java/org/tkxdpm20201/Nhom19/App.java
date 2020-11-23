@@ -10,7 +10,6 @@ import java.io.IOException;
 
 
 public class App extends Application {
-
     public static final int WIDTH = 400;
     public static final int HEIGHT = 660;
 

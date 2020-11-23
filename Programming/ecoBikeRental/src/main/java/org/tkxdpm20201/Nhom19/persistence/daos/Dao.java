@@ -1,13 +1,17 @@
 package org.tkxdpm20201.Nhom19.persistence.daos;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public interface Dao {
-    static final String HOST = "jdbc:postgresql://35.192.204.170:5432/tkxdpm";
-    static final String USER = "postgres";
-    static final String PASS = "letuan123";
+public abstract class Dao {
+    private Connection connection;
+    public void connect() throws SQLException {
+        this.connection = Connect.getConnection();
+    }
 
-    void connect();
-    ResultSet execQuery(String query) throws SQLException;
+    public ResultSet execQuery(String query) throws SQLException {
+        return this.connection.createStatement().executeQuery(query);
+    }
+
 }
