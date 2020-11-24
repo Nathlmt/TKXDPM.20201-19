@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Bike  extends BaseEntity{
-    private Integer id;
     private String name;
     private String licensePlate;
     private BigDecimal price;
@@ -15,8 +14,7 @@ public class Bike  extends BaseEntity{
     private Integer presentStation;
 
     public Bike(Integer id,String name, String licensePlate, BigDecimal price, Integer battery, String type, String status, Date lastest_update, Integer presentStation) {
-        super();
-        this.id = id;
+        super(id);
         this.name = name;
         this.licensePlate = licensePlate;
         this.price = price;

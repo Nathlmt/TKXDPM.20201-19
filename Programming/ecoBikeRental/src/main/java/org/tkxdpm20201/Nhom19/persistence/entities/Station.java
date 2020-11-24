@@ -12,7 +12,8 @@ public class Station extends BaseEntity{
     private String status;
     private Date lastUpdate;
 
-    public Station(String stationName, String address, String acreage, Integer availableBike, Integer availableRack, String status, Date lastUpdate) {
+    public Station(Integer id, String stationName, String address, String acreage, Integer availableBike, Integer availableRack, String status, Date lastUpdate) {
+        super(id);
         this.stationName = stationName;
         this.address = address;
         this.acreage = acreage;
@@ -21,6 +22,7 @@ public class Station extends BaseEntity{
         this.status = status;
         this.lastUpdate = lastUpdate;
     }
+
 
     public void addBike(Bike bike){
 

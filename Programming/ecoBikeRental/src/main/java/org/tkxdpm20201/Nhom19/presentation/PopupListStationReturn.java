@@ -14,11 +14,13 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.tkxdpm20201.Nhom19.controller.ReturnBikeController;
 import org.tkxdpm20201.Nhom19.persistence.entities.Station;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -28,20 +30,31 @@ public class PopupListStationReturn implements Initializable {
     private ListView<Station> listStation;
 
     private final ObservableList<Station> stationObservableList;
+    private final ReturnBikeController returnBikeController;
 
     public PopupListStationReturn(){
         stationObservableList = FXCollections.observableArrayList();
-        stationObservableList.addAll(
-                new Station("Hanoi", "quoc oai, hanoi", "12 m2", 2, 4, "dang hoat dong", new Date()),
-                new Station("Hanoi2", "quoc oai2, hanoi", "32 m2", 2, 4, "dang hoat dong", new Date())
-        );
+        returnBikeController = new ReturnBikeController();
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            showStationList();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    private void showStationList() throws SQLException {
+
+        List<Station> stationList = returnBikeController.getStationList();
+        this.stationObservableList.addAll(stationList);
         listStation.setItems(stationObservableList);
         listStation.setCellFactory(stationListView -> new ItemStationListView());
+
     }
 
     @FXML
