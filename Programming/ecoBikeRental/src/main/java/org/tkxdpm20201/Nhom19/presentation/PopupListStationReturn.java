@@ -59,37 +59,76 @@ public class PopupListStationReturn implements Initializable {
 
     @FXML
     public void returnHome(MouseEvent event) throws IOException {
-        System.out.println("ok home");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/home_screen.fxml"));
         Parent home = loader.load();
         Scene scene = new Scene(home);
         stage.setScene(scene);
-        stage.show();
 
     }
 
     @FXML
-    public void selectItem(MouseEvent event){
+    public void chooseStationToReturn(MouseEvent event) throws IOException {
         Station station = listStation.getSelectionModel().getSelectedItem();
         if(station == null ){
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Nothing");
-            alert.showAndWait();
+            // DO NOTHING
+            System.out.println("station click null");
         }
         else{
             Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setContentText("Are you sure to return this Bike rightnow at "+ station.getStationName()+" station?");
+            alert.setContentText("Are you sure to return this Bike right now at "+ station.getStationName()+" station?");
             alert.setTitle("Confirm");
             Optional<ButtonType> option = alert.showAndWait();
             if (option.get() == ButtonType.OK) {
-                System.out.println("chuyen sang trang payment form  ======================================= TODO    ");
-            } else if (option.get() == ButtonType.CANCEL) {
+                boolean result = returnBikeController.returnBike(station, null);
+                if(result){
+                    backHomeWhenSuccessfully(event);
+                    System.out.println("OKKKKK successfully!");
+                }
+                else{
+                    alert = new Alert(AlertType.ERROR);
+                    alert.setContentText("return Bike failed... please try again!");
+                    alert.setTitle("Error");
+                    alert.showAndWait();
+                }
+            }
+            else if (option.get() == ButtonType.CANCEL) {
                 System.out.println("cho chon lai");
-            } else {
+            }
+            else {
                 System.out.println("else ------------------");
             }
         }
     }
+
+    /**
+     *
+     */
+    private void backHomeWhenSuccessfully(MouseEvent event) throws IOException {
+          Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/home_screen.fxml"));
+        Parent home = loader.load();
+        Scene scene = new Scene(home);
+        HomeScreen homeScreenController = loader.getController();
+        homeScreenController.returnBikeSuccessfully();
+        stage.setScene(scene);
+
+    }
+
+
+    // TODO : hàm này chỉ dành cho khi rent bike___ bị nhầm chỗ này>> vì return bike thì không cần phải hiện paymentForm nữa
+//    private void directToPaymentForm(PayingInfo payingInfo, MouseEvent event) throws IOException {
+//
+//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(getClass().getResource("/payment_form.fxml"));
+//        Parent popupListStation = loader.load();
+//        Scene scene = new Scene(popupListStation);
+//        PaymentForm paymentFormController = loader.getController();
+//        paymentFormController.displayPaymentForm(payingInfo);
+//        stage.setScene(scene);
+//
+//    }
 }

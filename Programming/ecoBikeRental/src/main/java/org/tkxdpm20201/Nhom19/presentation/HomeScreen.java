@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.App;
 
@@ -30,6 +31,9 @@ public class HomeScreen implements Initializable {
     @FXML
     private ImageView bikeImageView;
 
+    @FXML
+    private Pane rentingBikeInfoPane;
+
 
     public HomeScreen(){
 
@@ -47,6 +51,11 @@ public class HomeScreen implements Initializable {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public void returnBikeSuccessfully(){
+        rentingBikeInfoPane.setDisable(true);
+        rentingBikeInfoPane.setVisible(false);
     }
 
 

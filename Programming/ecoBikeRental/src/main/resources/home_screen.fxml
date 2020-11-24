@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -13,7 +19,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="660.0" prefWidth="400.0" styleClass="bg-color" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.HomeScreen">
+<AnchorPane prefHeight="660.0" prefWidth="400.0" styleClass="bg-color" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.HomeScreen">
    <children>
       <Label layoutX="112.0" layoutY="14.0" prefHeight="52.0" prefWidth="221.0" text="Ecobike Rental" textAlignment="CENTER">
          <font>
@@ -40,7 +46,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Pane layoutX="16.0" layoutY="275.0" prefHeight="357.0" prefWidth="363.0">
+      <Pane fx:id="rentingBikeInfoPane" layoutX="16.0" layoutY="275.0" prefHeight="357.0" prefWidth="363.0">
          <children>
             <Hyperlink id="returnBike" layoutX="88.0" layoutY="275.0" onAction="#requestReturnBike" prefHeight="45.0" prefWidth="201.0" text="Return Bike" textAlignment="CENTER" textFill="#171616">
                <font>

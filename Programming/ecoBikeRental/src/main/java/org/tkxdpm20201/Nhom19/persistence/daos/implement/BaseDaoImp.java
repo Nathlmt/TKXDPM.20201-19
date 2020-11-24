@@ -16,6 +16,7 @@ public class BaseDaoImp<T> implements BaseDao<T> {
     }
 
     public ResultSet execQuery(String query) throws SQLException {
+        connect();
         return this.connection.createStatement().executeQuery(query);
     }
 
