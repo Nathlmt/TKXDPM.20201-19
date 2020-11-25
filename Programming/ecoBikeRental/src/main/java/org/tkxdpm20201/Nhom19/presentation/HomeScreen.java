@@ -7,9 +7,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.App;
 
@@ -34,25 +37,38 @@ public class HomeScreen implements Initializable {
     @FXML
     private Pane rentingBikeInfoPane;
 
+    @FXML
+    private Hyperlink findStation;
+
+    @FXML
+    private Hyperlink returnBike;
 
     public HomeScreen(){
 
     }
 
-
-    public void requestReturnBike(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/popup_list_station_return.fxml"));
-        Parent viewListStation = loader.load();
-        Scene scene = new Scene(viewListStation);
-        App.setSizeForWindow(stage);
-        stage.setTitle(" Return Bike");
-        stage.setScene(scene);
-        stage.show();
-
+    public void handleButtonClicks(ActionEvent mouseEvent) {
+        if (mouseEvent.getSource() == findStation) {
+            loadStage(mouseEvent, "/fxml/station_list_screen.fxml");
+        } else if (mouseEvent.getSource() == returnBike) {
+            loadStage(mouseEvent, "/fxml/popup_list_station_return.fxml");
+        }
     }
 
+    private void loadStage(ActionEvent event, String fxml) {
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(fxml));
+            Parent viewListStation = loader.load();
+            Scene scene = new Scene(viewListStation);
+            App.setSizeForWindow(stage);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void returnBikeSuccessfully(){
         rentingBikeInfoPane.setDisable(true);
         rentingBikeInfoPane.setVisible(false);

@@ -68,7 +68,7 @@ public class PaymentForm implements Initializable {
     public void goBack(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/popup_list_station_return.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/popup_list_station_return.fxml"));
         Parent popup = loader.load();
         Scene scene = new Scene(popup);
         stage.setScene(scene);
