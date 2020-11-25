@@ -47,7 +47,7 @@ public class ReturnBikeController {
 
             return true;
         }
-        return false;
+        return true;
     }
 
     //TODO: nếu sau này có yêu cầu thêm cách tính phí thì sẽ thêm String: chứa chuỗi biểu thị cách tính phí

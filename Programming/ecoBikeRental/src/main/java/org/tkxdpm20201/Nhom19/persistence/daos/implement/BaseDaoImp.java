@@ -22,6 +22,7 @@ public class BaseDaoImp<T> implements BaseDao<T> {
 
     @Override
     public List<T> getAll() throws SQLException {
+
         return null;
     }
 
