@@ -9,7 +9,7 @@
    <children>
        <ImageView fx:id="imageView" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
           <image>
-              <Image url="@images/image-S.png" />
+              <Image url="@../images/image-S.png" />
           </image>
        </ImageView>
       <GridPane prefHeight="70.0" prefWidth="174.0">

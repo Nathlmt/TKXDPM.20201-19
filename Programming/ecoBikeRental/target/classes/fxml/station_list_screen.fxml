@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane styleClass="bg-color" prefHeight="660.0" prefWidth="400.0" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.StationListScreen">
+<AnchorPane styleClass="bg-color" prefHeight="660.0" prefWidth="400.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.StationListScreen">
    <children>
       <ListView fx:id="listStation" layoutX="-3.0" layoutY="144.0" prefHeight="518.0" prefWidth="400.0" />
       <Label layoutX="121.0" layoutY="36.0" opacity="0.89" prefHeight="43.0" prefWidth="145.0" text="Station List" textFill="#362ce4">

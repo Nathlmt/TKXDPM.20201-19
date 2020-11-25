@@ -34,7 +34,7 @@ public class ItemStationListView extends ListCell<Station> {
             setText(null);
             setGraphic(null);
         } else {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/item_station.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/item_station.fxml"));
             fxmlLoader.setController(this);
 
             try {

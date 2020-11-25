@@ -61,7 +61,7 @@ public class PopupListStationReturn implements Initializable {
     public void returnHome(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/home_screen.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/home_screen.fxml"));
         Parent home = loader.load();
         Scene scene = new Scene(home);
         stage.setScene(scene);
@@ -108,7 +108,7 @@ public class PopupListStationReturn implements Initializable {
     private void backHomeWhenSuccessfully(MouseEvent event) throws IOException {
           Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/home_screen.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/home_screen.fxml"));
         Parent home = loader.load();
         Scene scene = new Scene(home);
         HomeScreen homeScreenController = loader.getController();
