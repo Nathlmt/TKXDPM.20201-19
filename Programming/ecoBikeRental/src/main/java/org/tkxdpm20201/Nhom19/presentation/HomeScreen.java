@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.App;
 
@@ -30,33 +31,33 @@ public class HomeScreen implements Initializable {
     @FXML
     private ImageView bikeImageView;
 
+    @FXML
+    private Pane rentingBikeInfoPane;
 
 
+    public HomeScreen(){
+
+    }
 
 
     public void requestReturnBike(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/station_list_screen.fxml"));
+        loader.setLocation(getClass().getResource("/popup_list_station_return.fxml"));
         Parent viewListStation = loader.load();
         Scene scene = new Scene(viewListStation);
         App.setSizeForWindow(stage);
+        stage.setTitle(" Return Bike");
         stage.setScene(scene);
         stage.show();
 
     }
 
-    public void requestRentBike(){
-
+    public void returnBikeSuccessfully(){
+        rentingBikeInfoPane.setDisable(true);
+        rentingBikeInfoPane.setVisible(false);
     }
 
-    public void displaySuccessTransaction(){
-
-    }
-
-    public void showRentingBikeInfo(){
-
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

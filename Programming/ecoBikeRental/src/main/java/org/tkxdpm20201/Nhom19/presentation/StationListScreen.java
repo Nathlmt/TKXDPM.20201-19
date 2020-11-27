@@ -28,10 +28,6 @@ public class StationListScreen implements Initializable {
 
     public StationListScreen(){
         stationObservableList = FXCollections.observableArrayList();
-        stationObservableList.addAll(
-                new Station("Hanoi", "quoc oai, hanoi", "12 m2", 2, 4, "dang hoat dong", new Date()),
-                new Station("Hanoi2", "quoc oai2, hanoi", "32 m2", 2, 4, "dang hoat dong", new Date())
-        );
     }
 
     public void returnHome(ActionEvent event) throws IOException {

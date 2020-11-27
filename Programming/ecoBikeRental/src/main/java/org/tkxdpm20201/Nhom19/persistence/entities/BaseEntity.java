@@ -3,6 +3,14 @@ package org.tkxdpm20201.Nhom19.persistence.entities;
 public class BaseEntity {
     private Integer id;
 
+    public BaseEntity(){
+
+    }
+
+    public BaseEntity(Integer id){
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
     }
