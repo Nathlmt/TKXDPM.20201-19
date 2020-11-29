@@ -30,7 +30,7 @@ public class ItemBikeListView extends ListCell<Bike> {
             setText(null);
             setGraphic(null);
         } else {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/item_bike.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/item_bike.fxml"));
             fxmlLoader.setController(this);
 
             try {

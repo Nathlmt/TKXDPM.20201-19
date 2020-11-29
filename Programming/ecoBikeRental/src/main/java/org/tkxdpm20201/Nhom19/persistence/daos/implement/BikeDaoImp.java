@@ -10,6 +10,9 @@ import java.util.List;
 
 public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
 
+    public BikeDaoImp(){
+        super(Bike.class);
+    }
     public List<Bike> getAll() throws SQLException {
         String sqlSelect = "SELECT * from BIKE";
         List<Bike> BikeList = new ArrayList<>();

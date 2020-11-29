@@ -10,7 +10,17 @@ import java.util.List;
 
 public class BaseDaoImp<T> implements BaseDao<T> {
 
+    final Class<T> typeParamClass;
+
+    /**
+     *
+     */
     private Connection connection;
+
+    public BaseDaoImp(Class<T> typeParamClass){
+        this.typeParamClass = typeParamClass;
+    }
+
     public void connect() throws SQLException {
         this.connection = Connect.getConnection();
     }
@@ -22,6 +32,9 @@ public class BaseDaoImp<T> implements BaseDao<T> {
 
     @Override
     public List<T> getAll() throws SQLException {
+        String query = "SELECT * FROM " + typeParamClass;
+        execQuery(query);
+        System.out.println("ddd");
         return null;
     }
 

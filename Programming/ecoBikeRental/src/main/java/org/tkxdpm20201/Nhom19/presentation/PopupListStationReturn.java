@@ -14,7 +14,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.tkxdpm20201.Nhom19.controller.ReturnBikeController;
+import org.tkxdpm20201.Nhom19.business.controller.ReturnBikeController;
 import org.tkxdpm20201.Nhom19.persistence.entities.Station;
 
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class PopupListStationReturn implements Initializable {
     public void returnHome(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/home_screen.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/home_screen.fxml"));
         Parent home = loader.load();
         Scene scene = new Scene(home);
         stage.setScene(scene);
@@ -108,7 +108,7 @@ public class PopupListStationReturn implements Initializable {
     private void backHomeWhenSuccessfully(MouseEvent event) throws IOException {
           Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/home_screen.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/home_screen.fxml"));
         Parent home = loader.load();
         Scene scene = new Scene(home);
         HomeScreen homeScreenController = loader.getController();

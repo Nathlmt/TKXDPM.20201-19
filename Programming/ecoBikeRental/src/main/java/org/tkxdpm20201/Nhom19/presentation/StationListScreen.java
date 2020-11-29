@@ -15,7 +15,6 @@ import org.tkxdpm20201.Nhom19.persistence.entities.Station;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class StationListScreen implements Initializable {
