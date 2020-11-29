@@ -7,5 +7,6 @@ public class Constants {
     public final static String RETURNED_BIKE = "returned bike";
     public final static String RENTING_BIKE = "renting bike";
     public final static String NOT_RENT_BIKE = "not rent bike";
+    public final static String ALGORITHM = "MD5";
 
 }
