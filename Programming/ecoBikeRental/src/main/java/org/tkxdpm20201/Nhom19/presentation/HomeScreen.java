@@ -1,5 +1,6 @@
 package org.tkxdpm20201.Nhom19.presentation;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,19 +39,19 @@ public class HomeScreen implements Initializable {
     private Pane rentingBikeInfoPane;
 
     @FXML
-    private Hyperlink findStation;
+    private JFXButton btnFindStation;
 
     @FXML
-    private Hyperlink returnBike;
+    private JFXButton btnReturnBike;
 
     public HomeScreen(){
 
     }
 
     public void handleButtonClicks(ActionEvent mouseEvent) {
-        if (mouseEvent.getSource() == findStation) {
+        if (mouseEvent.getSource() == btnFindStation) {
             loadStage(mouseEvent, "/fxml/station_list_screen.fxml");
-        } else if (mouseEvent.getSource() == returnBike) {
+        } else if (mouseEvent.getSource() == btnReturnBike) {
             loadStage(mouseEvent, "/fxml/popup_list_station_return.fxml");
         }
     }

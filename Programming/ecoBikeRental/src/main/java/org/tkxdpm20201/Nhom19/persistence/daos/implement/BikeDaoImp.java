@@ -1,6 +1,7 @@
 package org.tkxdpm20201.Nhom19.persistence.daos.implement;
 
 import org.tkxdpm20201.Nhom19.persistence.daos.BikeDao;
+import org.tkxdpm20201.Nhom19.persistence.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.persistence.entities.Bike;
 
 import java.sql.ResultSet;
@@ -14,10 +15,12 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
         super(Bike.class);
     }
     public List<Bike> getAll() throws SQLException {
-        String sqlSelect = "SELECT * from BIKE";
+        String sqlSelect = "SELECT * from BIKES";
         List<Bike> BikeList = new ArrayList<>();
-        ResultSet rs = execQuery(sqlSelect);
-        while(rs.next()){
+        ResultSet rs = DBHelper.executeQuery(sqlSelect);
+        while(true){
+            assert rs != null;
+            if (!rs.next()) break;
             Bike bike = new Bike(rs.getInt("id"),
                     rs.getString("bike_name"),
                     rs.getString("licence_plate"),
