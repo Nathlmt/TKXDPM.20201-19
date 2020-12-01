@@ -2,33 +2,33 @@ package org.tkxdpm20201.Nhom19.persistence.model;
 
 import org.tkxdpm20201.Nhom19.persistence.entities.Bike;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class RentingBike {
 
-    private Bike bike;
-    private Date startDate;
+    private static Bike bike;
+    private static LocalDateTime startDate;
 
-    public RentingBike(Bike bike, Date startDate) {
-        this.bike = bike;
-        this.startDate = startDate;
+    public RentingBike(Bike bike) {
+        RentingBike.bike = bike;
+        RentingBike.startDate = java.time.LocalDateTime.now();
     }
 
+
+
     public Bike getBike() {
+        if(RentingBike.bike == null)
+            return null;
         return bike;
     }
 
-    public void setBike(Bike bike) {
-        this.bike = bike;
-    }
 
-    public Date getStartDate() {
+    public LocalDateTime getStartDate() {
+        if(RentingBike.startDate == null)
+            return null;
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
 
 
 
