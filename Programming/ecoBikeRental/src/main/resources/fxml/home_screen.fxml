@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.Hyperlink?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,11 +9,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Box?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="660.0" prefWidth="400.0" styleClass="bg-color" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.HomeScreen">
+<AnchorPane fx:id="btnPrice" prefHeight="660.0" prefWidth="400.0" styleClass="bg-color" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.HomeScreen">
    <children>
       <Label layoutX="112.0" layoutY="14.0" prefHeight="52.0" prefWidth="221.0" text="Ecobike Rental" textAlignment="CENTER">
          <font>
@@ -29,30 +22,8 @@
       <Line endX="100.0" layoutX="112.0" layoutY="121.0" startX="-100.0" strokeWidth="-Infinity" />
       <Label layoutX="78.0" layoutY="66.0" prefHeight="25.0" prefWidth="92.0" text="Account: " />
       <Label layoutX="162.0" layoutY="66.0" prefHeight="25.0" prefWidth="153.0" text="+09876543321" />
-      <Hyperlink fx:id="findStation" layoutX="100.0" layoutY="137.0" prefHeight="31.0" prefWidth="169.0" text="Find Station" textFill="#1b0404"  onAction="#handleButtonClicks">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Hyperlink>
-      <Box layoutX="39.0" layoutY="151.0" />
-      <Box layoutX="40.0" layoutY="159.0" />
-      <ImageView fitHeight="45.0" fitWidth="50.0" layoutX="25.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" styleClass="image-account">
-         <image>
-               <Image url="@../images/account.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="rentBikeLabel" layoutX="100.0" layoutY="227.0" prefHeight="31.0" prefWidth="169.0" text="Rent Bike" textFill="#1b0404">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
       <Pane fx:id="rentingBikeInfoPane" layoutX="16.0" layoutY="275.0" prefHeight="357.0" prefWidth="363.0">
          <children>
-            <Hyperlink fx:id="returnBike" layoutX="88.0" layoutY="275.0" onAction="#handleButtonClicks" prefHeight="45.0" prefWidth="201.0" text="Return Bike" textAlignment="CENTER" textFill="#171616">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Hyperlink>
             <GridPane layoutX="21.0" layoutY="150.0" prefHeight="101.0" prefWidth="309.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="102.0" />
@@ -64,7 +35,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Rend Time">
+                  <Label text="Rent Time">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -89,27 +60,27 @@
                   <Image url="@../images/regular-bike.png" />
                </image>
             </ImageView>
+            <JFXButton fx:id="btnReturnBike" layoutX="108.0" layoutY="290.0" onAction="#handleButtonClicks" prefHeight="40.0" prefWidth="134.0" text="Return Bike">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
          </children>
       </Pane>
-      <Label fx:id="priceLabel" layoutX="100.0" layoutY="179.0" prefHeight="31.0" prefWidth="169.0" text="Price" textFill="#1b0404">
+      <JFXButton fx:id="btnFindStation" layoutX="133.0" layoutY="145.0" onAction="#handleButtonClicks" text="Find Station">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
-      </Label>
-      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="48.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/find.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="48.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/price-tag.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="36.0" layoutX="46.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/rent2.png" />
-         </image>
-      </ImageView>
+      </JFXButton>
+      <JFXButton fx:id="btnRentBike" layoutX="133.0" layoutY="184.0" onAction="#handleButtonClicks" prefHeight="39.0" prefWidth="103.0" text="Rent Bike">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnPrice" layoutX="135.0" layoutY="223.0" onAction="#handleButtonClicks" text="Price">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
