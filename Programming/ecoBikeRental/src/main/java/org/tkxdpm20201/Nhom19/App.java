@@ -48,13 +48,13 @@ public class App extends Application {
         TransactionApi transactionApi = new TransactionApi();
 
         TransactionRequest transactionRequest = new TransactionRequest();
-        transactionRequest.setAmount(new BigDecimal(123));
-        transactionRequest.setCardCode("118609_group19_2020");
-        transactionRequest.setCvvCode("907");
+        transactionRequest.setAmount(new BigDecimal(100));
+        transactionRequest.setCardCode("118609_group5_2020");
+        transactionRequest.setCvvCode("271");
         transactionRequest.setDateExpired("1125");
-        transactionRequest.setOwner("Group 19");
-        transactionRequest.setTransactionContent("test json");
-        transactionRequest.setCreateAt(new Date().toString());
+        transactionRequest.setOwner("Group 5");
+        transactionRequest.setTransactionContent("Thanh toan thue xe dap");
+        transactionRequest.setCreatedAt(new Date());
         try {
             transactionApi.processTransaction(transactionRequest);
         } catch (IOException e) {
