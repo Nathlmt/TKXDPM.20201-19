@@ -15,7 +15,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.business.controller.ReturnBikeController;
-import org.tkxdpm20201.Nhom19.persistence.entities.Station;
+import org.tkxdpm20201.Nhom19.data.entities.Station;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,16 +45,13 @@ public class PopupListStationReturn implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
     }
 
     private void showStationList() throws SQLException {
-
         List<Station> stationList = returnBikeController.getStationList();
         this.stationObservableList.addAll(stationList);
         listStation.setItems(stationObservableList);
         listStation.setCellFactory(stationListView -> new ItemStationListView());
-
     }
 
     @FXML

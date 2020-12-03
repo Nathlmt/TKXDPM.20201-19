@@ -9,5 +9,8 @@
         <module name="ecoBikeRental" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ecoBikeRental" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

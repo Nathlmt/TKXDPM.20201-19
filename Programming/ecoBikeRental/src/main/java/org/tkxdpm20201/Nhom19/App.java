@@ -6,8 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.business.api.TransactionApi;
-import org.tkxdpm20201.Nhom19.persistence.daos.DBHelper;
-import org.tkxdpm20201.Nhom19.persistence.model.TransactionRequest;
+import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
+import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
 
 import java.io.IOException;
 import java.math.BigDecimal;

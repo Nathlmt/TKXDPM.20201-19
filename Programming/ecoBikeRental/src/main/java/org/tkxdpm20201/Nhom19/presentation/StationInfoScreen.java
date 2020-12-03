@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import org.tkxdpm20201.Nhom19.persistence.entities.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.Bike;
 
 import java.net.URL;
 import java.util.ResourceBundle;

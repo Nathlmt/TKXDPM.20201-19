@@ -1,6 +1,6 @@
 package org.tkxdpm20201.Nhom19.business.controller;
 
-import org.tkxdpm20201.Nhom19.persistence.model.RentingBike;
+import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 
 public class RentBikeController {
 

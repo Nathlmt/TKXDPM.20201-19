@@ -11,10 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import org.tkxdpm20201.Nhom19.persistence.entities.Station;
+import org.tkxdpm20201.Nhom19.business.controller.StationController;
+import org.tkxdpm20201.Nhom19.data.entities.Station;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class StationListScreen implements Initializable {
@@ -23,14 +26,21 @@ public class StationListScreen implements Initializable {
     private ListView<Station> listStation;
 
     private final ObservableList<Station> stationObservableList;
-
-
-    public StationListScreen(){
+    private final StationController stationController;
+    public StationListScreen() {
         stationObservableList = FXCollections.observableArrayList();
+        this.stationController = new StationController();
+
+    }
+
+    public void showStationList() throws SQLException {
+        List<Station> stationList = stationController.getStationList();
+        this.stationObservableList.addAll(stationList);
+        listStation.setItems(stationObservableList);
+        listStation.setCellFactory(stationListView -> new ItemStationListView());
     }
 
     public void returnHome(ActionEvent event) throws IOException {
-        System.out.println("ok home");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/home.fxml"));
@@ -38,13 +48,15 @@ public class StationListScreen implements Initializable {
         Scene scene = new Scene(home);
         stage.setScene(scene);
         stage.show();
-
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listStation.setItems(stationObservableList);
-        listStation.setCellFactory(stationListView -> new ItemStationListView());
+        try {
+            showStationList();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

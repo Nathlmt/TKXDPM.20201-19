@@ -8,7 +8,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.json.JSONObject;
-import org.tkxdpm20201.Nhom19.persistence.model.TransactionRequest;
+import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
 
 import java.io.IOException;
 
