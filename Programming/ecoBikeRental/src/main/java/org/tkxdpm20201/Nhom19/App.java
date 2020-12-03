@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.business.api.TransactionApi;
 import org.tkxdpm20201.Nhom19.persistence.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.persistence.model.TransactionRequest;
+import org.tkxdpm20201.Nhom19.persistence.model.TransactionResponse;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -21,7 +22,7 @@ public class App extends Application {
 
     public static void main(String[] args) {
 
-        testAPI();
+//        testAPI();
 //        StationDao stationDao = new StationDaoImp();
 //        try {
 //            stationDao.getAll();
@@ -59,7 +60,7 @@ public class App extends Application {
         transactionRequest.setTransactionContent("Thanh toan thue xe dap");
         transactionRequest.setCreatedAt(new Date());
         try {
-            transactionApi.processTransaction(transactionRequest);
+            TransactionResponse trans = transactionApi.processTransaction(transactionRequest);
         } catch (IOException e) {
             System.out.println("lỗi rồi ae ơi!!!!!!");
             e.printStackTrace();

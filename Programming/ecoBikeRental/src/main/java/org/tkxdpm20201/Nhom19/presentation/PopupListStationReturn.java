@@ -32,6 +32,7 @@ public class PopupListStationReturn implements Initializable {
     private final ObservableList<Station> stationObservableList;
     private final ReturnBikeController returnBikeController;
 
+
     public PopupListStationReturn(){
         stationObservableList = FXCollections.observableArrayList();
         returnBikeController = new ReturnBikeController();
@@ -49,7 +50,6 @@ public class PopupListStationReturn implements Initializable {
     }
 
     private void showStationList() throws SQLException {
-
         List<Station> stationList = returnBikeController.getStationList();
         this.stationObservableList.addAll(stationList);
         listStation.setItems(stationObservableList);
@@ -70,6 +70,7 @@ public class PopupListStationReturn implements Initializable {
 
     @FXML
     public void chooseStationToReturn(MouseEvent event) throws IOException {
+
         Station station = listStation.getSelectionModel().getSelectedItem();
         if(station == null ){
             // DO NOTHING
@@ -81,7 +82,7 @@ public class PopupListStationReturn implements Initializable {
             alert.setTitle("Confirm");
             Optional<ButtonType> option = alert.showAndWait();
             if (option.get() == ButtonType.OK) {
-                boolean result = returnBikeController.returnBike(station, null);
+                boolean result = returnBikeController.returnBike(station);
                 if(result){
                     backHomeWhenSuccessfully(event);
                     System.out.println("OKKKKK successfully!");
