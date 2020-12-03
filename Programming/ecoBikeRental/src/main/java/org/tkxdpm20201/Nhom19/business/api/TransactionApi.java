@@ -13,20 +13,33 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import org.tkxdpm20201.Nhom19.persistence.model.TransactionRequest;
 import org.tkxdpm20201.Nhom19.persistence.model.TransactionResponse;
+import org.tkxdpm20201.Nhom19.utils.DateUtil;
 
 import java.io.IOException;
 
 public class TransactionApi {
 
-    public TransactionApi() {
+    /**
+     * run process transaction
+     * @param transactionRequest
+     * @return response transaction
+     * @throws IOException
+     */
+    public TransactionResponse processTransaction(TransactionRequest transactionRequest) throws IOException {
+        HttpResponse httpResponse = requestHTTP(transactionRequest);
+        return getTransactionResponse(httpResponse);
     }
 
-    private CloseableHttpClient httpClient;
+    /**
+     * request api through HttpClient
+     * @param transactionRequest : body content request of transaction
+     * @return response from http
+     * @throws IOException
+     */
+    private HttpResponse requestHTTP(TransactionRequest transactionRequest) throws IOException {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
 
-    public Object processTransaction(TransactionRequest transactionRequest) throws IOException {
-        httpClient = HttpClients.createDefault();
-
-        HttpPatch httpPatch = new HttpPatch(Config.BASE_URL + "/api/card/processTransaction");
+        HttpPatch httpPatch = new HttpPatch(Config.PROCESS_TRANSACTION_URL);
         String bodyRequest = getBodyRequest(transactionRequest);
         httpPatch.setEntity(new StringEntity(bodyRequest, ContentType.APPLICATION_JSON));
 
@@ -36,58 +49,57 @@ public class TransactionApi {
         {
             throw new RuntimeException("Failed with HTTP error code : " + statusCode);
         }
+        return httpResponse;
+    }
 
-        //Now pull back the response object
+    /**
+     *  get object transactionResponse
+     * @param httpResponse
+     * @return
+     * @throws IOException
+     */
+    private TransactionResponse getTransactionResponse(HttpResponse httpResponse) throws IOException {
         HttpEntity httpEntity = httpResponse.getEntity();
         String apiOutput = EntityUtils.toString(httpEntity);
-
-        System.out.println(apiOutput);
-
-        ObjectMapper om = new ObjectMapper();
-        TransactionResponse transactionResponse = om.readValue(apiOutput, TransactionResponse.class);
-
-        System.out.println(transactionResponse.getErrorCode());
-
-        // TODO: continue something
-        return null;
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(apiOutput, TransactionResponse.class);
     }
 
     private String getHashCode(String jsonString){
         return DigestUtils.md5Hex(jsonString);
     }
 
+
     private String getBodyRequest(TransactionRequest transactionRequest){
-        JSONObject transaction = getJSONTransaction(transactionRequest, Config.PROCESS_TRANS);
+        JSONObject transaction = getJSONTransaction(transactionRequest);
         String stringToHash = getJsonToHashCode(transaction).toString();
         String hashCode = getHashCode(stringToHash);
         JSONObject bodyRequest = new JSONObject();
 
         bodyRequest.put("version", Config.API_VERSION);
         bodyRequest.put("transaction", transaction);
-//        bodyRequest.put("appCode", Config.APP_CODE);
-        bodyRequest.put("appCode", "CWr2Fgjdclc=");
+        bodyRequest.put("appCode", Config.APP_CODE);
         bodyRequest.put("hashCode", hashCode);
         return bodyRequest.toString();
     }
 
-    private JSONObject getJSONTransaction(TransactionRequest transactionRequest, String command) {
+
+    private JSONObject getJSONTransaction(TransactionRequest transactionRequest) {
         JSONObject obj = new JSONObject();
         obj.put("cardCode", transactionRequest.getCardCode());
         obj.put("owner", transactionRequest.getOwner());
         obj.put("cvvCode", transactionRequest.getCvvCode());
         obj.put("dateExpired", transactionRequest.getDateExpired());
-        obj.put("command", command);
+        obj.put("command", Config.PROCESS_TRANS);
         obj.put("transactionContent", transactionRequest.getTransactionContent());
         obj.put("amount", transactionRequest.getAmount());
-//        obj.put("createdAt", DateUtil.format(transactionRequest.getCreatedAt()));
-        obj.put("createdAt", "2020-11-30 10:55:00");
+        obj.put("createdAt", DateUtil.format(transactionRequest.getCreatedAt()));
         return obj;
     }
 
     private JSONObject getJsonToHashCode(JSONObject jsonTransaction){
         JSONObject obj = new JSONObject();
-//        obj.put("secretKey", Config.SECRET_KEY);
-        obj.put("secretKey", "BLSSBlwOmxo=");
+        obj.put("secretKey", Config.SECRET_KEY);
         obj.put("transaction", jsonTransaction);
 
         return obj;

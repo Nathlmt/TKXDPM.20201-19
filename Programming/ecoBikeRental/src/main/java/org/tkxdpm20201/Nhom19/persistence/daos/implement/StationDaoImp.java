@@ -14,6 +14,7 @@ public class StationDaoImp extends BaseDaoImp<Station> implements StationDao{
     public StationDaoImp(){
         super(Station.class);
     }
+
     @Override
     public List<Station> getAll() throws SQLException {
         String sqlSelect = "SELECT * from STATIONS";
