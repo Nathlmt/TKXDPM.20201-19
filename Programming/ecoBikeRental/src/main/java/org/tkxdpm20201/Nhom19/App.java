@@ -6,10 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.business.api.TransactionApi;
+import org.tkxdpm20201.Nhom19.persistence.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.persistence.model.TransactionRequest;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.Date;
 
 
@@ -30,13 +32,14 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, SQLException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/home_screen.fxml"));
         stage.setScene(new Scene(root));
         stage.setTitle("Home");
         setSizeForWindow(stage);
         stage.setResizable(false);
         stage.show();
+        DBHelper.initConnection();
     }
 
     public static void setSizeForWindow(Stage stage){
