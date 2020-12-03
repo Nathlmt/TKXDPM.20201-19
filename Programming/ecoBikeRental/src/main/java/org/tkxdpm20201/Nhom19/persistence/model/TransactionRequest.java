@@ -1,12 +1,13 @@
 package org.tkxdpm20201.Nhom19.persistence.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class TransactionRequest {
 
     private String transactionContent;
     private BigDecimal amount;
-    private String createAt;
+    private Date createdAt;
 
     private String cardCode;
     private String owner;
@@ -32,12 +33,12 @@ public class TransactionRequest {
         this.amount = amount;
     }
 
-    public String getCreateAt() {
-        return createAt;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreateAt(String createAt) {
-        this.createAt = createAt;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getCardCode() {
