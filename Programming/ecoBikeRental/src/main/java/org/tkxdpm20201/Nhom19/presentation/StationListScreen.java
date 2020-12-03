@@ -11,7 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import org.tkxdpm20201.Nhom19.persistence.entities.Station;
+import org.tkxdpm20201.Nhom19.data.entities.Station;
 
 import java.io.IOException;
 import java.net.URL;

@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
-import org.tkxdpm20201.Nhom19.persistence.entities.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.Bike;
 
 import java.io.IOException;
 

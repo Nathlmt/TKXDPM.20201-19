@@ -1,4 +1,4 @@
-package org.tkxdpm20201.Nhom19.persistence.model;
+package org.tkxdpm20201.Nhom19.data.model;
 
 
 public class Transaction {
