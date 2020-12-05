@@ -15,7 +15,7 @@ module org.tkxdpm20201.Nhom19{
     requires com.jfoenix;
 
     opens org.tkxdpm20201.Nhom19.data.model to com.fasterxml.jackson.databind, com.fasterxml.jackson.annotation;
-    opens org.tkxdpm20201.Nhom19.presentation to javafx.graphics, javafx.fxml;
+    opens org.tkxdpm20201.Nhom19.presentation.Screen to javafx.graphics, javafx.fxml;
     exports org.tkxdpm20201.Nhom19;
 
 }

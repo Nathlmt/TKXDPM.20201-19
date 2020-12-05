@@ -34,7 +34,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home_screen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
         stage.setScene(new Scene(root));
         stage.setTitle("Home");
         setSizeForWindow(stage);
