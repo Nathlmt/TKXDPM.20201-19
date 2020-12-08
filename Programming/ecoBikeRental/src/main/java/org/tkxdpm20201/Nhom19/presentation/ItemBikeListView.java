@@ -41,7 +41,7 @@ public class ItemBikeListView extends ListCell<Bike> {
 
             bikeIdLabel.setText(bike.getId().toString());
             typeLabel.setText(bike.getType());
-            pinLabel.setText("Pin: " + bike.getBattery());
+//            pinLabel.setText("Pin: " + bike.getBattery());
             setText(null);
             setGraphic(hBox);
         }

@@ -10,4 +10,9 @@ public interface BaseDao<T> {
      T getById(Integer id);
 
      T deleteById(Integer id);
+
+     T create(T ojbect);
+
+     int update(T object) throws SQLException;
+
 }

@@ -28,8 +28,8 @@ public class StationInfoScreen implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        bikeList.addAll(new Bike(33333, "Xe Dap", 40),
-                    new Bike(12344, "Xe Dap", 40));
+        bikeList.addAll(new Bike(33333, "Xe Dap"),
+                    new Bike(12344, "Xe Dap"));
         bikeListView.setItems(bikeList);
         bikeListView.setCellFactory(bikeListView1 -> new ItemBikeListView());
 
