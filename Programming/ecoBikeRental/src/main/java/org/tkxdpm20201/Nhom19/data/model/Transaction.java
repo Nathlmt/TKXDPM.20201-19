@@ -7,6 +7,7 @@ public class Transaction {
     private String amount;
     private String createdAt;
     private String command;
+
     private String cardCode;
     private String owner;
     private String cvvCode;

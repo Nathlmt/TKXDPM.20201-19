@@ -1,45 +1,43 @@
 package org.tkxdpm20201.Nhom19.data.entities;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 public class Transaction extends BaseEntity {
-    private BigDecimal amount;
-    private String description;
-    private Date transactionDate;
+
+    private String amount;
+    private String createdAt;
+    private String transactionContent;
     private String command;
     private Integer cardId;
 
-    public Integer getCardId() {
-        return cardId;
-    }
-
-    public void setCardId(Integer cardId) {
+    public Transaction(String amount, String createdAt, String transactionContent, String command, Integer cardId) {
+        this.amount = amount;
+        this.createdAt = createdAt;
+        this.transactionContent = transactionContent;
+        this.command = command;
         this.cardId = cardId;
     }
 
-    public BigDecimal getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Date getTransactionDate() {
-        return transactionDate;
+    public String getTransactionContent() {
+        return transactionContent;
     }
 
-    public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = transactionDate;
+    public void setTransactionContent(String transactionContent) {
+        this.transactionContent = transactionContent;
     }
 
     public String getCommand() {
@@ -48,5 +46,13 @@ public class Transaction extends BaseEntity {
 
     public void setCommand(String command) {
         this.command = command;
+    }
+
+    public Integer getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(Integer cardId) {
+        this.cardId = cardId;
     }
 }
