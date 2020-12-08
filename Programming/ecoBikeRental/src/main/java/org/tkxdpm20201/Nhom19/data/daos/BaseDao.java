@@ -11,8 +11,8 @@ public interface BaseDao<T> {
 
      T deleteById(Integer id);
 
-     T create(T ojbect);
+     T create(T object);
 
-     int update(T object) throws SQLException;
+     boolean update(T object) throws SQLException;
 
 }

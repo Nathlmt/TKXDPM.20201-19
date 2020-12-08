@@ -5,13 +5,9 @@ public class RentalTransaction extends BaseEntity{
     private int rentalId;
     private int transactionId;
 
-    public RentalTransaction(int rentalId) {
+    public RentalTransaction(int rentalId, int transactionId) {
         this.rentalId = rentalId;
-    }
-
-    public RentalTransaction(Integer id, int rentalId) {
-        super(id);
-        this.rentalId = rentalId;
+        this.transactionId = transactionId;
     }
 
     public int getTransactionId() {

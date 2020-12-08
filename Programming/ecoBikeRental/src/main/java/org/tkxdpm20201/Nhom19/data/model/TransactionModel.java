@@ -1,7 +1,7 @@
 package org.tkxdpm20201.Nhom19.data.model;
 
 
-public class Transaction {
+public class TransactionModel {
 
     private String transactionContent;
     private String amount;

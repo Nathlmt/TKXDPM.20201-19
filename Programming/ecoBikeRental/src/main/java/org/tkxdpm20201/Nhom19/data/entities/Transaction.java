@@ -1,5 +1,7 @@
 package org.tkxdpm20201.Nhom19.data.entities;
 
+import org.tkxdpm20201.Nhom19.data.model.TransactionModel;
+
 public class Transaction extends BaseEntity {
 
     private String amount;
@@ -16,6 +18,13 @@ public class Transaction extends BaseEntity {
         this.cardId = cardId;
     }
 
+    public Transaction(TransactionModel transactionModel, Integer cardId){
+        this.amount = transactionModel.getAmount();
+        this.createdAt = transactionModel.getCreatedAt();
+        this.transactionContent = transactionModel.getTransactionContent();
+        this.command = transactionModel.getCommand();
+        this.cardId = cardId;
+    }
     public String getAmount() {
         return amount;
     }

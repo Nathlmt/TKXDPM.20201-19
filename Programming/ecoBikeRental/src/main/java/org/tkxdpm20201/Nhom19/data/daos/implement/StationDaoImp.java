@@ -4,6 +4,7 @@ import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.daos.StationDao;
 import org.tkxdpm20201.Nhom19.data.entities.Station;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -36,11 +37,16 @@ public class StationDaoImp extends BaseDaoImp<Station> implements StationDao{
     }
 
     @Override
-    public int update(Station station){
+    public boolean update(Station station) throws SQLException {
         String sqlUpdate = "UPDATE STATIONS " +
-                "SET ";
-
-        return 0;
+                "SET available_bike = ?" +
+                " available_rack = ?" +
+                "WHERE id = ?";
+        PreparedStatement ps = DBHelper.getConnection().prepareStatement(sqlUpdate);
+        ps.setInt(1, station.getAvailableBike());
+        ps.setInt(2, station.getAvailableRack());
+        ps.setInt(3, station.getId());
+        return ps.execute();
     }
 
 
