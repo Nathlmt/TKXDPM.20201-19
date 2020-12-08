@@ -18,12 +18,14 @@ public class RentingBike {
     private String owner;
     private String cvvCode;
     private String dateExpired;
+    private int cardId;
 
     private Rental rental;
 
 
 
     public RentingBike(Bike bike, Card card, Rental rental) {
+        this.cardId = card.getId();
         this.cardCode = card.getCardCode();
         this.owner = card.getOwner();
         this.cvvCode = card.getCvvCode();
@@ -32,6 +34,10 @@ public class RentingBike {
         this.deposit = new BigDecimal(bike.getPrice().intValue() * Constants.DEPOSIT_PERCENT);
         this.rental = rental;
         this.startDate = java.time.LocalDateTime.now();
+    }
+
+    public void setRental(Rental rental) {
+        this.rental = rental;
     }
 
     public Rental getRental() {
@@ -48,6 +54,13 @@ public class RentingBike {
         return bike;
     }
 
+    public int getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(int cardId) {
+        this.cardId = cardId;
+    }
 
     public LocalDateTime getStartDate() {
         if(this.startDate == null)

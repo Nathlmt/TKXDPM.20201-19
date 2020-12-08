@@ -29,7 +29,7 @@ public class BaseDaoImp<T> implements BaseDao<T> {
     }
 
     @Override
-    public T create(T object){
+    public T create(T object) throws SQLException {
         return null;
     }
 
