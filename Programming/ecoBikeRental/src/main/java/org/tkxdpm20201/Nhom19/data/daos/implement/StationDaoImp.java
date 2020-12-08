@@ -36,4 +36,12 @@ public class StationDaoImp extends BaseDaoImp<Station> implements StationDao{
     }
 
 
+    @Override
+    public int update(Station station){
+        String sqlUpdate = "UPDATE STATIONS " +
+                "SET ";
+
+        return 0;
+    }
+
 }

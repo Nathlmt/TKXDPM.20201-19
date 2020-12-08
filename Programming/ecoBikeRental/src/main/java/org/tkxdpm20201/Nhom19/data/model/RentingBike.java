@@ -21,6 +21,8 @@ public class RentingBike {
 
     private Rental rental;
 
+
+
     public RentingBike(Bike bike, Card card) {
         this.cardCode = card.getCardCode();
         this.owner = card.getOwner();

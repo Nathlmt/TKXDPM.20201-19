@@ -1,4 +1,4 @@
-package org.tkxdpm20201.Nhom19.persistence.entities;
+package org.tkxdpm20201.Nhom19.data.entities;
 
 import java.math.BigDecimal;
 import java.util.Date;
