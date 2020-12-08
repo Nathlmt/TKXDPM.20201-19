@@ -11,6 +11,7 @@ public class Bike extends BaseEntity{
     private String status;
     private Date lastUpdate;
     private Integer presentStation;
+    private Integer batery;
 
     public Bike(Integer id,String name, String licensePlate, BigDecimal price, String type, String status, Date last_update, Integer presentStation) {
         super(id);
@@ -22,10 +23,13 @@ public class Bike extends BaseEntity{
         this.lastUpdate = last_update;
         this.presentStation = presentStation;
     }
-
     public Bike(Integer id, String type){
         this.setId(id);
         this.type = type;
+    }
+
+    public Integer getBattery() {
+        return batery;
     }
 
     public String getName() {

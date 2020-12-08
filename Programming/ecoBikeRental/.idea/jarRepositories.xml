@@ -12,24 +12,9 @@
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="spring-milestones" />
-      <option name="name" value="Spring Repositories milestones" />
-      <option name="url" value="https://repo.spring.io/libs-milestone" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="spring-repos" />
-      <option name="name" value="Spring Repositories" />
-      <option name="url" value="http://repo.spring.io/release" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="dkt-repos" />
-      <option name="name" value="DKT Repositories" />
-      <option name="url" value="https://nexus.sapocorp.net/repository/maven-releases/" />
     </remote-repository>
   </component>
 </project>

@@ -14,6 +14,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.tkxdpm20201.Nhom19.business.api.Notification;
 import org.tkxdpm20201.Nhom19.business.controller.ReturnBikeController;
 import org.tkxdpm20201.Nhom19.data.entities.Station;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
@@ -70,30 +71,37 @@ public class ReturnBike implements Initializable {
 
     @FXML
     public void chooseStation(MouseEvent event) throws IOException {
+
         Station station = listStation.getSelectionModel().getSelectedItem();
-        if (station == null) {
-            return;
+        if(station == null ){
+            // DO NOTHING
+            System.out.println("station click null");
         }
+        else{
             Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setContentText("Bạn có muốn trả xe ở  " + station.getStationName() + " không?");
-            alert.setTitle("Xác nhận");
+            alert.setContentText("Are you sure to return this Bike right now at "+ station.getStationName()+" station?");
+            alert.setTitle("Confirm");
             Optional<ButtonType> option = alert.showAndWait();
             if (option.get() == ButtonType.OK) {
-                boolean result = returnBikeController.returnBike(station);
-                if (result) {
+                Notification notification = returnBikeController.returnBike(station);
+                if(notification.isStatus()){
                     backHomeWhenSuccessfully(event);
-                } else {
+                    System.out.println("OKKKKK successfully!");
+                }
+                else{
                     alert = new Alert(AlertType.ERROR);
-                    alert.setContentText("Trả xe thất bại!");
+                    alert.setContentText(notification.getMessage());
                     alert.setTitle("Error");
                     alert.showAndWait();
                 }
             }
-            if (option.get() == ButtonType.CANCEL) {
+            else if (option.get() == ButtonType.CANCEL) {
                 System.out.println("cho chon lai");
-            } else {
+            }
+            else {
                 System.out.println("else ------------------");
             }
+        }
     }
 
     /**
