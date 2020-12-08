@@ -34,7 +34,7 @@ public class BaseDaoImp<T> implements BaseDao<T> {
     }
 
     @Override
-    public int update(T object) throws SQLException {
-        return 0;
+    public boolean update(T object) throws SQLException {
+        return false;
     }
 }

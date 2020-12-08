@@ -26,7 +26,7 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
     }
 
     @Override
-    public int update(Rental rental) throws SQLException {
+    public boolean update(Rental rental) throws SQLException {
 
         String sqlUpdate = "UPDATE RENTALS " +
                             "SET bike_id = ?" +
@@ -45,7 +45,7 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
         preparedStatement.setString(5, rental.getTimeStart());
         preparedStatement.setString(6, rental.getTimeEnd());
         preparedStatement.setInt(7, rental.getId());
-        return preparedStatement.executeUpdate();
+        return preparedStatement.execute();
     }
 
 

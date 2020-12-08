@@ -23,17 +23,20 @@ public class RentingBike {
 
 
 
-    public RentingBike(Bike bike, Card card) {
+    public RentingBike(Bike bike, Card card, Rental rental) {
         this.cardCode = card.getCardCode();
         this.owner = card.getOwner();
         this.cvvCode = card.getCvvCode();
         this.dateExpired = card.getDateExpired();
         this.bike = bike;
         this.deposit = new BigDecimal(bike.getPrice().intValue() * Constants.DEPOSIT_PERCENT);
+        this.rental = rental;
         this.startDate = java.time.LocalDateTime.now();
     }
 
-
+    public Rental getRental() {
+        return rental;
+    }
 
     public BigDecimal getDeposit() {
         return deposit;

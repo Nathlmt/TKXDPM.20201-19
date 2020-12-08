@@ -11,7 +11,9 @@ import org.tkxdpm20201.Nhom19.data.daos.implement.BikeDaoImp;
 import org.tkxdpm20201.Nhom19.data.daos.implement.StationDaoImp;
 import org.tkxdpm20201.Nhom19.data.daos.implement.TransactionDaoImp;
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.Rental;
 import org.tkxdpm20201.Nhom19.data.entities.Station;
+import org.tkxdpm20201.Nhom19.data.entities.Transaction;
 import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
 import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
@@ -60,6 +62,7 @@ public class ReturnBikeController {
                 Notification notification = HandleErrorResponse.handle(transactionResponse.getErrorCode());
                 if(notification.isStatus()){
                     handleStationReceiveBike(station, bikeReturn);
+
                 }
                 return notification;
             } catch (IOException e) {
@@ -71,16 +74,27 @@ public class ReturnBikeController {
         return new Notification(false, "haven't rented Bike yet");
     }
 
+
+    private void  saveTransaction(RentingBike rentingBike, TransactionResponse transactionResponse, int cardId){
+        Transaction transaction = new Transaction(transactionResponse.getTransaction(), cardId);
+        transactionDao.create(transaction);
+
+        Rental rental = rentingBike.getRental();
+
+
+
+    }
+
     private void handleStationReceiveBike(Station station, Bike bikeReturn){
         try {
-            bikeDao.updateCurrentStation(bikeReturn.getId(), station.getId());
+           boolean resBike = bikeDao.updateCurrentStation(bikeReturn.getId(), station.getId());
 
-        } catch (SQLException throwables) {
+            boolean resStation = stationDao.update(station);
 
-            throwables.printStackTrace();
+
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
         }
-
-
     }
 
 

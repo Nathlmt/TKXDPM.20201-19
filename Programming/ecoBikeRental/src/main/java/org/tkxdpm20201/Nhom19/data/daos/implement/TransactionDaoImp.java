@@ -8,4 +8,6 @@ public class TransactionDaoImp extends BaseDaoImp<Transaction> implements Transa
     public TransactionDaoImp() {
         super(Transaction.class);
     }
+
+    
 }
