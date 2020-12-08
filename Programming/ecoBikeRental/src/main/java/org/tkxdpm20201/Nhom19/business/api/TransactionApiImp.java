@@ -11,8 +11,8 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
-import org.tkxdpm20201.Nhom19.persistence.model.TransactionRequest;
-import org.tkxdpm20201.Nhom19.persistence.model.TransactionResponse;
+import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
+import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
 import org.tkxdpm20201.Nhom19.utils.DateUtil;
 
 import java.io.IOException;

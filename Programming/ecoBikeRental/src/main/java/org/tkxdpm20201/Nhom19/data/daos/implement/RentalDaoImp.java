@@ -1,8 +1,8 @@
-package org.tkxdpm20201.Nhom19.persistence.daos.implement;
+package org.tkxdpm20201.Nhom19.data.daos.implement;
 
-import org.tkxdpm20201.Nhom19.persistence.daos.DBHelper;
-import org.tkxdpm20201.Nhom19.persistence.daos.RentalDao;
-import org.tkxdpm20201.Nhom19.persistence.entities.Rental;
+import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
+import org.tkxdpm20201.Nhom19.data.daos.RentalDao;
+import org.tkxdpm20201.Nhom19.data.entities.Rental;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

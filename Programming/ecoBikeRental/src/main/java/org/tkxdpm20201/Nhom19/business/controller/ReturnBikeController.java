@@ -4,17 +4,17 @@ import org.tkxdpm20201.Nhom19.business.api.HandleErrorResponse;
 import org.tkxdpm20201.Nhom19.business.api.InterBankApiSystem;
 import org.tkxdpm20201.Nhom19.business.api.Notification;
 import org.tkxdpm20201.Nhom19.business.api.TransactionApiImp;
-import org.tkxdpm20201.Nhom19.persistence.daos.BikeDao;
-import org.tkxdpm20201.Nhom19.persistence.daos.StationDao;
-import org.tkxdpm20201.Nhom19.persistence.daos.TransactionDao;
-import org.tkxdpm20201.Nhom19.persistence.daos.implement.BikeDaoImp;
-import org.tkxdpm20201.Nhom19.persistence.daos.implement.StationDaoImp;
-import org.tkxdpm20201.Nhom19.persistence.daos.implement.TransactionDaoImp;
-import org.tkxdpm20201.Nhom19.persistence.entities.Bike;
-import org.tkxdpm20201.Nhom19.persistence.entities.Station;
-import org.tkxdpm20201.Nhom19.persistence.model.RentingBike;
-import org.tkxdpm20201.Nhom19.persistence.model.TransactionRequest;
-import org.tkxdpm20201.Nhom19.persistence.model.TransactionResponse;
+import org.tkxdpm20201.Nhom19.data.daos.BikeDao;
+import org.tkxdpm20201.Nhom19.data.daos.StationDao;
+import org.tkxdpm20201.Nhom19.data.daos.TransactionDao;
+import org.tkxdpm20201.Nhom19.data.daos.implement.BikeDaoImp;
+import org.tkxdpm20201.Nhom19.data.daos.implement.StationDaoImp;
+import org.tkxdpm20201.Nhom19.data.daos.implement.TransactionDaoImp;
+import org.tkxdpm20201.Nhom19.data.entities.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.Station;
+import org.tkxdpm20201.Nhom19.data.model.RentingBike;
+import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
+import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -73,8 +73,11 @@ public class ReturnBikeController {
 
     private void handleStationReceiveBike(Station station, Bike bikeReturn){
         try {
-            bikeDao.updateCurrentStation(bikeReturn.getId(), station.getId());
-
+           int resBike = bikeDao.updateCurrentStation(bikeReturn.getId(), station.getId());
+            station.setAvailableBike(station.getAvailableBike() + 1);
+            station.setAvailableRack(station.getAvailableRack() - 1);
+            int resStation = stationDao.update(station);
+            //TODO: xử lý nếu trả về lỗi
         } catch (SQLException throwables) {
 
             throwables.printStackTrace();

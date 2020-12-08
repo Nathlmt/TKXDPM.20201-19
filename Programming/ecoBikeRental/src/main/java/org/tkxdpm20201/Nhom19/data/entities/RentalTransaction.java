@@ -1,4 +1,4 @@
-package org.tkxdpm20201.Nhom19.persistence.entities;
+package org.tkxdpm20201.Nhom19.data.entities;
 
 public class RentalTransaction extends BaseEntity{
 

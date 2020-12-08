@@ -16,7 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.business.api.Notification;
 import org.tkxdpm20201.Nhom19.business.controller.ReturnBikeController;
-import org.tkxdpm20201.Nhom19.persistence.entities.Station;
+import org.tkxdpm20201.Nhom19.data.entities.Station;
 
 import java.io.IOException;
 import java.net.URL;

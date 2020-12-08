@@ -1,9 +1,9 @@
 package org.tkxdpm20201.Nhom19.business.controller;
 
-import org.tkxdpm20201.Nhom19.persistence.entities.Bike;
-import org.tkxdpm20201.Nhom19.persistence.entities.Station;
-import org.tkxdpm20201.Nhom19.persistence.model.RentingBike;
-import org.tkxdpm20201.Nhom19.persistence.model.TransactionRequest;
+import org.tkxdpm20201.Nhom19.data.entities.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.Station;
+import org.tkxdpm20201.Nhom19.data.model.RentingBike;
+import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
 
 public class RentBikeController {
 

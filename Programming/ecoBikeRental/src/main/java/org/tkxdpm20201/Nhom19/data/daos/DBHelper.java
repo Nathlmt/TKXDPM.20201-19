@@ -1,4 +1,4 @@
-package org.tkxdpm20201.Nhom19.persistence.daos;
+package org.tkxdpm20201.Nhom19.data.daos;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
