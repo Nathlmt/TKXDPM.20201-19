@@ -73,11 +73,8 @@ public class ReturnBikeController {
 
     private void handleStationReceiveBike(Station station, Bike bikeReturn){
         try {
-           int resBike = bikeDao.updateCurrentStation(bikeReturn.getId(), station.getId());
-            station.setAvailableBike(station.getAvailableBike() + 1);
-            station.setAvailableRack(station.getAvailableRack() - 1);
-            int resStation = stationDao.update(station);
-            //TODO: xử lý nếu trả về lỗi
+            bikeDao.updateCurrentStation(bikeReturn.getId(), station.getId());
+
         } catch (SQLException throwables) {
 
             throwables.printStackTrace();

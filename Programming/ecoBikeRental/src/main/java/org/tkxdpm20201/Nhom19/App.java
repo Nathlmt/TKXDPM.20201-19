@@ -5,13 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.tkxdpm20201.Nhom19.business.api.TransactionApi;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
-import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
-import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
-import org.tkxdpm20201.Nhom19.business.api.TransactionApiImp;
-import org.tkxdpm20201.Nhom19.business.controller.RentBikeController;
-import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
-import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
 import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
 
@@ -19,16 +14,16 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.Date;
-
+import static org.tkxdpm20201.Nhom19.utils.Constants.HOME_PATH;
 
 public class App extends Application {
     public static final int WIDTH = 400;
     public static final int HEIGHT = 660;
 
     public static void main(String[] args) {
-//        StationDao stationDao = new StationDaoImp();
 
 //        testAPI();
+//        StationDao stationDao = new StationDaoImp();
 //        try {
 //            stationDao.getAll();
 //        } catch (SQLException throwables) {
@@ -39,8 +34,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home_screen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(HOME_PATH));
         stage.setScene(new Scene(root));
         stage.setTitle("Home");
         setSizeForWindow(stage);
@@ -54,15 +48,8 @@ public class App extends Application {
         stage.setHeight(HEIGHT);
     }
 
-    private RentingBike getRentingBikeInfo(){
-        if(RentBikeController.getRentingBike() == null){
-            // TODO: thực hiện các lệnh truy vấn get info ở đây
-        }
-        return null;
-    }
-
     private static void testAPI(){
-        TransactionApiImp transactionApiImp = new TransactionApiImp();
+        TransactionApi transactionApi = new TransactionApi();
 
         TransactionRequest transactionRequest = new TransactionRequest();
         transactionRequest.setAmount(new BigDecimal(100));
@@ -73,7 +60,7 @@ public class App extends Application {
         transactionRequest.setTransactionContent("Thanh toan thue xe dap");
         transactionRequest.setCreatedAt(new Date());
         try {
-            TransactionResponse trans = transactionApiImp.processTransaction(transactionRequest);
+            TransactionResponse trans = transactionApi.processTransaction(transactionRequest);
         } catch (IOException e) {
             System.out.println("lỗi rồi ae ơi!!!!!!");
             e.printStackTrace();

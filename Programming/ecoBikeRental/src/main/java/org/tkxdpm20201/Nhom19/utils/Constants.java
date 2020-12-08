@@ -9,4 +9,9 @@ public class Constants {
     public final static String NOT_RENT_BIKE = "not rent bike";
     public final static String ALGORITHM = "MD5";
 
+    //FXML PATH
+    public final static String HOME_PATH = "/fxml/home.fxml";
+    public final static String FIND_STATION_PATH = "/fxml/find_station.fxml";
+    public final static String RETURN_BIKE_PATH = "/fxml/return_bike.fxml";
+    public final static String STATION_INFO_PATH = "/fxml/station_info.fxml";
 }
