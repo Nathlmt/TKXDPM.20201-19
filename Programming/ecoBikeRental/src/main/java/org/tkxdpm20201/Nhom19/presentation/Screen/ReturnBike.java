@@ -34,13 +34,13 @@ public class ReturnBike implements Initializable {
 
     private final ObservableList<Station> stationObservableList;
     private final ReturnBikeController returnBikeController;
-   private static final BaseScreenHandler returnBikeHandler = new BaseScreenHandler(RETURN_BIKE_PATH);
+    private static final BaseScreenHandler returnBikeHandler = new BaseScreenHandler(RETURN_BIKE_PATH);
 
     public static BaseScreenHandler getReturnBikeHandler() {
         return returnBikeHandler;
     }
 
-    public ReturnBike(){
+    public ReturnBike() {
         stationObservableList = FXCollections.observableArrayList();
         returnBikeController = new ReturnBikeController();
     }
@@ -65,63 +65,42 @@ public class ReturnBike implements Initializable {
 
     @FXML
     public void returnHome(MouseEvent event) throws IOException {
-//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("/fxml/home.fxml"));
-//        Parent home = loader.load();
-//        Scene scene = new Scene(home);
-//        stage.setScene(scene);
         returnBikeHandler.getPreviousScreen().show();
     }
 
     @FXML
-    public void chooseStationToReturn(MouseEvent event) throws IOException {
-
+    public void chooseStation(MouseEvent event) throws IOException {
         Station station = listStation.getSelectionModel().getSelectedItem();
-        if(station == null ){
-            // DO NOTHING
-            System.out.println("station click null");
+        if (station == null) {
+            return;
         }
-        else{
             Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setContentText("Are you sure to return this Bike right now at "+ station.getStationName()+" station?");
-            alert.setTitle("Confirm");
+            alert.setContentText("Bạn có muốn trả xe ở  " + station.getStationName() + " không?");
+            alert.setTitle("Xác nhận");
             Optional<ButtonType> option = alert.showAndWait();
             if (option.get() == ButtonType.OK) {
                 boolean result = returnBikeController.returnBike(station);
-                if(result){
+                if (result) {
                     backHomeWhenSuccessfully(event);
-                    System.out.println("OKKKKK successfully!");
-                }
-                else{
+                } else {
                     alert = new Alert(AlertType.ERROR);
-                    alert.setContentText("return Bike failed... please try again!");
+                    alert.setContentText("Trả xe thất bại!");
                     alert.setTitle("Error");
                     alert.showAndWait();
                 }
             }
-            else if (option.get() == ButtonType.CANCEL) {
+            if (option.get() == ButtonType.CANCEL) {
                 System.out.println("cho chon lai");
-            }
-            else {
+            } else {
                 System.out.println("else ------------------");
             }
-        }
     }
 
     /**
      *
      */
     private void backHomeWhenSuccessfully(MouseEvent event) throws IOException {
-          Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/home.fxml"));
-        Parent home = loader.load();
-        Scene scene = new Scene(home);
-        Home homeScreenController = loader.getController();
-        homeScreenController.returnBikeSuccessfully();
-        stage.setScene(scene);
-
+        returnBikeHandler.getPreviousScreen().show();
     }
 
 

@@ -12,13 +12,13 @@
 
 <AnchorPane prefHeight="660.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.Screen.ReturnBike">
    <children>
-      <Label layoutX="123.0" layoutY="53.0" text="Return Bike">
+      <Label layoutX="123.0" layoutY="53.0" text="Trả xe">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ListView fx:id="listStation" layoutY="165.0" onMouseClicked="#chooseStationToReturn" prefHeight="495.0" prefWidth="400.0" />
+      <ListView fx:id="listStation" layoutY="165.0" onMouseClicked="#chooseStation" prefHeight="495.0" prefWidth="400.0" />
       <Hyperlink layoutY="2.0" onMouseClicked="#returnHome" text="&lt; Back" />
-      <Label layoutX="20.0" layoutY="85.0" prefHeight="32.0" prefWidth="271.0" text="Please Pick one Station to Return Bike!" />
+      <Label layoutX="20.0" layoutY="85.0" prefHeight="32.0" prefWidth="271.0" text="Chọn một trạm để trả xe!" />
    </children>
 </AnchorPane>

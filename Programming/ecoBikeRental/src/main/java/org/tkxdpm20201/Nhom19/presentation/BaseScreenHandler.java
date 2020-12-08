@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.App;
+import org.tkxdpm20201.Nhom19.data.entities.BaseEntity;
 
 import java.io.IOException;
 
@@ -12,22 +13,12 @@ public class BaseScreenHandler {
     private final String screenPath;
     private Stage screenStage;
     private BaseScreenHandler previousScreen;
+    private BaseEntity entityData;
+
 
     public BaseScreenHandler(String screenPath) {
         this.screenPath = screenPath;
-    }
-
-    public void setScreenStage(Stage screenStage) {
-        this.screenStage = screenStage;
-    }
-
-
-    public void setPreviousScreen(BaseScreenHandler prevScreen) {
-        this.previousScreen = prevScreen;
-    }
-
-    ;
-
+    };
     public BaseScreenHandler getPreviousScreen() {
         return previousScreen;
     }
@@ -44,5 +35,23 @@ public class BaseScreenHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public Stage getScreenStage() {
+        return this.screenStage;
+    }
+
+    public BaseEntity getEntityData() {
+        return entityData;
+    }
+
+    public void setEntityData(BaseEntity entityData) {
+        this.entityData = entityData;
+    }
+
+    public void setScreenStage(Stage screenStage) {
+        this.screenStage = screenStage;
+    }
+    public void setPreviousScreen(BaseScreenHandler prevScreen) {
+        this.previousScreen = prevScreen;
     }
 }

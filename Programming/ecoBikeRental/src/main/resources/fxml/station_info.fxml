@@ -7,36 +7,35 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="660.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.Screen.StationInfo">
+<AnchorPane prefHeight="647.0" prefWidth="373.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.Screen.StationInfo">
    <children>
-      <Hyperlink layoutX="14.0" layoutY="14.0" prefHeight="24.0" prefWidth="143.0" text="&lt; Back" />
+      <Hyperlink onAction="#back" layoutX="14.0" layoutY="14.0" prefHeight="24.0" prefWidth="143.0" text="&lt; Trở lại" />
       <Label layoutX="24.0" layoutY="55.0" prefHeight="31.0" prefWidth="187.0" text="NewYork Station" textFill="#5717e1">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Pane layoutX="12.0" layoutY="106.0" prefHeight="159.0" prefWidth="376.0" style="-fx-background-color: white; -fx-border-color: gray;">
+      <Pane layoutX="12.0" layoutY="110.0" prefHeight="166.0" prefWidth="353.0" style="-fx-background-color: white; -fx-border-color: gray;">
          <children>
-            <Label layoutX="22.0" layoutY="22.0" text="Available Bike">
+            <Label layoutX="22.0" layoutY="22.0" text="Số xe hiện tại">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
             <Label layoutX="170.0" layoutY="23.0" text="12" />
-            <Label layoutX="22.0" layoutY="52.0" text="Address">
+            <Label layoutX="22.0" layoutY="52.0" text="Địa chỉ">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
             <Label layoutX="170.0" layoutY="53.0" text="Quoc oai, Ha noi" />
-            <Label layoutX="22.0" layoutY="80.0" prefHeight="18.0" prefWidth="74.0" text="Acarage">
+            <Label layoutX="22.0" layoutY="80.0" prefHeight="18.0" prefWidth="74.0" text="Diện tích">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
             <Label layoutX="170.0" layoutY="81.0" text="30m2" />
-            <Label layoutX="22.0" layoutY="108.0" prefHeight="18.0" prefWidth="74.0" text="gi do">
+            <Label layoutX="22.0" layoutY="108.0" prefHeight="20.0" prefWidth="89.0" text="Số bãi trống">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -44,8 +43,8 @@
             <Label layoutX="170.0" layoutY="109.0" text="......." />
          </children>
       </Pane>
-      <ListView layoutX="13.0" layoutY="308.0" prefHeight="339.0" prefWidth="376.0" />
-      <Label layoutX="17.0" layoutY="276.0" prefHeight="31.0" prefWidth="74.0" text="Bike List">
+      <ListView layoutX="13.0" layoutY="321.0" prefHeight="326.0" prefWidth="353.0" />
+      <Label layoutX="17.0" layoutY="276.0" prefHeight="31.0" prefWidth="96.0" text="Danh sách xe">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

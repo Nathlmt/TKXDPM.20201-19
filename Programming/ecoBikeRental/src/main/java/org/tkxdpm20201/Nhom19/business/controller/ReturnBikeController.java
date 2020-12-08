@@ -23,10 +23,8 @@ public class ReturnBikeController {
 
     public List<Station> getStationList() throws SQLException {
         List<Station> stationList = stationDao.getAll();
-        System.out.println(stationList.size());
         return stationList;
     }
-
 
     public boolean returnBike(Station station) {
         RentingBike rentingBike = RentBikeController.getRentingBike();
@@ -35,24 +33,19 @@ public class ReturnBikeController {
             LocalDateTime startDate = rentingBike.getStartDate();
             BigDecimal deposit = rentingBike.getDeposit();
             BigDecimal rentingFee = calculateFees(deposit, startDate, java.time.LocalDateTime.now());
-
             // TODO: requestReturnBikeTransaction()
-
-
             return true;
         }
         return true;
     }
 
 
-
     //TODO: nếu sau này có yêu cầu thêm cách tính phí thì sẽ thêm String: chứa chuỗi biểu thị cách tính phí
-    private BigDecimal calculateFees(BigDecimal deposit, LocalDateTime startDate, LocalDateTime endDate){
+    private BigDecimal calculateFees(BigDecimal deposit, LocalDateTime startDate, LocalDateTime endDate) {
 
 
         return null;
     }
-
 
 
 }

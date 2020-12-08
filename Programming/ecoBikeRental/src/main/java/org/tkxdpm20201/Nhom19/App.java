@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.Date;
-
+import static org.tkxdpm20201.Nhom19.utils.Constants.HOME_PATH;
 
 public class App extends Application {
     public static final int WIDTH = 400;
@@ -34,7 +34,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(HOME_PATH));
         stage.setScene(new Scene(root));
         stage.setTitle("Home");
         setSizeForWindow(stage);
