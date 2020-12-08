@@ -1,5 +1,7 @@
 package org.tkxdpm20201.Nhom19.data.model;
 
+import org.tkxdpm20201.Nhom19.utils.Constants;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -15,6 +17,32 @@ public class TransactionRequest {
     private String dateExpired;
 
     public TransactionRequest() {
+    }
+
+    public TransactionRequest(String transactionContent, BigDecimal amount, Date createdAt, String cardCode, String owner, String cvvCode, String dateExpired) {
+        this.transactionContent = transactionContent;
+        this.amount = amount;
+        this.createdAt = createdAt;
+        this.cardCode = cardCode;
+        this.owner = owner;
+        this.cvvCode = cvvCode;
+        this.dateExpired = dateExpired;
+    }
+
+
+    /**
+     * set transaction data to execute returning Bike
+     * @param rentingBike
+     * @param deposit
+     * @param rentingFee
+     */
+    public void setTransactionRequestToReturnBike(RentingBike rentingBike, BigDecimal deposit, BigDecimal rentingFee){
+        this.transactionContent = Constants.RETURNED_BIKE;
+        this.amount = rentingFee.subtract(deposit);
+        this.cardCode = rentingBike.getCardCode();
+        this.owner = rentingBike.getOwner();
+        this.cvvCode = rentingBike.getCvvCode();
+        this.dateExpired = rentingBike.getDateExpired();
     }
 
     public String getTransactionContent() {

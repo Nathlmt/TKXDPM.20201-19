@@ -9,6 +9,8 @@ import org.tkxdpm20201.Nhom19.business.api.TransactionApi;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
 import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
+import org.tkxdpm20201.Nhom19.business.api.TransactionApiImp;
+import org.tkxdpm20201.Nhom19.business.controller.RentBikeController;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -21,9 +23,9 @@ public class App extends Application {
     public static final int HEIGHT = 660;
 
     public static void main(String[] args) {
+//        StationDao stationDao = new StationDaoImp();
 
 //        testAPI();
-//        StationDao stationDao = new StationDaoImp();
 //        try {
 //            stationDao.getAll();
 //        } catch (SQLException throwables) {
@@ -34,6 +36,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
+
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/home_screen.fxml"));
         stage.setScene(new Scene(root));
         stage.setTitle("Home");
@@ -48,8 +51,15 @@ public class App extends Application {
         stage.setHeight(HEIGHT);
     }
 
+    private RentingBike getRentingBikeInfo(){
+        if(RentBikeController.getRentingBike() == null){
+            // TODO: thực hiện các lệnh truy vấn get info ở đây
+        }
+        return null;
+    }
+
     private static void testAPI(){
-        TransactionApi transactionApi = new TransactionApi();
+        TransactionApiImp transactionApiImp = new TransactionApiImp();
 
         TransactionRequest transactionRequest = new TransactionRequest();
         transactionRequest.setAmount(new BigDecimal(100));
@@ -60,7 +70,7 @@ public class App extends Application {
         transactionRequest.setTransactionContent("Thanh toan thue xe dap");
         transactionRequest.setCreatedAt(new Date());
         try {
-            TransactionResponse trans = transactionApi.processTransaction(transactionRequest);
+            TransactionResponse trans = transactionApiImp.processTransaction(transactionRequest);
         } catch (IOException e) {
             System.out.println("lỗi rồi ae ơi!!!!!!");
             e.printStackTrace();

@@ -14,6 +14,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.tkxdpm20201.Nhom19.business.api.Notification;
 import org.tkxdpm20201.Nhom19.business.controller.ReturnBikeController;
 import org.tkxdpm20201.Nhom19.data.entities.Station;
 
@@ -82,14 +83,14 @@ public class PopupListStationReturn implements Initializable {
             alert.setTitle("Confirm");
             Optional<ButtonType> option = alert.showAndWait();
             if (option.get() == ButtonType.OK) {
-                boolean result = returnBikeController.returnBike(station);
-                if(result){
+                Notification notification = returnBikeController.returnBike(station);
+                if(notification.isStatus()){
                     backHomeWhenSuccessfully(event);
                     System.out.println("OKKKKK successfully!");
                 }
                 else{
                     alert = new Alert(AlertType.ERROR);
-                    alert.setContentText("return Bike failed... please try again!");
+                    alert.setContentText(notification.getMessage());
                     alert.setTitle("Error");
                     alert.showAndWait();
                 }

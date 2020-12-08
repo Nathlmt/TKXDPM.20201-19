@@ -8,9 +8,11 @@ import java.util.List;
 public class BaseDaoImp<T> implements BaseDao<T> {
 
     final Class<T> typeParamClass;
+
     public BaseDaoImp(Class<T> typeParamClass){
         this.typeParamClass = typeParamClass;
     }
+
     @Override
     public List<T> getAll() throws SQLException {
       return null;
@@ -26,5 +28,13 @@ public class BaseDaoImp<T> implements BaseDao<T> {
         return null;
     }
 
+    @Override
+    public T create(T object){
+        return null;
+    }
 
+    @Override
+    public int update(T object) throws SQLException {
+        return 0;
+    }
 }
