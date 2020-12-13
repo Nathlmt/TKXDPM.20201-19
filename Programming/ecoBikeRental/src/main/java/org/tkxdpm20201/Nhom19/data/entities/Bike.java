@@ -27,6 +27,9 @@ public class Bike extends BaseEntity{
         this.setId(id);
         this.type = type;
     }
+    public Bike() {
+
+    }
 
     public Integer getBattery() {
         return batery;
