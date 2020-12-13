@@ -14,4 +14,5 @@ public class Constants {
     public final static String FIND_STATION_PATH = "/fxml/find_station.fxml";
     public final static String RETURN_BIKE_PATH = "/fxml/return_bike.fxml";
     public final static String STATION_INFO_PATH = "/fxml/station_info.fxml";
+    public final static String RENT_BIKE_PATH = "/fxml/rent_bike.fxml";
 }
