@@ -53,7 +53,7 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
     }
 
     @Override
-    public int updateCurrentStation(int id, int idStation) throws SQLException {
+    public boolean updateCurrentStation(int id, int idStation) throws SQLException {
         String sqlUpdate = "UPDATE BIKES" +
                             "SET present_station = ?" +
                             " last_update = ?" +
@@ -63,6 +63,6 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
         preparedStatement.setString(2, DateUtil.format(new Date()));
         preparedStatement.setInt(3, id);
 
-        return preparedStatement.executeUpdate();
+        return preparedStatement.execute();
     }
 }

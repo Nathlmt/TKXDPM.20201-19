@@ -5,6 +5,7 @@ import org.tkxdpm20201.Nhom19.data.daos.RentalDao;
 import org.tkxdpm20201.Nhom19.data.entities.Rental;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
@@ -14,9 +15,17 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
     }
 
     @Override
-    public Rental create(Rental rental){
+    public Rental create(Rental rental) throws SQLException {
 
-        return null;
+        String sqlInsert = "INSERT INTO rentals" +
+                "(bike_id, customer_id, rent_station_id, return_station_id, status, time_start, time_end)" +
+                "VALUES(?,?,?,?,?,?,?)";
+        PreparedStatement ps = DBHelper.getConnection().prepareStatement(sqlInsert);
+        prepareStatement(ps, rental);
+        ResultSet resultSet =  ps.executeQuery();
+        //TODO: get Id rental ra vào set lại vào rental
+
+        return rental;
     }
 
     @Override
@@ -26,7 +35,7 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
     }
 
     @Override
-    public int update(Rental rental) throws SQLException {
+    public boolean update(Rental rental) throws SQLException {
 
         String sqlUpdate = "UPDATE RENTALS " +
                             "SET bike_id = ?" +
@@ -37,7 +46,12 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
                             "time_end = ?" +
                             "WHERE id = ?";
 
-        PreparedStatement preparedStatement = DBHelper.getConnection().prepareStatement(sqlUpdate);
+        PreparedStatement ps = DBHelper.getConnection().prepareStatement(sqlUpdate);
+        prepareStatement(ps, rental);
+        return ps.execute();
+    }
+
+    private void prepareStatement(PreparedStatement preparedStatement, Rental rental) throws SQLException {
         preparedStatement.setInt(1, rental.getBikeId());
         preparedStatement.setInt(2, rental.getRentStationId());
         preparedStatement.setInt(3, rental.getReturnStationId());
@@ -45,7 +59,6 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
         preparedStatement.setString(5, rental.getTimeStart());
         preparedStatement.setString(6, rental.getTimeEnd());
         preparedStatement.setInt(7, rental.getId());
-        return preparedStatement.executeUpdate();
     }
 
 

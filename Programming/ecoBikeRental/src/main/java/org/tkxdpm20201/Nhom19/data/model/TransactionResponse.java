@@ -4,13 +4,13 @@ package org.tkxdpm20201.Nhom19.data.model;
 public class TransactionResponse {
 
     private String errorCode;
-    private Transaction transaction;
+    private TransactionModel transaction;
 
-    public Transaction getTransaction() {
+    public TransactionModel getTransaction() {
         return transaction;
     }
 
-    public void setTransaction(Transaction transaction) {
+    public void setTransaction(TransactionModel transaction) {
         this.transaction = transaction;
     }
 

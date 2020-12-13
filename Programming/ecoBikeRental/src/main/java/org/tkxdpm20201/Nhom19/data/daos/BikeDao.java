@@ -9,6 +9,6 @@ public interface BikeDao extends BaseDao<Bike> {
 
     List<Bike> getAllBikeInStation();
 
-    int updateCurrentStation(int id, int idStation) throws SQLException;
+    boolean updateCurrentStation(int id, int idStation) throws SQLException;
 
 }

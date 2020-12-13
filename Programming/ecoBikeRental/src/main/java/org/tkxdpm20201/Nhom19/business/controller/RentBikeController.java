@@ -1,6 +1,7 @@
 package org.tkxdpm20201.Nhom19.business.controller;
 
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.Rental;
 import org.tkxdpm20201.Nhom19.data.entities.Station;
 import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
@@ -21,6 +22,10 @@ public class RentBikeController {
         }
         else
             return rentingBike;
+    }
+
+    public static void updateRental(Rental rental){
+        rentingBike.setRental(rental);
     }
 
 

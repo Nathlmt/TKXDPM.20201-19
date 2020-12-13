@@ -5,16 +5,22 @@ import org.tkxdpm20201.Nhom19.business.api.InterBankApiSystem;
 import org.tkxdpm20201.Nhom19.business.api.Notification;
 import org.tkxdpm20201.Nhom19.business.api.TransactionApiImp;
 import org.tkxdpm20201.Nhom19.data.daos.BikeDao;
+import org.tkxdpm20201.Nhom19.data.daos.RentalDao;
 import org.tkxdpm20201.Nhom19.data.daos.StationDao;
 import org.tkxdpm20201.Nhom19.data.daos.TransactionDao;
 import org.tkxdpm20201.Nhom19.data.daos.implement.BikeDaoImp;
+import org.tkxdpm20201.Nhom19.data.daos.implement.RentalDaoImp;
 import org.tkxdpm20201.Nhom19.data.daos.implement.StationDaoImp;
 import org.tkxdpm20201.Nhom19.data.daos.implement.TransactionDaoImp;
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.Rental;
 import org.tkxdpm20201.Nhom19.data.entities.Station;
+import org.tkxdpm20201.Nhom19.data.entities.Transaction;
 import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
 import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
+import org.tkxdpm20201.Nhom19.utils.Constants;
+import org.tkxdpm20201.Nhom19.utils.DateUtil;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -28,9 +34,11 @@ public class ReturnBikeController {
     private final BikeDao bikeDao;
     private final TransactionDao transactionDao;
     private final InterBankApiSystem interBankApiSystem;
+    private final RentalDao rentalDao;
 
 
     public ReturnBikeController() {
+        this.rentalDao = new RentalDaoImp();
         this.stationDao = new StationDaoImp();
         this.bikeDao = new BikeDaoImp();
         this.transactionDao = new TransactionDaoImp();
@@ -46,13 +54,21 @@ public class ReturnBikeController {
 
 
     public Notification returnBike(Station station) {
+        LocalDateTime localDateTimeEnd = java.time.LocalDateTime.now();
         RentingBike rentingBike = RentBikeController.getRentingBike();
+
         if (rentingBike != null) {
+            Rental rental = rentingBike.getRental();
             Bike bikeReturn = rentingBike.getBike();
             LocalDateTime startDate = rentingBike.getStartDate();
             BigDecimal deposit = rentingBike.getDeposit();
-            BigDecimal rentingFee = calculateFees(deposit, startDate, java.time.LocalDateTime.now());
+            BigDecimal rentingFee = calculateFees(deposit, startDate, localDateTimeEnd);
             TransactionRequest transactionRequest = createTransactionRequest(rentingBike, deposit, rentingFee);
+
+            rental.setReturnStationId(station.getId());
+            rental.setTimeEnd(DateUtil.format(localDateTimeEnd));
+            rental.setStatus(Constants.RETURNED_BIKE);
+            RentBikeController.updateRental(rental);
 
             try {
                 TransactionResponse transactionResponse  = interBankApiSystem.processTransaction(transactionRequest);
@@ -60,6 +76,8 @@ public class ReturnBikeController {
                 Notification notification = HandleErrorResponse.handle(transactionResponse.getErrorCode());
                 if(notification.isStatus()){
                     handleStationReceiveBike(station, bikeReturn);
+                    saveTransaction(rental, transactionResponse, rentingBike.getCardId());
+
                 }
                 return notification;
             } catch (IOException e) {
@@ -71,16 +89,28 @@ public class ReturnBikeController {
         return new Notification(false, "haven't rented Bike yet");
     }
 
-    private void handleStationReceiveBike(Station station, Bike bikeReturn){
+
+    private void  saveTransaction(Rental rental, TransactionResponse transactionResponse, int cardCode){
+        Transaction transaction = new Transaction(transactionResponse.getTransaction(), cardCode);
         try {
-            bikeDao.updateCurrentStation(bikeReturn.getId(), station.getId());
-
+            transactionDao.create(transaction);
+            rentalDao.update(rental);
         } catch (SQLException throwables) {
-
             throwables.printStackTrace();
         }
 
+    }
 
+    private void handleStationReceiveBike(Station station, Bike bikeReturn){
+        try {
+           boolean resBike = bikeDao.updateCurrentStation(bikeReturn.getId(), station.getId());
+
+            boolean resStation = stationDao.update(station);
+
+
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
     }
 
 
