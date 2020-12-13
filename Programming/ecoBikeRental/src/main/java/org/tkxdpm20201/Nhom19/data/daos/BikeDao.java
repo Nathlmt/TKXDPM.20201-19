@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface BikeDao extends BaseDao<Bike> {
 
-    List<Bike> getAllBikeInStation();
-
+    List<Bike> getAllBikeInStation(int stationId);
+    Bike getBikeById(int bikeCode) throws SQLException;
     boolean updateCurrentStation(int id, int idStation) throws SQLException;
 
 }

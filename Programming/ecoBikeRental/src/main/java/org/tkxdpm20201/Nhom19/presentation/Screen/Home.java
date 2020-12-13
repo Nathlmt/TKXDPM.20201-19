@@ -38,7 +38,8 @@ public class Home implements Initializable {
 
     @FXML
     private JFXButton btnReturnBike;
-
+    @FXML
+    private JFXButton btnRentBike;
     @FXML
     private AnchorPane homeScreenAnchor;
     private final BaseScreenHandler homeScreenHandler  = new BaseScreenHandler(HOME_PATH);
@@ -48,20 +49,24 @@ public class Home implements Initializable {
         this.homeScreenHandler.setScreenStage(homeScreenStage);
         return homeScreenStage;
     }
-
+    private void goToStage(BaseScreenHandler nextHandler, Stage previousStage) {
+        nextHandler.setScreenStage(previousStage);
+        nextHandler.setPreviousScreen(this.homeScreenHandler);
+        nextHandler.show();
+    }
     public void handleButtonClicks(ActionEvent mouseEvent) {
         Stage homeScreenStage = setupHomeScreenHandler();
         if (mouseEvent.getSource() == btnFindStation) {
             BaseScreenHandler findStationHandler = FindStation.getFindStationHandler();
-            findStationHandler.setScreenStage(homeScreenStage);
-            findStationHandler.setPreviousScreen(this.homeScreenHandler);
-            findStationHandler.show();
+            goToStage(findStationHandler, homeScreenStage);
         };
         if (mouseEvent.getSource() == btnReturnBike) {
             BaseScreenHandler returnBikeHandler = ReturnBike.getReturnBikeHandler();
-            returnBikeHandler.setScreenStage(homeScreenStage);
-            returnBikeHandler.setPreviousScreen(this.homeScreenHandler);
-            returnBikeHandler.show();
+            goToStage(returnBikeHandler, homeScreenStage);
+        };
+        if (mouseEvent.getSource() == btnRentBike) {
+            BaseScreenHandler rentBikeHandler = RentBike.getRentBikeHandler();
+            goToStage(rentBikeHandler, homeScreenStage);
         }
     }
 
