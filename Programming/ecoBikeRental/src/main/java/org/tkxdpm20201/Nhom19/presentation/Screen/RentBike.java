@@ -30,13 +30,17 @@ public class RentBike implements Initializable {
 
     @FXML
     private void handleButton1Action(ActionEvent event) throws SQLException {
-        Bike bike = rentBikeController.getBikeInfo(Integer.parseInt(bikeCode.getText()));
-        Stage rentBikeStage = (Stage) rentBikeScreenAnchor.getScene().getWindow();
-        BaseScreenHandler bikeInfoHandler = BikeInfo.getBikeInfoHandler();
-        bikeInfoHandler.setPreviousScreen(rentBikeHandler);
-        bikeInfoHandler.setScreenStage(rentBikeStage);
-        bikeInfoHandler.setEntityData(bike);
-        bikeInfoHandler.show();
+        try {
+            Bike bike = rentBikeController.getBikeInfo(Integer.parseInt(bikeCode.getText()));
+            Stage rentBikeStage = (Stage) rentBikeScreenAnchor.getScene().getWindow();
+            BaseScreenHandler bikeInfoHandler = BikeInfo.getBikeInfoHandler();
+            bikeInfoHandler.setPreviousScreen(rentBikeHandler);
+            bikeInfoHandler.setScreenStage(rentBikeStage);
+            bikeInfoHandler.setEntityData(bike);
+            bikeInfoHandler.show();
+        } catch (RuntimeException ex1) {
+//            throw new Error("Input stream not work");
+        }
     }
 
     public static BaseScreenHandler getRentBikeHandler() {

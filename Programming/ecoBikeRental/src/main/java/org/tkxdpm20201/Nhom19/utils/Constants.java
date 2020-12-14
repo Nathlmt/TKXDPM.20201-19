@@ -21,4 +21,6 @@ public class Constants {
     public final static String STATION_INFO_PATH = "/fxml/station_info.fxml";
     public final static String RENT_BIKE_PATH = "/fxml/rent_bike.fxml";
     public final static String BIKE_INFO_PATH = "/fxml/bike_info.fxml";
+    public final static String PAYMENT_INFO_PATH = "/fxml/payment_form.fxml";
+
 }

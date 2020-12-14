@@ -10,22 +10,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.tkxdpm20201.Nhom19.data.entities.Bike;
+import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
+import static org.tkxdpm20201.Nhom19.utils.Constants.PAYMENT_INFO_PATH;
+import org.tkxdpm20201.Nhom19.utils.Constants;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PaymentForm implements Initializable {
-
+    private final static BaseScreenHandler paymentFormHandler = new BaseScreenHandler(PAYMENT_INFO_PATH);
     @FXML
     private Label depositLabel;
-
     @FXML
-    private Label additionalFeeLabel;
-
-    @FXML
-    private Label amountLabel;
-
+    private Label rentingFeeLabel;
     @FXML
     private TextField cardNumberField;
 
@@ -44,19 +43,26 @@ public class PaymentForm implements Initializable {
 
     @FXML
     public void showPaymentForm(){
+        Bike bike = (Bike) paymentFormHandler.getEntityData();
+        depositLabel.setText(bike.getPrice().toString() + " đ");
+//        rentingFeeLabel.setText();
+    }
 
-
+    public static BaseScreenHandler getPaymentFormHandler() {
+        return paymentFormHandler;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        showPaymentForm();
     }
 
     public void submitPaymentInfo(){
 
     }
+    public void handleButton1Action() {
 
+    }
 //    public void displayPaymentForm(PayingInfo payingInfo){
 //        depositLabel.setText(payingInfo.getDeposit().toString());
 //        rentingFeeLabel.setText(payingInfo.getRentingFee().toString());
@@ -66,12 +72,7 @@ public class PaymentForm implements Initializable {
 
     @FXML
     public void goBack(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/return_bike.fxml"));
-        Parent popup = loader.load();
-        Scene scene = new Scene(popup);
-        stage.setScene(scene);
+        paymentFormHandler.getPreviousScreen().show();
     }
 
 
