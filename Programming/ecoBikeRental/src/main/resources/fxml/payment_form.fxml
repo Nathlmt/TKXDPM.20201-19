@@ -1,57 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" fx:controller="org.tkxdpm20201.Nhom19.presentation.Screen.PaymentForm" prefHeight="660.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.Screen.PaymentForm">
    <children>
-      <Label layoutX="120.0" layoutY="42.0" prefHeight="35.0" prefWidth="161.0" text="Payment Form">
+      <Label layoutX="104.0" layoutY="42.0" prefHeight="35.0" prefWidth="193.0" text="Nhập thông tin thẻ">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="38.0" layoutY="77.0" prefHeight="52.0" prefWidth="293.0" text="Thanks for protecting our Earth, this is end step to use service" textAlignment="CENTER" wrapText="true" />
-      <TextField fx:id="cardNumberField" layoutX="40.0" layoutY="309.0" prefHeight="35.0" prefWidth="307.0" />
-      <Label layoutX="40.0" layoutY="286.0" text="Card Number" />
-      <TextField fx:id="cardHoldNameField" layoutX="40.0" layoutY="382.0" prefHeight="35.0" prefWidth="307.0" />
-      <Label layoutX="40.0" layoutY="359.0" text="Card Holder Name" />
-      <TextField fx:id="expirationDateField" layoutX="40.0" layoutY="447.0" prefHeight="35.0" prefWidth="213.0" />
-      <Label layoutX="40.0" layoutY="424.0" text="Expiration Date" />
-      <TextField fx:id="cvvField" layoutX="292.0" layoutY="447.0" prefHeight="35.0" prefWidth="55.0" />
-      <Label layoutX="292.0" layoutY="424.0" text="CVV" />
-      <TextField fx:id="issuingBankField" layoutX="41.0" layoutY="513.0" prefHeight="35.0" prefWidth="213.0" />
-      <Label layoutX="41.0" layoutY="490.0" text="Issuing Bank" />
-      <Button fx:id="submitBtn" layoutX="119.0" layoutY="585.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="131.0" text="Submit" />
-      <Pane layoutX="23.0" layoutY="129.0" prefHeight="150.0" prefWidth="353.0">
+      <Label layoutX="54.0" layoutY="77.0" prefHeight="52.0" prefWidth="293.0" text="Hum! Chỉ còn một bước nữa để tiến hành thuê xe, bạn nhớ  điền đầy đủ thông tin nhé !" textAlignment="CENTER" wrapText="true" />
+      <TextField fx:id="cardNumberField" layoutX="44.0" layoutY="233.0" prefHeight="35.0" prefWidth="307.0" />
+      <TextField fx:id="cardHoldNameField" layoutX="44.0" layoutY="304.0" prefHeight="35.0" prefWidth="232.0" />
+      <Label layoutX="41.0" layoutY="279.0" text="Chủ thẻ" />
+      <TextField fx:id="expirationDateField" layoutX="44.0" layoutY="373.0" prefHeight="35.0" prefWidth="52.0" promptText="MM" />
+      <Label layoutX="41.0" layoutY="348.0" text="Ngày hết hạn" />
+      <TextField fx:id="cvvField" layoutX="286.0" layoutY="304.0" prefHeight="35.0" prefWidth="60.0" />
+      <Label layoutX="286.0" layoutY="279.0" text="CVV" />
+      <Label layoutX="194.0" layoutY="348.0" text="Ngân hàng" />
+      <JFXButton layoutX="128.0" layoutY="555.0" onAction="#handleButton1Action" prefHeight="35.0" prefWidth="139.0" style="-fx-background-color: #5bc0de;" text="Thuê xe" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </JFXButton>
+      <Pane layoutX="45.0" layoutY="116.0" prefHeight="100.0" prefWidth="332.0">
          <children>
             <GridPane layoutX="22.0" layoutY="14.0" prefHeight="101.0" prefWidth="309.0">
                <children>
-                  <Label text="Deposit">
+                  <Label text="Phí đặt cọc">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="21.0" prefWidth="98.0" text="Renting fee" GridPane.rowIndex="1">
+                  <Label prefHeight="21.0" prefWidth="98.0" text="Giá thuê" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
                   <Label fx:id="depositLabel" text="Label" GridPane.columnIndex="1" />
                   <Label fx:id="rentingFeeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label prefHeight="21.0" prefWidth="136.0" text="Transfer Amount" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="transferAmountLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label prefHeight="21.0" prefWidth="132.0" text="Additional fee" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="additionalFeeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="171.0" />
@@ -66,6 +64,11 @@
             </GridPane>
          </children>
       </Pane>
-      <Hyperlink layoutX="9.0" layoutY="3.0" onAction="#goBack" text="&lt; Back" />
+      <Hyperlink layoutX="9.0" layoutY="3.0" onAction="#goBack" text="&lt; Trở lại" />
+      <TextField fx:id="expirationDateField1" layoutX="105.0" layoutY="373.0" prefHeight="35.0" prefWidth="66.0" promptText="YY" />
+      <Label layoutX="48.0" layoutY="422.0" text="Nội dung" />
+      <TextArea layoutX="48.0" layoutY="445.0" prefHeight="89.0" prefWidth="307.0" />
+      <Label layoutX="45.0" layoutY="208.0" text="Số thẻ" />
+      <JFXComboBox accessibleText="adad" layoutX="194.0" layoutY="373.0" prefHeight="35.0" prefWidth="156.0" promptText="Viettinbank" />
    </children>
 </AnchorPane>
