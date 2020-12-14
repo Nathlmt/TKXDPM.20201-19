@@ -10,6 +10,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.tkxdpm20201.Nhom19.business.controller.RentBikeController;
+import org.tkxdpm20201.Nhom19.data.model.Caching;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
 import static org.tkxdpm20201.Nhom19.utils.Constants.HOME_PATH;
 
@@ -79,6 +81,8 @@ public class Home implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        if(!Caching.getInstance().getStatus()){
+            rentingBikeInfoPane.setVisible(false);
+        }
     }
 }

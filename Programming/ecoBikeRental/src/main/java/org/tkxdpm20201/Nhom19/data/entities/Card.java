@@ -9,6 +9,9 @@ public class Card extends BaseEntity{
     private String cvvCode;
     private String dateExpired;
 
+    public Card(){
+
+    }
 
     public Card(Integer id, BigDecimal balance, String cardCode, String owner, String cvvCode, String dateExpired) {
         super(id);
