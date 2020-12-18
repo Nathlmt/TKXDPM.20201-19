@@ -11,12 +11,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
+import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
 import static org.tkxdpm20201.Nhom19.utils.Constants.PAYMENT_INFO_PATH;
 import org.tkxdpm20201.Nhom19.utils.Constants;
-
+import org.tkxdpm20201.Nhom19.business.controller.RentBikeController;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class PaymentForm implements Initializable {
@@ -57,18 +59,13 @@ public class PaymentForm implements Initializable {
         showPaymentForm();
     }
 
-    public void submitPaymentInfo(){
-
+    public void submitPayment() throws SQLException {
+        Bike bike = (Bike) paymentFormHandler.getEntityData();
+        RentBikeController rentBikeController = new RentBikeController();
+        System.out.println(bike.getId());
+        System.out.println(bike.getPrice());
+        rentBikeController.handleRentBike(bike.getId(),1,bike.getPresentStation());
     }
-    public void handleButton1Action() {
-
-    }
-//    public void displayPaymentForm(PayingInfo payingInfo){
-//        depositLabel.setText(payingInfo.getDeposit().toString());
-//        rentingFeeLabel.setText(payingInfo.getRentingFee().toString());
-//        additionalFeeLabel.setText(payingInfo.getAdditionalFee() != null ? payingInfo.getAdditionalFee().toString() : "0");
-//        transferAmountLabel.setText(payingInfo.getAmount().toString());
-//    }
 
     @FXML
     public void goBack(ActionEvent event) throws IOException {

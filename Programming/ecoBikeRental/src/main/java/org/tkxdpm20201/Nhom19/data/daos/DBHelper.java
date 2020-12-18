@@ -14,6 +14,7 @@ public class DBHelper {
     private static Connection connection;
 
     static {
+        config.setAutoCommit(false);
         config.setJdbcUrl( "jdbc:postgresql://35.192.204.170:5432/tkxdpm" );
         config.setUsername( "postgres" );
         config.setPassword( "letuan123" );
@@ -43,5 +44,11 @@ public class DBHelper {
            ex.printStackTrace();
         }
         return null;
+    }
+    public static void rollBack() throws SQLException {
+        connection.rollback();
+    }
+    public static void commit() throws SQLException {
+        connection.commit();
     }
 }

@@ -12,7 +12,13 @@ public class Rental extends BaseEntity {
     private Timestamp timeStart;
     private Timestamp timeEnd;
 
-
+    public Rental(int bikeId, int customerId, int rentStationId, String status, Timestamp timeStart) {
+        this.bikeId = bikeId;
+        this.customerId = customerId;
+        this.rentStationId = rentStationId;
+        this.status = status;
+        this.timeStart = timeStart;
+    }
 
     public int getBikeId() {
         return bikeId;

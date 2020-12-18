@@ -25,7 +25,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class ReturnBikeController {
+public class ReturnBikeController extends BaseController {
 
     private final StationDao stationDao;
     private final BikeDao bikeDao;
