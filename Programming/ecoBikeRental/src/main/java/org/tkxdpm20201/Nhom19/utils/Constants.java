@@ -4,9 +4,14 @@ public class Constants {
 
     public final static double DEPOSIT_PERCENT = 0.7;
 
-    public final static String RETURNED_BIKE = "returned bike";
-    public final static String RENTING_BIKE = "renting bike";
-    public final static String NOT_RENT_BIKE = "not rent bike";
+    // STATUS
+    public final static String RETURNED_BIKE = "đã trả xe";
+    public final static String RENTING_BIKE = "đang thuê xe";
+    public final static String NOT_RENT_BIKE = "Chưa thuê xe";
+
+    public final  static boolean RENTING_STATUS = true;
+    public final  static boolean NOT_RENT_STATUS = false;
+
     public final static String ALGORITHM = "MD5";
 
     //FXML PATH

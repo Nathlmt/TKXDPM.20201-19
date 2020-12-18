@@ -4,6 +4,7 @@ import org.tkxdpm20201.Nhom19.data.entities.Bike;
 import org.tkxdpm20201.Nhom19.data.entities.Card;
 import org.tkxdpm20201.Nhom19.data.entities.Rental;
 import org.tkxdpm20201.Nhom19.utils.Constants;
+import org.tkxdpm20201.Nhom19.utils.DateUtil;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,7 +13,7 @@ public class RentingBike {
 
     private Bike bike;
     private BigDecimal deposit;
-    private final LocalDateTime startDate;
+    private LocalDateTime startDate;
 
     private String cardCode;
     private String owner;
@@ -21,7 +22,6 @@ public class RentingBike {
     private int cardId;
 
     private Rental rental;
-
 
 
     public RentingBike(Bike bike, Card card, Rental rental) {
@@ -33,7 +33,7 @@ public class RentingBike {
         this.bike = bike;
         this.deposit = new BigDecimal(bike.getPrice().intValue() * Constants.DEPOSIT_PERCENT);
         this.rental = rental;
-        this.startDate = java.time.LocalDateTime.now();
+        this.startDate = DateUtil.reverse(rental.getTimeStart());
     }
 
     public void setRental(Rental rental) {
