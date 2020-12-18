@@ -15,6 +15,7 @@ public class TransactionRequest {
     private String owner;
     private String cvvCode;
     private String dateExpired;
+    private String command;
 
     public TransactionRequest() {
     }
@@ -36,13 +37,14 @@ public class TransactionRequest {
      * @param deposit
      * @param rentingFee
      */
-    public void setTransactionRequestToReturnBike(RentingBike rentingBike, BigDecimal deposit, BigDecimal rentingFee){
+    public void setTransactionRequestToReturnBike(RentingBike rentingBike, BigDecimal amount, String command){
         this.transactionContent = Constants.RETURNED_BIKE;
-        this.amount = rentingFee.subtract(deposit);
+        this.amount = amount;
         this.cardCode = rentingBike.getCardCode();
         this.owner = rentingBike.getOwner();
         this.cvvCode = rentingBike.getCvvCode();
         this.dateExpired = rentingBike.getDateExpired();
+        this.command = command;
     }
 
     public String getTransactionContent() {
@@ -101,4 +103,11 @@ public class TransactionRequest {
         this.dateExpired = dateExpired;
     }
 
+    public String getCommand() {
+        return command;
+    }
+
+    public void setCommand(String command) {
+        this.command = command;
+    }
 }

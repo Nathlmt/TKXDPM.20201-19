@@ -1,5 +1,6 @@
 package org.tkxdpm20201.Nhom19.utils;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,6 +26,10 @@ public class DateUtil {
         long start = startDate.atZone(ZoneOffset.UTC).toEpochSecond();
         long end = endDate.atZone(ZoneOffset.UTC).toEpochSecond();
         return end - start;
+    }
+
+    public static Timestamp toTimestamp(LocalDateTime time){
+        return java.sql.Timestamp.valueOf(time);
     }
 
     public static LocalDateTime reverse(String date){

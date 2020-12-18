@@ -16,6 +16,8 @@ import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
 import org.tkxdpm20201.Nhom19.utils.DateUtil;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 public class TransactionApiImp implements InterBankApiSystem {
 
@@ -91,10 +93,10 @@ public class TransactionApiImp implements InterBankApiSystem {
         obj.put("owner", transactionRequest.getOwner());
         obj.put("cvvCode", transactionRequest.getCvvCode());
         obj.put("dateExpired", transactionRequest.getDateExpired());
-        obj.put("command", Config.PROCESS_TRANS);
+        obj.put("command", transactionRequest.getCommand());
         obj.put("transactionContent", transactionRequest.getTransactionContent());
         obj.put("amount", transactionRequest.getAmount());
-        obj.put("createdAt", DateUtil.format(transactionRequest.getCreatedAt()));
+        obj.put("createdAt", DateUtil.format(LocalDateTime.now()));
         return obj;
     }
 
