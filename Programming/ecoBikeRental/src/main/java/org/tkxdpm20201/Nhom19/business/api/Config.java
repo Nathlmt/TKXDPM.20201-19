@@ -12,4 +12,9 @@ public class Config {
     public static final String SECRET_KEY = "BBxaiI0BzoA=";
 
 
+    public static final String CARD_CODE = "118609_group19_2020";
+    public static final String CVV = "907";
+    public static final String OWNER = "Group 19";
+    public static final String DATE_EXPIRED = "1125";
+
 }

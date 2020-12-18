@@ -7,13 +7,14 @@ import org.tkxdpm20201.Nhom19.utils.Constants;
 import org.tkxdpm20201.Nhom19.utils.DateUtil;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class RentingBike {
 
     private Bike bike;
     private BigDecimal deposit;
-    private LocalDateTime startDate;
+    private Timestamp startDate;
 
     private String cardCode;
     private String owner;
@@ -33,7 +34,7 @@ public class RentingBike {
         this.bike = bike;
         this.deposit = new BigDecimal(bike.getPrice().intValue() * Constants.DEPOSIT_PERCENT);
         this.rental = rental;
-        this.startDate = DateUtil.reverse(rental.getTimeStart());
+        this.startDate = rental.getTimeStart();
     }
 
     public void setRental(Rental rental) {
@@ -54,18 +55,16 @@ public class RentingBike {
         return bike;
     }
 
+    public Timestamp getStartDate() {
+        return startDate;
+    }
+
     public int getCardId() {
         return cardId;
     }
 
     public void setCardId(int cardId) {
         this.cardId = cardId;
-    }
-
-    public LocalDateTime getStartDate() {
-        if(this.startDate == null)
-            return null;
-        return startDate;
     }
 
     public String getCardCode() {

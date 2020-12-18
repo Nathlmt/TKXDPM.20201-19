@@ -56,8 +56,8 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
         preparedStatement.setInt(2, rental.getRentStationId());
         preparedStatement.setInt(3, rental.getReturnStationId());
         preparedStatement.setString(4, rental.getStatus());
-        preparedStatement.setString(5, rental.getTimeStart());
-        preparedStatement.setString(6, rental.getTimeEnd());
+        preparedStatement.setTimestamp(5, rental.getTimeStart());
+        preparedStatement.setTimestamp(6, rental.getTimeEnd());
         preparedStatement.setInt(7, rental.getId());
     }
 

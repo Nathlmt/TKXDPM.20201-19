@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 //import org.tkxdpm20201.Nhom19.business.api.TransactionApi;
+import org.tkxdpm20201.Nhom19.business.api.Config;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
 import org.tkxdpm20201.Nhom19.data.entities.Card;
@@ -58,14 +59,14 @@ public class App extends Application {
         rental.setStatus(Constants.RENTING_BIKE);
         rental.setBikeId(12);
         rental.setCustomerId(13);
-        rental.setTimeStart(DateUtil.format(java.time.LocalDateTime.now()));
+        rental.setTimeStart(DateUtil.toTimestamp(java.time.LocalDateTime.now()));
         rental.setId(1);
 
         Bike bike = new Bike();
         bike.setId(12);
         bike.setName("Xe test");
         bike.setPrice(new BigDecimal("1200000"));
-        Card card = new Card(1, new BigDecimal("123"), "123", "Ly tuan", "111", "111234");
+        Card card = new Card(1, new BigDecimal("123"), Config.CARD_CODE, Config.OWNER, Config.CVV, Config.DATE_EXPIRED);
         RentingBike rentingBike = new RentingBike(bike, card, rental);
         Caching.getInstance().setRentingBike(rentingBike, Constants.RENTING_STATUS);
     }
