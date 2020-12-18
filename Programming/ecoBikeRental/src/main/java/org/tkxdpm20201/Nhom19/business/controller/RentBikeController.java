@@ -39,7 +39,8 @@ public class RentBikeController extends BaseController {
     public void handleRentBike(int bikeId,  int customerId, int rentStationId) throws SQLException {
         Timestamp startTime = new Timestamp(System.currentTimeMillis());
         //Tao doi tuong rental de cap nhat len database
-        Rental rental = new Rental(bikeId, customerId, rentStationId, "renting",startTime);
+        System.out.println(rentStationId);
+        Rental rental = new Rental(bikeId, customerId, rentStationId, "renting", startTime);
         RentalDao rentalDao = new RentalDaoImp();
         rentalDao.create(rental);
     }
