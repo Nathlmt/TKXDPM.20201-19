@@ -28,7 +28,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class ReturnBikeController {
+public class ReturnBikeController extends BaseController {
 
     private final StationDao stationDao;
     private final BikeDao bikeDao;
@@ -66,7 +66,7 @@ public class ReturnBikeController {
             TransactionRequest transactionRequest = createTransactionRequest(rentingBike, deposit, rentingFee);
 
             rental.setReturnStationId(station.getId());
-            rental.setTimeEnd(DateUtil.format(localDateTimeEnd));
+//            rental.setTimeEnd(DateUtil.format(localDateTimeEnd));
             rental.setStatus(Constants.RETURNED_BIKE);
             RentBikeController.updateRental(rental);
 

@@ -1,5 +1,7 @@
 package org.tkxdpm20201.Nhom19.data.entities;
 
+import java.sql.Timestamp;
+
 public class Rental extends BaseEntity {
 
     private int bikeId;
@@ -7,10 +9,16 @@ public class Rental extends BaseEntity {
     private int rentStationId;
     private int returnStationId;
     private String status;
-    private String timeStart;
-    private String timeEnd;
+    private Timestamp timeStart;
+    private Timestamp timeEnd;
 
-
+    public Rental(int bikeId, int customerId, int rentStationId, String status, Timestamp timeStart) {
+        this.bikeId = bikeId;
+        this.customerId = customerId;
+        this.rentStationId = rentStationId;
+        this.status = status;
+        this.timeStart = timeStart;
+    }
 
     public int getBikeId() {
         return bikeId;
@@ -52,19 +60,19 @@ public class Rental extends BaseEntity {
         this.status = status;
     }
 
-    public String getTimeStart() {
+    public Timestamp getTimeStart() {
         return timeStart;
     }
 
-    public void setTimeStart(String timeStart) {
+    public void setTimeStart(Timestamp timeStart) {
         this.timeStart = timeStart;
     }
 
-    public String getTimeEnd() {
+    public Timestamp getTimeEnd() {
         return timeEnd;
     }
 
-    public void setTimeEnd(String timeEnd) {
+    public void setTimeEnd(Timestamp timeEnd) {
         this.timeEnd = timeEnd;
     }
 }

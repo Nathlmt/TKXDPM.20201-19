@@ -17,9 +17,9 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
     @Override
     public Rental create(Rental rental) throws SQLException {
 
-        String sqlInsert = "INSERT INTO rentals" +
-                "(bike_id, customer_id, rent_station_id, return_station_id, status, time_start, time_end)" +
-                "VALUES(?,?,?,?,?,?,?)";
+        String sqlInsert = "INSERT INTO rental" +
+                "(bike_id, customer_id, rent_station_id, status, time_start)" +
+                "VALUES(?,?,?,?,?)";
         PreparedStatement ps = DBHelper.getConnection().prepareStatement(sqlInsert);
         prepareStatement(ps, rental);
         ResultSet resultSet =  ps.executeQuery();
@@ -47,17 +47,22 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
                             "WHERE id = ?";
 
         PreparedStatement ps = DBHelper.getConnection().prepareStatement(sqlUpdate);
-        prepareStatement(ps, rental);
+        prepareStatementUpdate(ps, rental);
         return ps.execute();
     }
-
     private void prepareStatement(PreparedStatement preparedStatement, Rental rental) throws SQLException {
         preparedStatement.setInt(1, rental.getBikeId());
         preparedStatement.setInt(2, rental.getRentStationId());
         preparedStatement.setInt(3, rental.getReturnStationId());
         preparedStatement.setString(4, rental.getStatus());
-        preparedStatement.setString(5, rental.getTimeStart());
-        preparedStatement.setString(6, rental.getTimeEnd());
+        preparedStatement.setTimestamp(5, rental.getTimeStart());
+    }
+    private void prepareStatementUpdate(PreparedStatement preparedStatement, Rental rental) throws SQLException {
+        preparedStatement.setInt(1, rental.getBikeId());
+        preparedStatement.setInt(2, rental.getRentStationId());
+        preparedStatement.setString(4, rental.getStatus());
+        preparedStatement.setTimestamp(5, rental.getTimeStart());
+        preparedStatement.setTimestamp(6, rental.getTimeEnd());
         preparedStatement.setInt(7, rental.getId());
     }
 

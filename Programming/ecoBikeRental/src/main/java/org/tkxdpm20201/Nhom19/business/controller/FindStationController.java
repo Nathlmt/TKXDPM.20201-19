@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-public class FindStationController {
+public class FindStationController extends BaseController{
     private final StationDao stationDao = new StationDaoImp();
 
     public List<Station> getStationList() throws SQLException {
