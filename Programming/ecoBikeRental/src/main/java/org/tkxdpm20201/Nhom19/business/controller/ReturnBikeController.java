@@ -52,7 +52,7 @@ public class ReturnBikeController extends BaseController {
     /**
      *
      * @param station: station which user want to return bike
-     * @return Notification
+     * @return
      */
     public void returnBike(Station station) {
         Timestamp localDateTimeEnd = DateUtil.toTimestamp(java.time.LocalDateTime.now());
