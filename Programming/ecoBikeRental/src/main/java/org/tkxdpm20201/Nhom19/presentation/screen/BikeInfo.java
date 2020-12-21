@@ -7,14 +7,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
+import org.tkxdpm20201.Nhom19.utils.Constants;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static org.tkxdpm20201.Nhom19.utils.Constants.BIKE_INFO_PATH;
-
 public class BikeInfo implements Initializable {
-    private static final BaseScreenHandler bikeInfoHandler = new BaseScreenHandler(BIKE_INFO_PATH);
+    private static final BaseScreenHandler bikeInfoHandler = new BaseScreenHandler(Constants.BIKE_INFO_PATH);
     @FXML
     private Label name, licensePlate, bikeCode, battery, price, type, updateAt;
     @FXML
