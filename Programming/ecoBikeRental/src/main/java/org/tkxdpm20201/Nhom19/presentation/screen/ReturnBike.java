@@ -9,8 +9,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
-import org.tkxdpm20201.Nhom19.business.api.Notification;
-//import org.tkxdpm20201.Nhom19.business.controller.ReturnBikeController;
 import org.tkxdpm20201.Nhom19.business.controller.ReturnBikeController;
 import org.tkxdpm20201.Nhom19.data.entities.Station;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
@@ -79,17 +77,17 @@ public class ReturnBike implements Initializable {
             alert.setTitle("Confirm");
             Optional<ButtonType> option = alert.showAndWait();
             if (option.get() == ButtonType.OK) {
-                Notification notification = returnBikeController.returnBike(station);
-                if(notification.isStatus()){
+                returnBikeController.returnBike(station);
+//                if(notification.isStatus()){
                     backHomeWhenSuccessfully(event);
                     System.out.println("OKKKKK successfully!");
-                }
-                else{
-                    alert = new Alert(AlertType.ERROR);
-                    alert.setContentText(notification.getMessage());
-                    alert.setTitle("Error");
-                    alert.showAndWait();
-                }
+//                }
+//                else{
+//                    alert = new Alert(AlertType.ERROR);
+//                    alert.setContentText(notification.getMessage());
+//                    alert.setTitle("Error");
+//                    alert.showAndWait();
+//                }
             }
             else if (option.get() == ButtonType.CANCEL) {
                 System.out.println("cho chon lai");
@@ -106,19 +104,4 @@ public class ReturnBike implements Initializable {
     private void backHomeWhenSuccessfully(MouseEvent event) throws IOException {
         returnBikeHandler.getPreviousScreen().show();
     }
-
-
-    // TODO : hàm này chỉ dành cho khi rent bike___ bị nhầm chỗ này>> vì return bike thì không cần phải hiện paymentForm nữa
-//    private void directToPaymentForm(PayingInfo payingInfo, MouseEvent event) throws IOException {
-//
-//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("/payment_form.fxml"));
-//        Parent popupListStation = loader.load();
-//        Scene scene = new Scene(popupListStation);
-//        PaymentForm paymentFormController = loader.getController();
-//        paymentFormController.displayPaymentForm(payingInfo);
-//        stage.setScene(scene);
-//
-//    }
 }

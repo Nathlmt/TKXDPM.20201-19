@@ -58,7 +58,7 @@ public class PaymentForm implements Initializable {
         RentBikeController rentBikeController = new RentBikeController();
         System.out.println(bike.getId());
         System.out.println(bike.getPrice());
-        rentBikeController.handleRentBike(bike.getId(),1,bike.getPresentStation(), bike.getPrice());
+//        rentBikeController.handleRentBike(bike.getId(),1,bike.getPresentStation(), bike.getPrice());
     }
 
     @FXML

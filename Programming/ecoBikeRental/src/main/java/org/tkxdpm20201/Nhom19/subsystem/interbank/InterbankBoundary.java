@@ -29,7 +29,7 @@ public class InterbankBoundary {
     public HttpResponse requestHTTP(TransactionRequest transactionRequest) throws IOException {
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
-        HttpPatch httpPatch = new HttpPatch(org.tkxdpm20201.Nhom19.business.api.Config.PROCESS_TRANSACTION_URL);
+        HttpPatch httpPatch = new HttpPatch(Config.PROCESS_TRANSACTION_URL);
         String bodyRequest = getBodyRequest(transactionRequest);
         httpPatch.setEntity(new StringEntity(bodyRequest, ContentType.APPLICATION_JSON));
 
