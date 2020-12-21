@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="647.0" prefWidth="373.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.Screen.StationInfo">
+<AnchorPane prefHeight="647.0" prefWidth="373.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.screen.StationInfo">
    <children>
       <Hyperlink onAction="#back" layoutX="14.0" layoutY="14.0" prefHeight="24.0" prefWidth="143.0" text="&lt; Trở lại" />
       <Label layoutX="24.0" layoutY="55.0" prefHeight="31.0" prefWidth="187.0" text="NewYork Station" textFill="#5717e1">

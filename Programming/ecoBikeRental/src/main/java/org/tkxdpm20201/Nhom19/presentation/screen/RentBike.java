@@ -1,4 +1,4 @@
-package org.tkxdpm20201.Nhom19.presentation.Screen;
+package org.tkxdpm20201.Nhom19.presentation.screen;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,10 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.tkxdpm20201.Nhom19.data.daos.implement.BikeDaoImp;
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
-import org.tkxdpm20201.Nhom19.presentation.Screen.BikeInfo;
 import org.tkxdpm20201.Nhom19.business.controller.RentBikeController;
 
 import java.net.URL;
@@ -22,7 +20,6 @@ public class RentBike implements Initializable {
     private static final BaseScreenHandler rentBikeHandler = new BaseScreenHandler(RENT_BIKE_PATH);
     private final RentBikeController rentBikeController = new RentBikeController();
 
-    private BikeDaoImp bikeDao = new BikeDaoImp();
     @FXML
     private AnchorPane rentBikeScreenAnchor;
     @FXML

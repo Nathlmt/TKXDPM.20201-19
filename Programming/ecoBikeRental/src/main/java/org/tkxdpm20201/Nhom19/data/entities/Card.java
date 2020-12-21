@@ -30,6 +30,13 @@ public class Card extends BaseEntity{
         this.dateExpired = dateExpired;
     }
 
+    public Card(String cardCode, String owner, String cvvCode, String dateExpired) {
+        this.cardCode = cardCode;
+        this.owner = owner;
+        this.cvvCode = cvvCode;
+        this.dateExpired = dateExpired;
+    }
+
     public BigDecimal getBalance() {
         return balance;
     }

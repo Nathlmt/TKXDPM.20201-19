@@ -14,6 +14,8 @@ import org.tkxdpm20201.Nhom19.data.model.Caching;
 import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
 import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
+import org.tkxdpm20201.Nhom19.subsystem.InterbankInterface;
+import org.tkxdpm20201.Nhom19.subsystem.InterbankSubsystem;
 import org.tkxdpm20201.Nhom19.utils.Constants;
 import org.tkxdpm20201.Nhom19.utils.DateUtil;
 import org.tkxdpm20201.Nhom19.utils.Evaluation;
@@ -30,7 +32,7 @@ public class ReturnBikeController extends BaseController {
     private final StationDao stationDao;
     private final BikeDao bikeDao;
     private final TransactionDao transactionDao;
-    private final InterBankApiSystem interBankApiSystem;
+    private final InterbankInterface interBankApiSystem;
     private final RentalDao rentalDao;
 
 
@@ -39,7 +41,7 @@ public class ReturnBikeController extends BaseController {
         this.stationDao = new StationDaoImp();
         this.bikeDao = new BikeDaoImp();
         this.transactionDao = new TransactionDaoImp();
-        this.interBankApiSystem = new TransactionApiImp();
+        this.interBankApiSystem = new InterbankSubsystem();
 
     }
 
@@ -75,26 +77,26 @@ public class ReturnBikeController extends BaseController {
             rental.setTimeEnd(localDateTimeEnd);
             rental.setStatus(Constants.RETURNED_BIKE);
 
-            try {
-                TransactionResponse transactionResponse  = interBankApiSystem.processTransaction(transactionRequest);
-
-                Notification notification = HandleErrorResponse.handle(transactionResponse.getErrorCode());
-                if(notification.isStatus()){
-                    boolean b1 = handleStationReceiveBike(station, bikeReturn); // TODO: Bắt đầu từ đây.. đoạn trên OK rồi
-                    boolean b2 = saveTransaction(rental, transactionResponse, rentingBike.getCardId());
-                    if(b1 && b2){
-                        Caching.getInstance().resetCache();
-                        System.out.println("reset Cache!");
-                        return new Notification(true, "Giao dịch thành công!");
-                    }
-                    else
-                        return new Notification(false, "Server DB Lỗi @@");
-                }
-                return notification;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return new Notification(false, "Server lỗi @@");
-            }
+//            try {
+//                TransactionResponse transactionResponse  = interBankApiSystem.processTransaction(transactionRequest);
+//
+//                Notification notification = HandleErrorResponse.handle(transactionResponse.getErrorCode());
+//                if(notification.isStatus()){
+//                    boolean b1 = handleStationReceiveBike(station, bikeReturn); // TODO: Bắt đầu từ đây.. đoạn trên OK rồi
+//                    boolean b2 = saveTransaction(rental, transactionResponse, rentingBike.getCardId());
+//                    if(b1 && b2){
+//                        Caching.getInstance().resetCache();
+//                        System.out.println("reset Cache!");
+//                        return new Notification(true, "Giao dịch thành công!");
+//                    }
+//                    else
+//                        return new Notification(false, "Server DB Lỗi @@");
+//                }
+//                return notification;
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                return new Notification(false, "Server lỗi @@");
+//            }
         }
 
         return new Notification(false, "Bạn chưa thuê xe!");

@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-//import org.tkxdpm20201.Nhom19.business.api.TransactionApi;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
 import org.tkxdpm20201.Nhom19.data.entities.Card;
@@ -29,11 +28,10 @@ public class App extends Application {
     public static final int WIDTH = 400;
     public static final int HEIGHT = 660;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 //        GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();
 //        Thread.setDefaultUncaughtExceptionHandler(globalExceptionHandler);
 //        test();
-
         launch(args);
     }
 
@@ -53,7 +51,7 @@ public class App extends Application {
         stage.setHeight(HEIGHT);
     }
 
-    private static void test(){
+//    private static void test(){
 //        Rental rental = new Rental();
 //        rental.setStatus(Constants.RENTING_BIKE);
 //        rental.setBikeId(12);
@@ -68,25 +66,6 @@ public class App extends Application {
 //        Card card = new Card(1, new BigDecimal("123"), "123", "Ly tuan", "111", "111234");
 //        RentingBike rentingBike = new RentingBike(bike, card, rental);
 //        Caching.getInstance().setRentingBike(rentingBike, Constants.RENTING_STATUS);
-    }
-
-//    private static void testAPI(){
-//        TransactionApi transactionApi = new TransactionApi();
-//
-//        TransactionRequest transactionRequest = new TransactionRequest();
-//        transactionRequest.setAmount(new BigDecimal(100));
-//        transactionRequest.setCardCode("118609_group5_2020");
-//        transactionRequest.setCvvCode("271");
-//        transactionRequest.setDateExpired("1125");
-//        transactionRequest.setOwner("Group 5");
-//        transactionRequest.setTransactionContent("Thanh toan thue xe dap");
-//        transactionRequest.setCreatedAt(new Date());
-//        try {
-//            TransactionResponse trans = transactionApi.processTransaction(transactionRequest);
-////        } catch (IOException e) {
-//            System.out.println("lỗi rồi ae ơi!!!!!!");
-//            e.printStackTrace();
-//        }
 //    }
 
 

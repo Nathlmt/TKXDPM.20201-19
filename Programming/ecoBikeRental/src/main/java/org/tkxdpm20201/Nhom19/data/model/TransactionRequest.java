@@ -1,5 +1,6 @@
 package org.tkxdpm20201.Nhom19.data.model;
 
+import org.tkxdpm20201.Nhom19.data.entities.Card;
 import org.tkxdpm20201.Nhom19.utils.Constants;
 
 import java.math.BigDecimal;
@@ -11,39 +12,26 @@ public class TransactionRequest {
     private BigDecimal amount;
     private Date createdAt;
 
-    private String cardCode;
-    private String owner;
-    private String cvvCode;
-    private String dateExpired;
+    private Card card;
     private String command;
 
     public TransactionRequest() {
     }
 
-    public TransactionRequest(String transactionContent, BigDecimal amount, Date createdAt, String cardCode, String owner, String cvvCode, String dateExpired) {
+    public TransactionRequest(String transactionContent, BigDecimal amount, Date createdAt, Card card) {
         this.transactionContent = transactionContent;
         this.amount = amount;
         this.createdAt = createdAt;
-        this.cardCode = cardCode;
-        this.owner = owner;
-        this.cvvCode = cvvCode;
-        this.dateExpired = dateExpired;
+        this.card = card;
     }
 
-
-    /**
-     * set transaction data to execute returning Bike
-     * @param rentingBike
-     * @param deposit
-     * @param rentingFee
-     */
     public void setTransactionRequestToReturnBike(RentingBike rentingBike, BigDecimal amount, String command){
         this.transactionContent = Constants.RETURNED_BIKE;
         this.amount = amount;
-        this.cardCode = rentingBike.getCardCode();
-        this.owner = rentingBike.getOwner();
-        this.cvvCode = rentingBike.getCvvCode();
-        this.dateExpired = rentingBike.getDateExpired();
+//        this.cardCode = rentingBike.getCardCode();
+//        this.owner = rentingBike.getOwner();
+//        this.cvvCode = rentingBike.getCvvCode();
+//        this.dateExpired = rentingBike.getDateExpired();
         this.command = command;
     }
 
@@ -71,43 +59,15 @@ public class TransactionRequest {
         this.createdAt = createdAt;
     }
 
-    public String getCardCode() {
-        return cardCode;
-    }
-
-    public void setCardCode(String cardCode) {
-        this.cardCode = cardCode;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public String getCvvCode() {
-        return cvvCode;
-    }
-
-    public void setCvvCode(String cvvCode) {
-        this.cvvCode = cvvCode;
-    }
-
-    public String getDateExpired() {
-        return dateExpired;
-    }
-
-    public void setDateExpired(String dateExpired) {
-        this.dateExpired = dateExpired;
-    }
-
     public String getCommand() {
         return command;
     }
 
     public void setCommand(String command) {
         this.command = command;
+    }
+
+    public Card getCard() {
+        return card;
     }
 }

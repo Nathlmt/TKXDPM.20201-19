@@ -1,4 +1,4 @@
-package org.tkxdpm20201.Nhom19.presentation.Screen;
+package org.tkxdpm20201.Nhom19.presentation.screen;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

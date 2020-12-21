@@ -15,22 +15,13 @@ public class RentingBike {
     private Bike bike;
     private BigDecimal deposit;
     private Timestamp startDate;
-
-    private String cardCode;
-    private String owner;
-    private String cvvCode;
-    private String dateExpired;
-    private int cardId;
+    private Card card;
 
     private Rental rental;
 
 
     public RentingBike(Bike bike, Card card, Rental rental) {
-        this.cardId = card.getId();
-        this.cardCode = card.getCardCode();
-        this.owner = card.getOwner();
-        this.cvvCode = card.getCvvCode();
-        this.dateExpired = card.getDateExpired();
+        this.card = card;
         this.bike = bike;
         this.deposit = new BigDecimal(bike.getPrice().intValue() * Constants.DEPOSIT_PERCENT);
         this.rental = rental;
@@ -59,27 +50,7 @@ public class RentingBike {
         return startDate;
     }
 
-    public int getCardId() {
-        return cardId;
-    }
-
-    public void setCardId(int cardId) {
-        this.cardId = cardId;
-    }
-
-    public String getCardCode() {
-        return cardCode;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public String getCvvCode() {
-        return cvvCode;
-    }
-
-    public String getDateExpired() {
-        return dateExpired;
+    public Card getCard() {
+        return card;
     }
 }

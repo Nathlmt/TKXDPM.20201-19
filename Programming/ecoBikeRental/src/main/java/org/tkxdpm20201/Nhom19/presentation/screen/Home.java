@@ -1,16 +1,14 @@
-package org.tkxdpm20201.Nhom19.presentation.Screen;
+package org.tkxdpm20201.Nhom19.presentation.screen;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.tkxdpm20201.Nhom19.business.controller.RentBikeController;
 import org.tkxdpm20201.Nhom19.data.model.Caching;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
 import static org.tkxdpm20201.Nhom19.utils.Constants.HOME_PATH;

@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="homeScreenAnchor" prefHeight="660.0" prefWidth="400.0" styleClass="bg-color" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.Screen.Home">
+<AnchorPane fx:id="homeScreenAnchor" prefHeight="660.0" prefWidth="400.0" styleClass="bg-color" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.screen.Home">
    <children>
       <Label layoutX="112.0" layoutY="14.0" prefHeight="52.0" prefWidth="221.0" text="Ecobike Rental" textAlignment="CENTER">
          <font>

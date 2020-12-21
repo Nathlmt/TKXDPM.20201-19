@@ -1,20 +1,14 @@
-package org.tkxdpm20201.Nhom19.presentation.Screen;
+package org.tkxdpm20201.Nhom19.presentation.screen;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
-import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
 import static org.tkxdpm20201.Nhom19.utils.Constants.PAYMENT_INFO_PATH;
-import org.tkxdpm20201.Nhom19.utils.Constants;
+
 import org.tkxdpm20201.Nhom19.business.controller.RentBikeController;
 import java.io.IOException;
 import java.net.URL;
@@ -64,7 +58,7 @@ public class PaymentForm implements Initializable {
         RentBikeController rentBikeController = new RentBikeController();
         System.out.println(bike.getId());
         System.out.println(bike.getPrice());
-        rentBikeController.handleRentBike(bike.getId(),1,bike.getPresentStation());
+        rentBikeController.handleRentBike(bike.getId(),1,bike.getPresentStation(), bike.getPrice());
     }
 
     @FXML

@@ -1,11 +1,10 @@
-package org.tkxdpm20201.Nhom19.presentation.Screen;
+package org.tkxdpm20201.Nhom19.presentation.screen;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.tkxdpm20201.Nhom19.business.controller.RentBikeController;
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
 

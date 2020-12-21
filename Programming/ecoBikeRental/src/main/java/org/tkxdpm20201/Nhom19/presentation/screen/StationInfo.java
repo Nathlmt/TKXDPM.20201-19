@@ -1,14 +1,11 @@
-package org.tkxdpm20201.Nhom19.presentation.Screen;
+package org.tkxdpm20201.Nhom19.presentation.screen;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
 import static org.tkxdpm20201.Nhom19.utils.Constants.STATION_INFO_PATH;
 
-import org.tkxdpm20201.Nhom19.data.entities.Station;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
 
 import java.net.URL;

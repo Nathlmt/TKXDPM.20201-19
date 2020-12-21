@@ -1,8 +1,7 @@
-package org.tkxdpm20201.Nhom19.presentation.Dialog;
+package org.tkxdpm20201.Nhom19.presentation.dialog;
 
 import javafx.scene.control.Alert;
 
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 
@@ -13,13 +12,10 @@ public class ErrorDialog {
         this.errorDialog = new Alert(AlertType.ERROR);
         this.errorDialog.setContentText(info);
     }
-
     ;
-
     public void show() {
         errorDialog.show();
     }
-
     public Alert getErrorDialog() {
         return errorDialog;
     }
