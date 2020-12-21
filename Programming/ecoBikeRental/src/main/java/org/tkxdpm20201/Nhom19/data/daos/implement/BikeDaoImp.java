@@ -58,4 +58,6 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
         preparedStatement.setInt(3, id);
         return preparedStatement.execute();
     }
+    @Override
+    public boolean updateStatusBike(int id, int )
 }

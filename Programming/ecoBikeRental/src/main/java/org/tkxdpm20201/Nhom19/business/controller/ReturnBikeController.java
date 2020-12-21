@@ -1,6 +1,5 @@
 package org.tkxdpm20201.Nhom19.business.controller;
 
-import org.tkxdpm20201.Nhom19.business.api.*;
 import org.tkxdpm20201.Nhom19.data.daos.BikeDao;
 import org.tkxdpm20201.Nhom19.data.daos.RentalDao;
 import org.tkxdpm20201.Nhom19.data.daos.StationDao;
@@ -57,49 +56,49 @@ public class ReturnBikeController extends BaseController {
      * @param station: station which user want to return bike
      * @return Notification
      */
-    public Notification returnBike(Station station) {
-        Timestamp localDateTimeEnd = DateUtil.toTimestamp(java.time.LocalDateTime.now());
-        RentingBike rentingBike = Caching.getInstance().getRentingBike();
-        if (rentingBike != null) {
-            Rental rental = rentingBike.getRental();
-            Bike bikeReturn = rentingBike.getBike();
-            Timestamp startDate = rentingBike.getStartDate();
-            BigDecimal deposit = rentingBike.getDeposit();
-            BigDecimal rentFee = calculateFees(startDate, localDateTimeEnd, bikeReturn);
-            BigDecimal amount = calculateAmount(deposit, rentFee);
-            TransactionRequest transactionRequest;
-            if(amount.compareTo(BigDecimal.ZERO) < 0)
-                transactionRequest = createTransactionRequest(rentingBike, amount.abs(), Config.REFUND);
-            else
-                transactionRequest = createTransactionRequest(rentingBike, amount, Config.PROCESS_TRANS);
-
-            rental.setReturnStationId(station.getId());
-            rental.setTimeEnd(localDateTimeEnd);
-            rental.setStatus(Constants.RETURNED_BIKE);
-
-//            try {
-//                TransactionResponse transactionResponse  = interBankApiSystem.processTransaction(transactionRequest);
+    public void returnBike(Station station) {
+//        Timestamp localDateTimeEnd = DateUtil.toTimestamp(java.time.LocalDateTime.now());
+//        RentingBike rentingBike = Caching.getInstance().getRentingBike();
+//        if (rentingBike != null) {
+//            Rental rental = rentingBike.getRental();
+//            Bike bikeReturn = rentingBike.getBike();
+//            Timestamp startDate = rentingBike.getStartDate();
+//            BigDecimal deposit = rentingBike.getDeposit();
+//            BigDecimal rentFee = calculateFees(startDate, localDateTimeEnd, bikeReturn);
+//            BigDecimal amount = calculateAmount(deposit, rentFee);
+//            TransactionRequest transactionRequest;
+//            if(amount.compareTo(BigDecimal.ZERO) < 0)
+//                transactionRequest = createTransactionRequest(rentingBike, amount.abs(), Config.REFUND);
+//            else
+//                transactionRequest = createTransactionRequest(rentingBike, amount, Config.PROCESS_TRANS);
 //
-//                Notification notification = HandleErrorResponse.handle(transactionResponse.getErrorCode());
-//                if(notification.isStatus()){
-//                    boolean b1 = handleStationReceiveBike(station, bikeReturn); // TODO: Bắt đầu từ đây.. đoạn trên OK rồi
-//                    boolean b2 = saveTransaction(rental, transactionResponse, rentingBike.getCardId());
-//                    if(b1 && b2){
-//                        Caching.getInstance().resetCache();
-//                        System.out.println("reset Cache!");
-//                        return new Notification(true, "Giao dịch thành công!");
-//                    }
-//                    else
-//                        return new Notification(false, "Server DB Lỗi @@");
-//                }
-//                return notification;
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                return new Notification(false, "Server lỗi @@");
-//            }
-        }
-
-        return new Notification(false, "Bạn chưa thuê xe!");
+//            rental.setReturnStationId(station.getId());
+//            rental.setTimeEnd(localDateTimeEnd);
+//            rental.setStatus(Constants.RETURNED_BIKE);
+//
+////            try {
+////                TransactionResponse transactionResponse  = interBankApiSystem.processTransaction(transactionRequest);
+////
+////                Notification notification = HandleErrorResponse.handle(transactionResponse.getErrorCode());
+////                if(notification.isStatus()){
+////                    boolean b1 = handleStationReceiveBike(station, bikeReturn); // TODO: Bắt đầu từ đây.. đoạn trên OK rồi
+////                    boolean b2 = saveTransaction(rental, transactionResponse, rentingBike.getCardId());
+////                    if(b1 && b2){
+////                        Caching.getInstance().resetCache();
+////                        System.out.println("reset Cache!");
+////                        return new Notification(true, "Giao dịch thành công!");
+////                    }
+////                    else
+////                        return new Notification(false, "Server DB Lỗi @@");
+////                }
+////                return notification;
+////            } catch (IOException e) {
+////                e.printStackTrace();
+////                return new Notification(false, "Server lỗi @@");
+////            }
+//        }
+//
+////        return new Notification(false, "Bạn chưa thuê xe!");
     }
 
 
