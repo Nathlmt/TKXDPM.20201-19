@@ -30,6 +30,13 @@ public class Card extends BaseEntity{
         this.dateExpired = dateExpired;
     }
 
+    /**
+     *
+     * @param cardCode: ma so the
+     * @param owner: nguoi so huu
+     * @param cvvCode: ma bi mat
+     * @param dateExpired: ngay het han
+     */
     public Card(String cardCode, String owner, String cvvCode, String dateExpired) {
         this.cardCode = cardCode;
         this.owner = owner;

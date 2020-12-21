@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="660.0" prefWidth="400.0" styleClass="bg-color" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.Screen.FindStation">
+<AnchorPane prefHeight="660.0" prefWidth="400.0" styleClass="bg-color" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.screen.FindStation">
    <children>
       <ListView fx:id="listStation" layoutX="-3.0" layoutY="144.0" onMouseClicked="#chooseStation" prefHeight="518.0" prefWidth="400.0" />
       <Label layoutX="128.0" layoutY="37.0" opacity="0.89" prefHeight="43.0" prefWidth="145.0" text="Danh sách trạm" textFill="#362ce4">

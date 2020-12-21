@@ -66,21 +66,21 @@ public class ReturnBike implements Initializable {
     @FXML
     public void chooseStation(MouseEvent event) throws IOException {
 
-        Station station = listStation.getSelectionModel().getSelectedItem();
-        if(station == null ){
-            // DO NOTHING
-            System.out.println("station click null");
-        }
-        else{
-            Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setContentText("Are you sure to return this Bike right now at "+ station.getStationName()+" station?");
-            alert.setTitle("Confirm");
-            Optional<ButtonType> option = alert.showAndWait();
-            if (option.get() == ButtonType.OK) {
+//        Station station = listStation.getSelectionModel().getSelectedItem();
+//        if(station == null ){
+//            // DO NOTHING
+//            System.out.println("station click null");
+//        }
+//        else{
+//            Alert alert = new Alert(AlertType.CONFIRMATION);
+//            alert.setContentText("Are you sure to return this Bike right now at "+ station.getStationName()+" station?");
+//            alert.setTitle("Confirm");
+//            Optional<ButtonType> option = alert.showAndWait();
+//            if (option.get() == ButtonType.OK) {
                 returnBikeController.returnBike(station);
 //                if(notification.isStatus()){
-                    backHomeWhenSuccessfully(event);
-                    System.out.println("OKKKKK successfully!");
+//                    backHomeWhenSuccessfully(event);
+//                    System.out.println("OKKKKK successfully!");
 //                }
 //                else{
 //                    alert = new Alert(AlertType.ERROR);
@@ -88,14 +88,14 @@ public class ReturnBike implements Initializable {
 //                    alert.setTitle("Error");
 //                    alert.showAndWait();
 //                }
-            }
-            else if (option.get() == ButtonType.CANCEL) {
-                System.out.println("cho chon lai");
-            }
-            else {
-                System.out.println("else ------------------");
-            }
-        }
+//            }
+//            else if (option.get() == ButtonType.CANCEL) {
+//                System.out.println("cho chon lai");
+//            }
+//            else {
+//                System.out.println("else ------------------");
+//            }
+//        }
     }
 
     /**
