@@ -1,15 +1,11 @@
 package org.tkxdpm20201.Nhom19.business.controller;
 
-import org.tkxdpm20201.Nhom19.data.daos.BikeDao;
-import org.tkxdpm20201.Nhom19.data.daos.implement.BikeDaoImp;
-import org.tkxdpm20201.Nhom19.data.daos.implement.RentalDaoImp;
-import org.tkxdpm20201.Nhom19.data.entities.Bike;
-import org.tkxdpm20201.Nhom19.data.entities.Card;
-import org.tkxdpm20201.Nhom19.data.entities.Rental;
-import org.tkxdpm20201.Nhom19.data.entities.Station;
+import org.tkxdpm20201.Nhom19.data.daos.*;
+import org.tkxdpm20201.Nhom19.data.daos.implement.*;
+import org.tkxdpm20201.Nhom19.data.entities.*;
 import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
-import org.tkxdpm20201.Nhom19.data.daos.RentalDao;
+import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
 import org.tkxdpm20201.Nhom19.exception.PaymentException;
 import org.tkxdpm20201.Nhom19.subsystem.InterbankInterface;
 import org.tkxdpm20201.Nhom19.subsystem.InterbankSubsystem;
@@ -29,7 +25,6 @@ public class RentBikeController extends BaseController {
      */
     private static RentingBike rentingBike;
     private BikeDao bikeDao = new BikeDaoImp();
-
 
     public void handleBikeInfo(TransactionRequest transactionRequest, Bike bike, Station station) {
 
@@ -53,21 +48,29 @@ public class RentBikeController extends BaseController {
                                String content) throws SQLException, IOException, PaymentException {
         //validate content
         String contentAfterCheck = validateContent(content);
-        //query api interbank
+        //query api interbank de tru tien dat coc
         InterbankInterface interbankSubsystem = new InterbankSubsystem();
         Timestamp startTime = new Timestamp(System.currentTimeMillis());
-        interbankSubsystem.pay(card, price, contentAfterCheck);
+        TransactionResponse transactionPay = interbankSubsystem.pay(card, price, contentAfterCheck);
         //update table rental
         Rental rental = new Rental(bikeId, customerId, rentStationId, "renting", startTime);
         RentalDao rentalDao = new RentalDaoImp();
         rentalDao.create(rental);
         //update table bike (Trang thai cua xe)
-
+        bikeDao.updateStatusBike(bikeId, "renting");
         //update table station (Trang thai cua tram)
-
-        //update
+        StationDao stationDao = new StationDaoImp();
+        stationDao.updateStationWhenRentBike(rentStationId);
+        // save Transaction
+        TransactionDao transactionDao = new TransactionDaoImp();
+        Transaction transaction = new Transaction(transactionPay.getTransaction(), card.getCardCode());
+        transactionDao.create(transaction);
+        //update rental transaction
+        RentalTransactionDao rentalTransactionDao = new RentalTransactionDaoImp();
+        RentalTransaction rentalTransaction = new RentalTransaction(rental.getId(), transaction.getId());
+        //commit database
+        DBHelper.commit();
     }
-
     /**
      *
      * @param content

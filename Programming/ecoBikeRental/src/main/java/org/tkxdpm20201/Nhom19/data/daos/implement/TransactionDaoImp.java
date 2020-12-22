@@ -7,27 +7,41 @@ import org.tkxdpm20201.Nhom19.data.entities.Transaction;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
+/**
+ *
+ */
 public class TransactionDaoImp extends BaseDaoImp<Transaction> implements TransactionDao {
 
     public TransactionDaoImp() {
         super(Transaction.class);
     }
 
+    /**
+     *
+     * @param transaction ;
+     * @return transactionId;
+     * @throws SQLException:
+     */
     public Transaction create(Transaction transaction) throws SQLException {
 
         String sqlInsert = "INSERT INTO transactions" +
-                "(id, amount, transaction_content, card_id, created_at, command)" +
-                " VALUES(?,?,?,?,?,?)";
+                "(api_id, amount, transaction_content, card_code, created_at, command)" +
+                " VALUES(?,?,?,?,?,?) " +
+                "RETURNING id";
         PreparedStatement ps = DBHelper.getConnection().prepareStatement(sqlInsert);
-        ps.setInt(1, transaction.getId());
-        ps.setString(2, transaction.getAmount());
+        ps.setString(1, transaction.getApiId());
+        ps.setInt(2, Integer.parseInt(transaction.getAmount()));
         ps.setString(3, transaction.getTransactionContent());
-        ps.setInt(4, transaction.getCardId());
-        ps.setString(5, transaction.getCreatedAt());
+        ps.setString(4, transaction.getCardCode());
+        ps.setTimestamp(5,new Timestamp(System.currentTimeMillis()));
         ps.setString(6, transaction.getCommand());
-        boolean result = ps.execute();
-
-        return result ? transaction : null;
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int id = rs.getInt("id");
+            transaction.setId(id);
+        }
+        return transaction;
     }
 }

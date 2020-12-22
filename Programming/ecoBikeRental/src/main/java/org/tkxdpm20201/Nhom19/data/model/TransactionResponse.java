@@ -1,6 +1,8 @@
 package org.tkxdpm20201.Nhom19.data.model;
 
 
+import org.tkxdpm20201.Nhom19.data.entities.Transaction;
+
 public class TransactionResponse {
 
     private String errorCode;

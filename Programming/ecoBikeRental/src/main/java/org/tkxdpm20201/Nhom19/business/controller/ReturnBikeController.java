@@ -102,7 +102,7 @@ public class ReturnBikeController extends BaseController {
     }
 
 
-    private boolean saveTransaction(Rental rental, TransactionResponse transactionResponse, int cardCode){
+    private boolean saveTransaction(Rental rental, TransactionResponse transactionResponse, String cardCode){
         Transaction transaction = new Transaction(transactionResponse.getTransaction(), cardCode);
         try {
             transactionDao.create(transaction);
