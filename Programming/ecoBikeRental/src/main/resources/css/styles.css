@@ -1,0 +1,14 @@
+.image-account {
+    -fx-border-radius: 40%;
+    -fx-border-color: red;
+}
+
+.btn{
+    -fx-border-color: red;
+    -fx-padding: 10px;
+    -fx-background-color: green;
+}
+
+.bg-color{
+}
+

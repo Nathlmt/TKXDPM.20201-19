@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane  fx:id="rentBikeScreenAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.screen.RentBike">
+   <Hyperlink layoutX="14.0" layoutY="14.0" onAction="#returnHome" text="&lt; Trở lại" />
+   <Label layoutX="151.0" layoutY="296.0" />
+   <JFXButton layoutX="118.0" layoutY="355.0" onAction="#handleButton1Action" prefHeight="35.0" prefWidth="139.0" style="-fx-background-color: #5bc0de;" text="Thuê xe" textFill="WHITE">
+      <font>
+         <Font name="Arial" size="13.0" />
+      </font>
+   </JFXButton>
+   <Text layoutX="85.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã xe" wrappingWidth="66.0">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Text>
+   <Text layoutX="169.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thuê xe">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Text>
+   <Text layoutX="139.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập mã xe để thuê xe" wrappingWidth="122.7265625" />
+   <TextField  id="bikeCode" fx:id="bikeCode" layoutX="163.0" layoutY="236.0" promptText="Nhập mã xe"/>
+</AnchorPane>

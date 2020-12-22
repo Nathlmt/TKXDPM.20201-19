@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="bikeInfoAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.screen.BikeInfo">
+   <children>
+      <ImageView fitHeight="208.0" fitWidth="223.0" layoutX="90.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/regular-bike.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="name" layoutX="159.0" layoutY="207.0" text="Xe đạp">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Hyperlink onAction="#back" layoutX="14.0" layoutY="14.0" text="&lt; Trở lại" />
+      <Label layoutX="29.0" layoutY="299.0" prefHeight="26.0" prefWidth="143.0" text="Biển số xe">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="151.0" layoutY="296.0" />
+      <Label fx:id="licensePlate" layoutX="200.0" layoutY="304.0" prefHeight="16.0" prefWidth="107.0" text="HT-2345-2">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="29.0" layoutY="340.0" prefHeight="26.0" prefWidth="143.0" text="Mã xe">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="bikeCode" layoutX="200.0" layoutY="345.0" prefHeight="16.0" prefWidth="107.0" text="HT-2345-2">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label fx:id="baterry" layoutX="29.0" layoutY="380.0" prefHeight="26.0" prefWidth="143.0" text="Thời lượng pin">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="battery" layoutX="200.0" layoutY="385.0" prefHeight="16.0" prefWidth="107.0" text="80%">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="29.0" layoutY="419.0" prefHeight="26.0" prefWidth="143.0" text="Đặt cọc">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="price" layoutX="200.0" layoutY="424.0" prefHeight="16.0" prefWidth="107.0" text="123$">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <JFXButton layoutX="131.0" layoutY="532.0" onAction="#handleButton1Action" prefHeight="35.0" prefWidth="139.0" style="-fx-background-color: #5bc0de;" text="Thuê xe" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="29.0" layoutY="461.0" prefHeight="26.0" prefWidth="143.0" text="Loại xe">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="type" layoutX="200.0" layoutY="466.0" prefHeight="16.0" prefWidth="107.0" text="123$">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="87.0" layoutY="254.0" text="Thông tin cập nhật lúc">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="updateAt" layoutX="214.0" layoutY="254.0" text="Label" />
+   </children>
+</AnchorPane>
