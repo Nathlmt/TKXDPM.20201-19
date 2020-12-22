@@ -11,19 +11,17 @@ import org.tkxdpm20201.Nhom19.data.daos.implement.TransactionDaoImp;
 import org.tkxdpm20201.Nhom19.data.entities.*;
 import org.tkxdpm20201.Nhom19.data.model.Caching;
 import org.tkxdpm20201.Nhom19.data.model.RentingBike;
-import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
 import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
+import org.tkxdpm20201.Nhom19.exception.UnrecognizedException;
 import org.tkxdpm20201.Nhom19.subsystem.InterbankInterface;
 import org.tkxdpm20201.Nhom19.subsystem.InterbankSubsystem;
 import org.tkxdpm20201.Nhom19.utils.Constants;
 import org.tkxdpm20201.Nhom19.utils.DateUtil;
-import org.tkxdpm20201.Nhom19.utils.Evaluation;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class ReturnBikeController extends BaseController {
@@ -54,51 +52,44 @@ public class ReturnBikeController extends BaseController {
     /**
      *
      * @param station: station which user want to return bike
-     * @return Notification
+     * @return
      */
     public void returnBike(Station station) {
-//        Timestamp localDateTimeEnd = DateUtil.toTimestamp(java.time.LocalDateTime.now());
-//        RentingBike rentingBike = Caching.getInstance().getRentingBike();
-//        if (rentingBike != null) {
-//            Rental rental = rentingBike.getRental();
-//            Bike bikeReturn = rentingBike.getBike();
-//            Timestamp startDate = rentingBike.getStartDate();
-//            BigDecimal deposit = rentingBike.getDeposit();
-//            BigDecimal rentFee = calculateFees(startDate, localDateTimeEnd, bikeReturn);
-//            BigDecimal amount = calculateAmount(deposit, rentFee);
-//            TransactionRequest transactionRequest;
-//            if(amount.compareTo(BigDecimal.ZERO) < 0)
-//                transactionRequest = createTransactionRequest(rentingBike, amount.abs(), Config.REFUND);
-//            else
-//                transactionRequest = createTransactionRequest(rentingBike, amount, Config.PROCESS_TRANS);
-//
-//            rental.setReturnStationId(station.getId());
-//            rental.setTimeEnd(localDateTimeEnd);
-//            rental.setStatus(Constants.RETURNED_BIKE);
-//
-////            try {
-////                TransactionResponse transactionResponse  = interBankApiSystem.processTransaction(transactionRequest);
-////
-////                Notification notification = HandleErrorResponse.handle(transactionResponse.getErrorCode());
-////                if(notification.isStatus()){
-////                    boolean b1 = handleStationReceiveBike(station, bikeReturn); // TODO: Bắt đầu từ đây.. đoạn trên OK rồi
-////                    boolean b2 = saveTransaction(rental, transactionResponse, rentingBike.getCardId());
-////                    if(b1 && b2){
-////                        Caching.getInstance().resetCache();
-////                        System.out.println("reset Cache!");
-////                        return new Notification(true, "Giao dịch thành công!");
-////                    }
-////                    else
-////                        return new Notification(false, "Server DB Lỗi @@");
-////                }
-////                return notification;
-////            } catch (IOException e) {
-////                e.printStackTrace();
-////                return new Notification(false, "Server lỗi @@");
-////            }
-//        }
-//
-////        return new Notification(false, "Bạn chưa thuê xe!");
+        Timestamp localDateTimeEnd = DateUtil.toTimestamp(java.time.LocalDateTime.now());
+        RentingBike rentingBike = Caching.getInstance().getRentingBike();
+        if (rentingBike != null) {
+            Rental rental = rentingBike.getRental();
+            Bike bikeReturn = rentingBike.getBike();
+            Card card = rentingBike.getCard();
+            Timestamp startDate = rentingBike.getStartDate();
+            BigDecimal deposit = rentingBike.getDeposit();
+            BigDecimal rentFee = calculateFees(startDate, localDateTimeEnd, bikeReturn);
+            BigDecimal amount = calculateAmount(deposit, rentFee);
+
+            rental.setReturnStationId(station.getId());
+            rental.setTimeEnd(localDateTimeEnd);
+            rental.setStatus(Constants.RETURNED_BIKE);
+
+            try {
+                TransactionResponse transactionResponse;
+                if(amount.compareTo(BigDecimal.ZERO) < 0)
+                    transactionResponse = interBankApiSystem.refund(card, amount.abs(), "Hoàn tiền trả xe");
+                else
+                    transactionResponse  = interBankApiSystem.pay(card, amount, "thu thêm tiền thuê xe");
+
+                boolean b1 = handleStationReceiveBike(station, bikeReturn); // TODO: Bắt đầu từ đây.. đoạn trên OK rồi
+                boolean b2 = saveTransaction(rental, transactionResponse, card.getId());
+                if(b1 && b2){
+                    Caching.getInstance().resetCache();
+                    System.out.println("reset Cache!");
+                }
+                else
+                    throw new UnrecognizedException(); // TODO: DB Exception
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new UnrecognizedException();
+            }
+        }
     }
 
 
@@ -125,13 +116,6 @@ public class ReturnBikeController extends BaseController {
             return false;
         }
         return resBike & resStation;
-    }
-
-
-    private TransactionRequest createTransactionRequest(RentingBike rentingBike, BigDecimal amount, String command){
-        TransactionRequest transactionRequest = new TransactionRequest();
-        transactionRequest.setTransactionRequestToReturnBike(rentingBike, amount, command);
-        return transactionRequest;
     }
 
     private BigDecimal calculateFees(Timestamp startDate, Timestamp endDate, Bike bike){

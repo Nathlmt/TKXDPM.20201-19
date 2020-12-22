@@ -24,6 +24,7 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
         PreparedStatement ps = DBHelper.getConnection().prepareStatement(sqlInsert);
         prepareStatement(ps, rental);
          ResultSet rs = ps.executeQuery();
+         
          if (rs.next()) {
              Integer id = rs.getInt("id");
              rental.setId(id);
