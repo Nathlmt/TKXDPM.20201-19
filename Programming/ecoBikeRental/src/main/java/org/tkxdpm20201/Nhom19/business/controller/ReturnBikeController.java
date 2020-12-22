@@ -75,10 +75,10 @@ public class ReturnBikeController extends BaseController {
                 if(amount.compareTo(BigDecimal.ZERO) < 0)
                     transactionResponse = interBankApiSystem.refund(card, amount.abs(), "Hoàn tiền trả xe");
                 else
-                    transactionResponse  = interBankApiSystem.pay(card, amount, "thu thêm tiền thuê xe");
+                    transactionResponse  = interBankApiSystem.pay(card, amount, "Thu thêm tiền thuê xe");
 
                 boolean b1 = handleStationReceiveBike(station, bikeReturn); // TODO: Bắt đầu từ đây.. đoạn trên OK rồi
-                boolean b2 = saveTransaction(rental, transactionResponse, card.getId());
+                boolean b2 = saveTransaction(rental, transactionResponse, card.getCardCode());
                 if(b1 && b2){
                     Caching.getInstance().resetCache();
                     System.out.println("reset Cache!");

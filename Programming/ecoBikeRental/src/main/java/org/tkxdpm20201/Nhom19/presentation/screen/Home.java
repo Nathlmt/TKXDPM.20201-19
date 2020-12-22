@@ -42,16 +42,16 @@ public class Home implements Initializable {
     private JFXButton btnRentBike;
     @FXML
     private AnchorPane homeScreenAnchor;
-    private final BaseScreenHandler homeScreenHandler  = new BaseScreenHandler(HOME_PATH);
+    private final static BaseScreenHandler homeScreenHandler  = new BaseScreenHandler(HOME_PATH);
 
     private Stage setupHomeScreenHandler() {
         Stage homeScreenStage = (Stage) homeScreenAnchor.getScene().getWindow();
-        this.homeScreenHandler.setScreenStage(homeScreenStage);
+        homeScreenHandler.setScreenStage(homeScreenStage);
         return homeScreenStage;
     }
     private void goToStage(BaseScreenHandler nextHandler, Stage previousStage) {
         nextHandler.setScreenStage(previousStage);
-        nextHandler.setPreviousScreen(this.homeScreenHandler);
+        nextHandler.setPreviousScreen(homeScreenHandler);
         nextHandler.show();
     }
     public void handleButtonClicks(ActionEvent mouseEvent) {
@@ -76,6 +76,9 @@ public class Home implements Initializable {
         rentingBikeInfoPane.setVisible(false);
     }
 
+    public static BaseScreenHandler getHomeScreenHandler() {
+        return homeScreenHandler;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

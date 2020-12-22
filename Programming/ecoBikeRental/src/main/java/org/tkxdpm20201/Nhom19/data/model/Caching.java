@@ -2,6 +2,10 @@ package org.tkxdpm20201.Nhom19.data.model;
 
 import org.tkxdpm20201.Nhom19.utils.Constants;
 
+/**
+ * @author ly ba tuan
+ * usinng for storage share data when application run
+ */
 public class Caching {
 
     private RentingBike rentingBike;

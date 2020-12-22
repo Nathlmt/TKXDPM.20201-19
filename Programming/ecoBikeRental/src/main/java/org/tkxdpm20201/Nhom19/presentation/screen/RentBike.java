@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
 import org.tkxdpm20201.Nhom19.business.controller.RentBikeController;
+import org.tkxdpm20201.Nhom19.presentation.dialog.ErrorDialog;
 import org.tkxdpm20201.Nhom19.utils.Constants;
 
 import java.net.URL;
@@ -36,7 +37,8 @@ public class RentBike implements Initializable {
             bikeInfoHandler.setEntityData(bike);
             bikeInfoHandler.show();
         } catch (RuntimeException ex1) {
-//            throw new Error("Input stream not work");
+            ErrorDialog errorDialog =  new ErrorDialog(ex1.getMessage());
+            errorDialog.show();
         }
     }
 

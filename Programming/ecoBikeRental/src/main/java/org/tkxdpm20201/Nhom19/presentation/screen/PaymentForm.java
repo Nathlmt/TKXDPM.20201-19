@@ -8,6 +8,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
 import org.tkxdpm20201.Nhom19.data.entities.Card;
+import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.exception.PaymentException;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
 
@@ -66,13 +67,15 @@ public class PaymentForm implements Initializable {
         if (rentBikeController.validateCartInfo(card)) {
             Bike bike = (Bike) paymentFormHandler.getEntityData();
             try {
-                rentBikeController.handleRentBike(bike.getId(),
+                rentBikeController.handleRentBike(bike,
                         1,
                         bike.getPresentStation(),
                         bike.getPrice(),card,transactionContent.getText()
                 );
                 NotificationDialog notificationDialog = new NotificationDialog("Rent Bike Success");
                 notificationDialog.show();
+                //gp tp h
+                Home.getHomeScreenHandler().show();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             } catch (IOException e) {

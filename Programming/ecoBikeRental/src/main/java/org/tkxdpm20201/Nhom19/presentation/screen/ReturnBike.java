@@ -73,7 +73,7 @@ public class ReturnBike implements Initializable {
         }
         else{
             Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setContentText("Are you sure to return this Bike right now at "+ station.getStationName()+" station?");
+            alert.setContentText("Bạn có muốn trả xe ở "+ station.getStationName()+" ?");
             alert.setTitle("Confirm");
             Optional<ButtonType> option = alert.showAndWait();
             if (option.get() == ButtonType.OK) {

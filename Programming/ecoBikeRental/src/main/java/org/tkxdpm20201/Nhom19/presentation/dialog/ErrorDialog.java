@@ -5,19 +5,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 
-public class ErrorDialog {
-    private final Alert errorDialog;
+public class ErrorDialog extends BaseDialog{
 
     public ErrorDialog(String info) {
-        this.errorDialog = new Alert(AlertType.ERROR);
-        this.errorDialog.setContentText(info);
-    }
-    ;
-    public void show() {
-        errorDialog.show();
-    }
-    public Alert getErrorDialog() {
-        return errorDialog;
-    }
+        super();
+        this.dialog = new Alert(AlertType.ERROR);
+        this.dialog.setContentText(info);
+    };
 }
 
