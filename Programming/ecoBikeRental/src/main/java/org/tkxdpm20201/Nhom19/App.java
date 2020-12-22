@@ -6,22 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
-import org.tkxdpm20201.Nhom19.data.entities.Bike;
-import org.tkxdpm20201.Nhom19.data.entities.Card;
-import org.tkxdpm20201.Nhom19.data.entities.Rental;
-import org.tkxdpm20201.Nhom19.data.model.Caching;
-import org.tkxdpm20201.Nhom19.data.model.RentingBike;
-import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
-import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
-import org.tkxdpm20201.Nhom19.exception.GlobalExceptionHandler;
-import org.tkxdpm20201.Nhom19.utils.Constants;
-import org.tkxdpm20201.Nhom19.utils.DateUtil;
 
-import java.io.Console;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.util.Date;
+
 import static org.tkxdpm20201.Nhom19.utils.Constants.HOME_PATH;
 
 public class App extends Application {
@@ -29,9 +17,6 @@ public class App extends Application {
     public static final int HEIGHT = 660;
 
     public static void main(String[] args) throws IOException {
-//        GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();
-//        Thread.setDefaultUncaughtExceptionHandler(globalExceptionHandler);
-//        test();
         launch(args);
     }
 

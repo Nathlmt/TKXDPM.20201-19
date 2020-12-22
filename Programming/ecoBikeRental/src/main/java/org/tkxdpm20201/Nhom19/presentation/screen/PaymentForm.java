@@ -10,11 +10,11 @@ import org.tkxdpm20201.Nhom19.data.entities.Bike;
 import org.tkxdpm20201.Nhom19.data.entities.Card;
 import org.tkxdpm20201.Nhom19.exception.PaymentException;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
-import static org.tkxdpm20201.Nhom19.utils.Constants.PAYMENT_INFO_PATH;
 
 import org.tkxdpm20201.Nhom19.business.controller.RentBikeController;
 import org.tkxdpm20201.Nhom19.presentation.dialog.ErrorDialog;
 import org.tkxdpm20201.Nhom19.presentation.dialog.NotificationDialog;
+import org.tkxdpm20201.Nhom19.utils.Constants;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,7 +22,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class PaymentForm implements Initializable {
-    private final static BaseScreenHandler paymentFormHandler = new BaseScreenHandler(PAYMENT_INFO_PATH);
+    private final static BaseScreenHandler paymentFormHandler = new BaseScreenHandler(Constants.PAYMENT_INFO_PATH);
     @FXML
     private Label depositLabel;
     @FXML
@@ -70,7 +70,7 @@ public class PaymentForm implements Initializable {
                         1,
                         bike.getPresentStation(),
                         bike.getPrice(),card,transactionContent.getText()
-                        );
+                );
                 NotificationDialog notificationDialog = new NotificationDialog("Rent Bike Success");
                 notificationDialog.show();
             } catch (SQLException throwables) {
