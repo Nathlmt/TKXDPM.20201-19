@@ -3,27 +3,29 @@ package org.tkxdpm20201.Nhom19.data.entities;
 import org.tkxdpm20201.Nhom19.data.model.TransactionModel;
 
 public class Transaction extends BaseEntity {
-
+    private int id;
     private String amount;
     private String createdAt;
     private String transactionContent;
     private String command;
-    private Integer cardId;
+    private String cardCode;
+    private String apiId;
 
-    public Transaction(String amount, String createdAt, String transactionContent, String command, Integer cardId) {
+    public Transaction(String amount, String createdAt, String transactionContent, String command, String cardCode) {
         this.amount = amount;
         this.createdAt = createdAt;
         this.transactionContent = transactionContent;
         this.command = command;
-        this.cardId = cardId;
+        this.cardCode = cardCode;
     }
 
-    public Transaction(TransactionModel transactionModel, Integer cardId){
+    public Transaction(TransactionModel transactionModel, String cardCode){
         this.amount = transactionModel.getAmount();
         this.createdAt = transactionModel.getCreatedAt();
         this.transactionContent = transactionModel.getTransactionContent();
         this.command = transactionModel.getCommand();
-        this.cardId = cardId;
+        this.cardCode = cardCode;
+        this.apiId = transactionModel.getTransactionId();
     }
     public String getAmount() {
         return amount;
@@ -57,11 +59,26 @@ public class Transaction extends BaseEntity {
         this.command = command;
     }
 
-    public Integer getCardId() {
-        return cardId;
+    public String getCardCode() {
+        return cardCode;
     }
 
-    public void setCardId(Integer cardId) {
-        this.cardId = cardId;
+    public void setCardCode(String cardCode) {
+        this.cardCode = cardCode;
+    };
+
+    public void setId(int id) {
+        this.id = id;
+    };
+    public Integer getId() {
+        return id;
+    };
+
+    public void setApiId(String apiId) {
+        this.apiId = apiId;
+    };
+
+    public String getApiId() {
+        return apiId;
     }
 }

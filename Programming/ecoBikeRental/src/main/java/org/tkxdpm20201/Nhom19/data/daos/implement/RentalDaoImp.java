@@ -62,6 +62,7 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
         preparedStatement.setString(4, rental.getStatus());
         preparedStatement.setTimestamp(5, rental.getTimeStart());
     }
+
     private void prepareStatementUpdate(PreparedStatement preparedStatement, Rental rental) throws SQLException {
         preparedStatement.setInt(1, rental.getBikeId());
         preparedStatement.setInt(2, rental.getRentStationId());

@@ -5,10 +5,7 @@ import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.entities.Bike;
 import org.tkxdpm20201.Nhom19.utils.DateUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -56,6 +53,18 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
         preparedStatement.setInt(1, idStation);
         preparedStatement.setString(2, DateUtil.format(new Date()));
         preparedStatement.setInt(3, id);
+        return preparedStatement.execute();
+    }
+    @Override
+    public boolean updateStatusBike(int idBike, String status) throws SQLException {
+        String sqlUpdate = "UPDATE BIKES" +
+                " SET status = ?," +
+                " latest_update = ?" +
+                " WHERE id = ?";
+        PreparedStatement preparedStatement = DBHelper.getConnection().prepareStatement(sqlUpdate);
+        preparedStatement.setString(1, "renting");
+        preparedStatement.setTimestamp(2,  new Timestamp(System.currentTimeMillis()));
+        preparedStatement.setInt(3, idBike);
         return preparedStatement.execute();
     }
 }

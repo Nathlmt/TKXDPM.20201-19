@@ -7,6 +7,7 @@ import org.tkxdpm20201.Nhom19.data.entities.Station;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class StationDaoImp extends BaseDaoImp<Station> implements StationDao{
                     rs.getInt("AVAILABLE_BIKE"),
                     rs.getInt("AVAILABLE_RACK"),
                     rs.getString("STATUS"),
-                    rs.getDate("LASTEST_UPDATE")
+                    rs.getDate("LATEST_UPDATE")
                     );
             stationList.add(station);
         }
@@ -38,16 +39,15 @@ public class StationDaoImp extends BaseDaoImp<Station> implements StationDao{
 
 
     @Override
-    public boolean update(Station station) throws SQLException {
+    public boolean updateStationWhenRentBike(int stationId) throws SQLException {
         String sqlUpdate = "UPDATE STATIONS " +
-                "SET available_bike = ?" +
-                " available_rack = ?" +
+                "SET available_bike = available_bike - 1,"+
+                " available_rack = available_rack + 1," +
+                " latest_update = ?" +
                 "WHERE id = ?";
         PreparedStatement ps = DBHelper.getConnection().prepareStatement(sqlUpdate);
-        ps.setInt(1, station.getAvailableBike());
-        ps.setInt(2, station.getAvailableRack());
-        ps.setInt(3, station.getId());
+        ps.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+        ps.setInt(2, stationId);
         return ps.execute();
     }
-
 }

@@ -10,5 +10,5 @@ public interface BikeDao extends BaseDao<Bike> {
     List<Bike> getAllBikeInStation(int stationId);
     Bike getBikeById(int bikeCode) throws SQLException;
     boolean updateCurrentStation(int id, int idStation) throws SQLException;
-
+    boolean updateStatusBike(int idBike, String status) throws SQLException;
 }
