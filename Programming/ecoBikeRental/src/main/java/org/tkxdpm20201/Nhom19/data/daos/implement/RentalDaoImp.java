@@ -21,8 +21,8 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
     /**
      * Method use for create transaction
      * @param rental
-     * @return
-     * @throws SQLException
+     * @return rental: information of renting information
+     * @throws SQLException:  true if the first result is a ResultSet object; false if the first result is an update count or there is no result
      */
     @Override
     public Rental create(Rental rental) throws SQLException {
@@ -49,9 +49,9 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
         return null;
     }
 
-    /**
+    /** Update information in rental table
      * Method use for update rental bike
-     * @param rental
+     * @param rental: rental after update
      * @return true if update success
      * @throws SQLException:
      */

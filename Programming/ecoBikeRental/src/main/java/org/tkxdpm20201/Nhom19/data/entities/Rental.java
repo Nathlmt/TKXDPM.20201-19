@@ -64,9 +64,6 @@ public class Rental extends BaseEntity {
         return timeStart;
     }
 
-    public void setTimeStart(Timestamp timeStart) {
-        this.timeStart = timeStart;
-    }
 
     public Timestamp getTimeEnd() {
         return timeEnd;

@@ -14,20 +14,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BikeDaoTest {
     private BikeDao bikeDao;
+
     @BeforeEach
     void setUp() throws SQLException {
         DBHelper.initConnection();
-         this.bikeDao = new BikeDaoImp();
+        this.bikeDao = new BikeDaoImp();
     }
+
     @Test
-    void getAllBikeInStation() throws SQLException {
+    void getAllBikeInStationTest() throws SQLException {
         List<Bike> bikeList = this.bikeDao.getAllBikeInStation(3);
-        System.out.println(bikeList.get(0).getName());
+        assertFalse(bikeList.isEmpty());
     }
+
     @Test
-    void updateBikeStatus() throws SQLException {
-        boolean a = bikeDao.updateStatusBike(2,"renting");
+    void updateBikeStatusTest() throws SQLException {
+        boolean a = bikeDao.updateStatusBike(2, "renting");
         DBHelper.commit();
-        assertFalse(a);
+        Bike testBike = bikeDao.getById(2);
+        assertEquals(testBike.getStatus(), "renting");
     }
 }
+

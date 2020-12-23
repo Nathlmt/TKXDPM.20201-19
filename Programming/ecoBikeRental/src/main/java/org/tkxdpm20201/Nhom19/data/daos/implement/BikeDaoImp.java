@@ -22,8 +22,8 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
     /**
      * Method use for get bike when have id
      * @param bikeCode:
-     * @return bike:
-     * @throws SQLException
+     * @return bike information with input bikeCode
+     * @throws SQLException: if a database access error occurs; this method is called on a closed PreparedStatement or an argument is supplied to this method
      */
     @Override
     public Bike getById(int bikeCode) throws SQLException {
@@ -49,8 +49,8 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
     /**
      *  method use for get bikes in a station
      * @param stationId:
-     * @return
-     * @throws SQLException
+     * @return List bike in one station
+     * @throws SQLException: if a database access error occurs; this method is called on a closed PreparedStatement or an argument is supplied to this method
      */
     @Override
     public List<Bike> getAllBikeInStation(int stationId) throws SQLException {
@@ -78,8 +78,8 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
      *
      * @param id
      * @param idStation
-     * @return
-     * @throws SQLException
+     * @return true if the first result is a ResultSet object; false if the first result is an update count or there is no result
+     * @throws SQLException:  if a database access error occurs; this method is called on a closed PreparedStatement or an argument is supplied to this method
      */
     @Override
     public boolean updateCurrentStation(int id, int idStation) throws SQLException {
@@ -96,6 +96,14 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
         ps.setInt(4, id);
         return ps.execute();
     }
+
+    /**
+     * update status field of bike
+     * @param idBike: id of bike
+     * @param status: statis bile need update
+     * @return true if the first result is a ResultSet object; false if the first result is an update count or there is no result
+     * @throws SQLException
+     */
     @Override
     public boolean updateStatusBike(int idBike, String status) throws SQLException {
         String sqlUpdate = "UPDATE BIKES" +

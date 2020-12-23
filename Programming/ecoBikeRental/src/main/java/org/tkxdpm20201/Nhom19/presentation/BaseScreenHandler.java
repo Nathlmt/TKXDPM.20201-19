@@ -40,6 +40,7 @@ public class BaseScreenHandler {
             e.printStackTrace();
         }
     }
+
     public Stage getScreenStage() {
         return this.screenStage;
     }
