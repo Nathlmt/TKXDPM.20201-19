@@ -7,8 +7,14 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+
 public class DateUtil {
 
+    /**
+     * format date following yyyy-MM-dd hh:mm:ss pattern
+     * @param date
+     * @return string date has formatted
+     */
     public static String format(Date date){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String strDate = formatter.format(date);
@@ -20,25 +26,9 @@ public class DateUtil {
         return format(convertToDateViaSqlTimestamp(localDateTime));
     }
 
-    public static long subtractTime(LocalDateTime startDate, LocalDateTime endDate){
-        long start = startDate.atZone(ZoneOffset.UTC).toEpochSecond();
-        long end = endDate.atZone(ZoneOffset.UTC).toEpochSecond();
-        return end - start;
-    }
-
     public static Timestamp toTimestamp(LocalDateTime time){
         return java.sql.Timestamp.valueOf(time);
     }
-
-    public static LocalDateTime reverse(String date){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return LocalDateTime.parse(date, formatter);
-    }
-
-//    public static Date reverse(String date){
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-//        return LocalDateTime.parse(date, formatter);
-//    }
 
     private static Date convertToDateViaSqlTimestamp(LocalDateTime dateToConvert) {
         return java.sql.Timestamp.valueOf(dateToConvert);
