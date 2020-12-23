@@ -11,7 +11,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 
 /**
- *
+ * Class provide method for CU transaction table
+ * @author LeMinhTuan
  */
 public class TransactionDaoImp extends BaseDaoImp<Transaction> implements TransactionDao {
 
@@ -20,7 +21,7 @@ public class TransactionDaoImp extends BaseDaoImp<Transaction> implements Transa
     }
 
     /**
-     *
+     * Create transaction
      * @param transaction ;
      * @return transaction;
      * @throws SQLException:

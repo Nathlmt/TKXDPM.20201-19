@@ -11,12 +11,21 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author LeMinhTuan, LyBaTuan
+ * Class use for station table
+ */
 public class StationDaoImp extends BaseDaoImp<Station> implements StationDao{
 
     public StationDaoImp(){
         super(Station.class);
     }
 
+    /**
+     * get all stations
+     * @return List Station
+     * @throws SQLException:
+     */
     @Override
     public List<Station> getAll() throws SQLException {
         String sqlSelect = "SELECT * from STATIONS";
@@ -37,7 +46,12 @@ public class StationDaoImp extends BaseDaoImp<Station> implements StationDao{
         return stationList;
     }
 
-
+    /**
+     * Method use for update available_bike, and available_racks when rent bike
+     * @param stationId: id of a station
+     * @return boolean: true when update  success
+     * @throws SQLException:
+     */
     @Override
     public boolean updateStationWhenRentBike(int stationId) throws SQLException {
         String sqlUpdate = "UPDATE STATIONS " +
@@ -48,6 +62,6 @@ public class StationDaoImp extends BaseDaoImp<Station> implements StationDao{
         PreparedStatement ps = DBHelper.getConnection().prepareStatement(sqlUpdate);
         ps.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
         ps.setInt(2, stationId);
-        return ps.execute();
+        return !ps.execute();
     }
 }

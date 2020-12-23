@@ -7,6 +7,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Help connect to database
+ */
 public class DBHelper {
 
     private static HikariConfig config = new HikariConfig();
@@ -24,13 +27,29 @@ public class DBHelper {
         ds = new HikariDataSource( config );
     }
 
+    /**
+     * Get connection
+     * @return Connection:
+     * @throws SQLException
+     */
     public static Connection getConnection() throws SQLException {
             return connection;
     }
 
+    /**
+     * init a connection when start application
+     * @throws SQLException
+     */
     public static void initConnection() throws SQLException {
         connection = ds.getConnection();
     }
+
+    /**
+     * Query data
+     * @param query
+     * @return ResultSet: result of data
+     * @throws SQLException
+     */
     public static ResultSet executeQuery(String query) throws SQLException {
         try {
             if (connection == null) {
@@ -45,9 +64,19 @@ public class DBHelper {
         }
         return null;
     }
+
+    /**
+     * roll back a transaction
+     * @throws SQLException
+     */
     public static void rollBack() throws SQLException {
         connection.rollback();
     }
+
+    /**
+     * commit a transaction
+     * @throws SQLException
+     */
     public static void commit() throws SQLException {
         connection.commit();
     }
