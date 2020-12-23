@@ -3,6 +3,7 @@ package org.tkxdpm20201.Nhom19.data.daos.implement;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.daos.RentalDao;
 import org.tkxdpm20201.Nhom19.data.entities.Rental;
+import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,6 +47,26 @@ public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
     @Override
     public Rental getByTransactionId(int transactionId){
 
+        return null;
+    }
+
+    @Override
+    public Rental getLatestRental() throws SQLException {
+        String sqlQuery = "SELECT * FROM rental where customer_id=? ORDER BY id DESC LIMIT 1";
+        PreparedStatement preparedStatement =  DBHelper.getConnection().prepareStatement(sqlQuery);
+        preparedStatement.setInt(1, 1); // default customer id
+        ResultSet rs = preparedStatement.executeQuery();
+        if (rs.next()) {
+            Rental rental = new Rental(rs.getInt("id"),
+                    rs.getInt("bike_id"),
+                    rs.getInt("rent_station_id"),
+                    rs.getInt("return_station_id"),
+                    rs.getTimestamp("time_start"),
+                    rs.getString("status"),
+                    rs.getTimestamp("time_end")
+            );
+            return rental;
+        }
         return null;
     }
 

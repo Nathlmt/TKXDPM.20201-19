@@ -34,6 +34,7 @@ public class RentBikeController extends BaseController {
     private final InterbankInterface interBankApiSystem;
     private final RentalDao rentalDao;
     private final RentalTransactionDao rentalTransactionDao;
+    private  final CardDao cardDao;
 
 
 
@@ -44,7 +45,7 @@ public class RentBikeController extends BaseController {
         this.transactionDao = new TransactionDaoImp();
         this.rentalTransactionDao = new RentalTransactionDaoImp();
         this.interBankApiSystem = new InterbankSubsystem();
-
+        this.cardDao = new CardDaoImp();
     }
 
     public void handleBikeInfo(TransactionRequest transactionRequest, Bike bike, Station station) {
@@ -118,6 +119,25 @@ public class RentBikeController extends BaseController {
         //commit database
         DBHelper.commit();
         return new RentingBike(bike, card, rental);
+    }
+
+    /**
+     * Check if the customer is still renting Bike or not?
+     * @throws SQLException
+     */
+    public void checkStatusRentalBike() throws SQLException {
+        if(Caching.getInstance().getRentingBike() == null){
+            Rental rental = rentalDao.getLatestRental();
+            if(rental != null){
+                if(rental.getStatus().compareTo(Constants.RENTING) == 0){
+                    Card card = cardDao.getById(1); //TODO: fixed id
+                    Bike bike = bikeDao.getById(rental.getBikeId());
+                    RentingBike rentingBike = new RentingBike(bike, card, rental);
+                    Caching.getInstance().setRentingBike(rentingBike, Constants.RENTING_STATUS);
+                }
+            }
+        }
+        System.out.println("xin chao");
     }
 
     /**

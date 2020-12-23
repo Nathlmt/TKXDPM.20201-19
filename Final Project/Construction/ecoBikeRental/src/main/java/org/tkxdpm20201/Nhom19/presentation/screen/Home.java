@@ -14,11 +14,15 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.tkxdpm20201.Nhom19.business.caculateFee.CalculateFee;
 import org.tkxdpm20201.Nhom19.business.caculateFee.CalculateFeeImp;
+import org.tkxdpm20201.Nhom19.business.controller.RentBikeController;
 import org.tkxdpm20201.Nhom19.data.model.Caching;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
+import org.tkxdpm20201.Nhom19.presentation.dialog.ErrorDialog;
+
 import static org.tkxdpm20201.Nhom19.utils.Constants.HOME_PATH;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -26,7 +30,8 @@ import java.util.ResourceBundle;
 
 public class Home implements Initializable {
     private Timeline animation;
-    private CalculateFee caculator = new CalculateFeeImp();
+    private final CalculateFee caculator = new CalculateFeeImp();
+    private final RentBikeController rentBikeController = new RentBikeController();
     private long time;
     @FXML
     private Label rentedTime;
@@ -109,6 +114,13 @@ public class Home implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            rentBikeController.checkStatusRentalBike();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            ErrorDialog errorDialog = new ErrorDialog("Lỗi DB, thử lại sau!");
+            errorDialog.show();
+        }
         if(!Caching.getInstance().getStatus()){
             rentingBikeInfoPane.setVisible(false);
         } else {

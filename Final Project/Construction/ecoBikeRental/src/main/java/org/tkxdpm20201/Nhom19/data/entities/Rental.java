@@ -1,5 +1,6 @@
 package org.tkxdpm20201.Nhom19.data.entities;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 
 public class Rental extends BaseEntity {
@@ -19,6 +20,17 @@ public class Rental extends BaseEntity {
         this.status = status;
         this.timeStart = timeStart;
     }
+    public Rental(int id, int bikeId, int rentStationId, int returnStationId, Timestamp timeStart, String status, Timestamp timeEnd) {
+        this.bikeId = bikeId;
+        this.setId(id);
+        this.rentStationId = rentStationId;
+        this.returnStationId = returnStationId;
+        this.status = status;
+        this.timeStart = timeStart;
+        this.timeEnd = timeEnd;
+    }
+
+
 
     public int getBikeId() {
         return bikeId;
