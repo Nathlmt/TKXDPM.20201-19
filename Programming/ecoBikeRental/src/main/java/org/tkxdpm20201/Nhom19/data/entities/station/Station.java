@@ -1,8 +1,11 @@
-package org.tkxdpm20201.Nhom19.data.entities;
+package org.tkxdpm20201.Nhom19.data.entities.station;
+
+import org.tkxdpm20201.Nhom19.data.entities.BaseEntity;
+import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
 
 import java.util.Date;
 
-public class Station extends BaseEntity{
+public class Station extends BaseEntity {
 
     private String stationName;
     private String address;

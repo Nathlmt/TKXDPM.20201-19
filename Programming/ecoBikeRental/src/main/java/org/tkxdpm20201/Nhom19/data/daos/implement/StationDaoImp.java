@@ -2,7 +2,7 @@ package org.tkxdpm20201.Nhom19.data.daos.implement;
 
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.daos.StationDao;
-import org.tkxdpm20201.Nhom19.data.entities.Station;
+import org.tkxdpm20201.Nhom19.data.entities.station.Station;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

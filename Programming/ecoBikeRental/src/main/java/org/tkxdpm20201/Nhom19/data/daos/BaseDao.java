@@ -7,7 +7,7 @@ public interface BaseDao<T> {
 
      List<T> getAll() throws SQLException;
 
-     T getById(Integer id);
+     T getById(int id) throws SQLException;
 
      T deleteById(Integer id);
 

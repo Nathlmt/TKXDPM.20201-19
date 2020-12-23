@@ -4,10 +4,14 @@ public class Constants {
 
     public final static double DEPOSIT_PERCENT = 0.7;
 
-    // STATUS
+    // STATUS RENTAL
     public final static String RETURNED_BIKE = "đã trả xe";
     public final static String RENTING_BIKE = "đang thuê xe";
     public final static String NOT_RENT_BIKE = "Chưa thuê xe";
+
+    // STATUS BIKE
+    public final static String AVAILABLE = "available";
+    public final static String RENTING = "renting";
 
     public final  static boolean RENTING_STATUS = true;
     public final  static boolean NOT_RENT_STATUS = false;

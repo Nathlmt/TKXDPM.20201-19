@@ -1,14 +1,12 @@
 package org.tkxdpm20201.Nhom19.data.model;
 
-import org.tkxdpm20201.Nhom19.data.entities.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
 import org.tkxdpm20201.Nhom19.data.entities.Card;
 import org.tkxdpm20201.Nhom19.data.entities.Rental;
 import org.tkxdpm20201.Nhom19.utils.Constants;
-import org.tkxdpm20201.Nhom19.utils.DateUtil;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 public class RentingBike {
 

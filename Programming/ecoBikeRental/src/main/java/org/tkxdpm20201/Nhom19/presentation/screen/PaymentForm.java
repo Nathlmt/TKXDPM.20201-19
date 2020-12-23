@@ -6,9 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import org.tkxdpm20201.Nhom19.data.entities.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
 import org.tkxdpm20201.Nhom19.data.entities.Card;
-import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.exception.PaymentException;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
 
@@ -16,6 +15,7 @@ import org.tkxdpm20201.Nhom19.business.controller.RentBikeController;
 import org.tkxdpm20201.Nhom19.presentation.dialog.ErrorDialog;
 import org.tkxdpm20201.Nhom19.presentation.dialog.NotificationDialog;
 import org.tkxdpm20201.Nhom19.utils.Constants;
+import org.tkxdpm20201.Nhom19.utils.RoundingDeposit;
 
 import java.io.IOException;
 import java.net.URL;
@@ -43,7 +43,7 @@ public class PaymentForm implements Initializable {
     @FXML
     public void showPaymentForm(){
         Bike bike = (Bike) paymentFormHandler.getEntityData();
-        depositLabel.setText(bike.getPrice().toString() + " đ");
+        depositLabel.setText(RoundingDeposit.up(bike.getPrice()) + " đ");
 //        rentingFeeLabel.setText();
     }
 
@@ -72,7 +72,7 @@ public class PaymentForm implements Initializable {
                         bike.getPresentStation(),
                         bike.getPrice(),card,transactionContent.getText()
                 );
-                NotificationDialog notificationDialog = new NotificationDialog("Rent Bike Success");
+                NotificationDialog notificationDialog = new NotificationDialog("Thuê xe thành công!");
                 notificationDialog.show();
                 //gp tp h
                 Home.getHomeScreenHandler().show();

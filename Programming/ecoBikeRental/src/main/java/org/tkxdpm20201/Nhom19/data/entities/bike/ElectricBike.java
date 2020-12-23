@@ -1,4 +1,4 @@
-package org.tkxdpm20201.Nhom19.data.entities;
+package org.tkxdpm20201.Nhom19.data.entities.bike;
 
 import java.math.BigDecimal;
 import java.util.Date;

@@ -2,7 +2,7 @@ package org.tkxdpm20201.Nhom19.business.controller;
 
 import org.tkxdpm20201.Nhom19.data.daos.StationDao;
 import org.tkxdpm20201.Nhom19.data.daos.implement.StationDaoImp;
-import org.tkxdpm20201.Nhom19.data.entities.Station;
+import org.tkxdpm20201.Nhom19.data.entities.station.Station;
 
 import java.sql.SQLException;
 import java.util.List;

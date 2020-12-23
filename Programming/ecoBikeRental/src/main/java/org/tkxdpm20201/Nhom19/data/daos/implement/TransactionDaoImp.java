@@ -4,6 +4,7 @@ import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.daos.TransactionDao;
 import org.tkxdpm20201.Nhom19.data.entities.Transaction;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ public class TransactionDaoImp extends BaseDaoImp<Transaction> implements Transa
     /**
      *
      * @param transaction ;
-     * @return transactionId;
+     * @return transaction;
      * @throws SQLException:
      */
     public Transaction create(Transaction transaction) throws SQLException {
@@ -32,7 +33,7 @@ public class TransactionDaoImp extends BaseDaoImp<Transaction> implements Transa
                 "RETURNING id";
         PreparedStatement ps = DBHelper.getConnection().prepareStatement(sqlInsert);
         ps.setString(1, transaction.getApiId());
-        ps.setInt(2, Integer.parseInt(transaction.getAmount()));
+        ps.setBigDecimal(2, new BigDecimal(transaction.getAmount()));
         ps.setString(3, transaction.getTransactionContent());
         ps.setString(4, transaction.getCardCode());
         ps.setTimestamp(5,new Timestamp(System.currentTimeMillis()));

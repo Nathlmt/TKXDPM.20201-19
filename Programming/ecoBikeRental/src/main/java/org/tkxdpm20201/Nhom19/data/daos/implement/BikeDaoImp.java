@@ -2,13 +2,11 @@ package org.tkxdpm20201.Nhom19.data.daos.implement;
 
 import org.tkxdpm20201.Nhom19.data.daos.BikeDao;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
-import org.tkxdpm20201.Nhom19.data.entities.Bike;
-import org.tkxdpm20201.Nhom19.data.entities.Station;
-import org.tkxdpm20201.Nhom19.utils.DateUtil;
+import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
+import org.tkxdpm20201.Nhom19.utils.Constants;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,7 +18,7 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
         super(Bike.class);
     }
     @Override
-    public Bike getBikeById(int bikeCode) throws SQLException {
+    public Bike getById(int bikeCode) throws SQLException {
         String sqlQuery = "SELECT * FROM BIKES WHERE id = ?";
         PreparedStatement preparedStatement =  DBHelper.getConnection().prepareStatement(sqlQuery);
         preparedStatement.setInt(1, bikeCode);
@@ -64,15 +62,17 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
 
     @Override
     public boolean updateCurrentStation(int id, int idStation) throws SQLException {
+        String status = Constants.AVAILABLE;
         String sqlUpdate = "UPDATE BIKES" +
-                            "SET present_station = ?," +
-                            " status = available," +
-                            " last_update = ?" +
-                            "WHERE id = ?";
+                            " SET present_station = ?," +
+                            " status = ?," +
+                            " latest_update = ?" +
+                            " WHERE id = ?";
         PreparedStatement ps = DBHelper.getConnection().prepareStatement(sqlUpdate);
         ps.setInt(1, idStation);
-        ps.setString(2, DateUtil.format(new Date()));
-        ps.setInt(3, id);
+        ps.setString(2, status);
+        ps.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
+        ps.setInt(4, id);
         return ps.execute();
     }
     @Override

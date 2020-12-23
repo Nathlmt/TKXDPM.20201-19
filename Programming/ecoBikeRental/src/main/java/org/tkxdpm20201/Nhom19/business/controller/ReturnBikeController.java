@@ -1,14 +1,13 @@
 package org.tkxdpm20201.Nhom19.business.controller;
 
-import org.tkxdpm20201.Nhom19.data.daos.BikeDao;
-import org.tkxdpm20201.Nhom19.data.daos.RentalDao;
-import org.tkxdpm20201.Nhom19.data.daos.StationDao;
-import org.tkxdpm20201.Nhom19.data.daos.TransactionDao;
-import org.tkxdpm20201.Nhom19.data.daos.implement.BikeDaoImp;
-import org.tkxdpm20201.Nhom19.data.daos.implement.RentalDaoImp;
-import org.tkxdpm20201.Nhom19.data.daos.implement.StationDaoImp;
-import org.tkxdpm20201.Nhom19.data.daos.implement.TransactionDaoImp;
+import org.tkxdpm20201.Nhom19.business.caculateFee.CalculateFee;
+import org.tkxdpm20201.Nhom19.business.caculateFee.CalculateFeeImp;
+import org.tkxdpm20201.Nhom19.data.daos.*;
+import org.tkxdpm20201.Nhom19.data.daos.implement.*;
 import org.tkxdpm20201.Nhom19.data.entities.*;
+import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.bike.ElectricBike;
+import org.tkxdpm20201.Nhom19.data.entities.station.Station;
 import org.tkxdpm20201.Nhom19.data.model.Caching;
 import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
@@ -17,6 +16,7 @@ import org.tkxdpm20201.Nhom19.subsystem.InterbankInterface;
 import org.tkxdpm20201.Nhom19.subsystem.InterbankSubsystem;
 import org.tkxdpm20201.Nhom19.utils.Constants;
 import org.tkxdpm20201.Nhom19.utils.DateUtil;
+import org.tkxdpm20201.Nhom19.utils.Evaluation;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -31,6 +31,8 @@ public class ReturnBikeController extends BaseController {
     private final TransactionDao transactionDao;
     private final InterbankInterface interBankApiSystem;
     private final RentalDao rentalDao;
+    private final RentalTransactionDao rentalTransactionDao;
+    private  final CalculateFee calculateFee;
 
 
     public ReturnBikeController() {
@@ -38,7 +40,9 @@ public class ReturnBikeController extends BaseController {
         this.stationDao = new StationDaoImp();
         this.bikeDao = new BikeDaoImp();
         this.transactionDao = new TransactionDaoImp();
+        this.rentalTransactionDao = new RentalTransactionDaoImp();
         this.interBankApiSystem = new InterbankSubsystem();
+        this.calculateFee = new CalculateFeeImp();
 
     }
 
@@ -48,9 +52,8 @@ public class ReturnBikeController extends BaseController {
         return stationList;
     }
 
-
     /**
-     *
+     *  carry out logics of return bike business
      * @param station: station which user want to return bike
      * @return
      */
@@ -63,7 +66,7 @@ public class ReturnBikeController extends BaseController {
             Card card = rentingBike.getCard();
             Timestamp startDate = rentingBike.getStartDate();
             BigDecimal deposit = rentingBike.getDeposit();
-            BigDecimal rentFee = calculateFees(startDate, localDateTimeEnd, bikeReturn);
+            BigDecimal rentFee = calculateFee.run(startDate, localDateTimeEnd, bikeReturn);
             BigDecimal amount = calculateAmount(deposit, rentFee);
 
             rental.setReturnStationId(station.getId());
@@ -77,7 +80,7 @@ public class ReturnBikeController extends BaseController {
                 else
                     transactionResponse  = interBankApiSystem.pay(card, amount, "Thu thêm tiền thuê xe");
 
-                boolean b1 = handleStationReceiveBike(station, bikeReturn); // TODO: Bắt đầu từ đây.. đoạn trên OK rồi
+                boolean b1 = handleStationReceiveBike(station, bikeReturn);
                 boolean b2 = saveTransaction(rental, transactionResponse, card.getCardCode());
                 if(b1 && b2){
                     Caching.getInstance().resetCache();
@@ -93,11 +96,21 @@ public class ReturnBikeController extends BaseController {
     }
 
 
+    /**
+     * save transaction to System's Database
+     * @param rental
+     * @param transactionResponse
+     * @param cardCode
+     * @return true if success, otherwise false
+     */
     private boolean saveTransaction(Rental rental, TransactionResponse transactionResponse, String cardCode){
         Transaction transaction = new Transaction(transactionResponse.getTransaction(), cardCode);
         try {
             transactionDao.create(transaction);
             rentalDao.update(rental);
+            RentalTransaction rentalTransaction = new RentalTransaction(rental.getId(), transaction.getId());
+            rentalTransactionDao.create(rentalTransaction);
+            DBHelper.commit();
         } catch (SQLException throwable) {
             throwable.printStackTrace();
             return false;
@@ -105,39 +118,29 @@ public class ReturnBikeController extends BaseController {
         return true;
     }
 
+    /**
+     * update info Bike and Station when return Bike
+     * @param station
+     * @param bikeReturn
+     * @return true if success, otherwise false
+     */
     private boolean handleStationReceiveBike(Station station, Bike bikeReturn){
-        boolean resBike = false;
-        boolean resStation = false;
         try {
-           resBike = bikeDao.updateCurrentStation(bikeReturn.getId(), station.getId());
-           resStation = stationDao.update(station);
+           bikeDao.updateCurrentStation(bikeReturn.getId(), station.getId());
+           stationDao.update(station);
+           DBHelper.commit();
         } catch (SQLException throwable) {
             throwable.printStackTrace();
             return false;
         }
-        return resBike & resStation;
+        return true;
     }
 
-    private BigDecimal calculateFees(Timestamp startDate, Timestamp endDate, Bike bike){
-        long epoch = endDate.getTime() - startDate.getTime();
-        double rentFee = 0;
-        System.out.println("time second rented: " + epoch/ 1000L);
-        long minutes = epoch/(1000*60);
-        rentFee = 10;
-        if(minutes > 30){
-            long count = minutes/15 + 1;
-            rentFee += count*3;
-        }
-        if(bike instanceof ElectricBike)
-            rentFee = rentFee*1.5;
-
-        return new BigDecimal(rentFee);
-    }
 
     private BigDecimal calculateAmount(BigDecimal deposit, BigDecimal rentedFee){
         BigDecimal sub = rentedFee.subtract(deposit);
-//        return sub;
-        return new BigDecimal(-123);
+        System.out.println("rentedFee - deposit = " + sub);
+        return sub;
     }
 
 

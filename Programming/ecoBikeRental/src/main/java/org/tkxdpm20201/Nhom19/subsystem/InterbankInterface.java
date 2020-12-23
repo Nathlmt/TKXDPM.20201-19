@@ -8,6 +8,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 public interface InterbankInterface {
-    public TransactionResponse refund(Card card, BigDecimal amount, String content) throws IOException;
-    public TransactionResponse pay(Card card, BigDecimal amount, String content) throws IOException;
+    TransactionResponse refund(Card card, BigDecimal amount, String content) throws IOException;
+    TransactionResponse pay(Card card, BigDecimal amount, String content) throws IOException;
 }

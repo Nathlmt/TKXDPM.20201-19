@@ -14,6 +14,7 @@ public class RentalTransactionDaoImp extends BaseDaoImp<RentalTransaction> imple
         super(RentalTransaction.class);
     }
 
+    @Override
     public RentalTransaction create(RentalTransaction rentalTransaction) throws SQLException {
         String sqlInsert = "INSERT INTO rental_transaction" +
                 "(rental_id, transaction_id)" +
