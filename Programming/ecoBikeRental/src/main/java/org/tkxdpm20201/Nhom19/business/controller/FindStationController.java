@@ -18,10 +18,22 @@ public class FindStationController extends BaseController{
     private final StationDao stationDao = new StationDaoImp();
     private final BikeDao bikeDao = new BikeDaoImp();
 
+    /**
+     * get all station
+     * @return list of station
+     * @throws SQLException
+     */
     public List<Station> getStationList() throws SQLException {
         List<Station> stationList = stationDao.getAll();
         return stationList;
     }
+
+    /**
+     *
+     * @param stationId
+     * @return list bike in a station
+     * @throws SQLException
+     */
     public List<Bike> getBikeStation(int stationId) throws SQLException {
         return bikeDao.getAllBikeInStation(stationId);
   }

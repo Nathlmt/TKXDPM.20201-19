@@ -9,6 +9,9 @@ import org.tkxdpm20201.Nhom19.data.entities.BaseEntity;
 
 import java.io.IOException;
 
+/**
+ * screen handler use for share data from different screen,
+ */
 public class BaseScreenHandler {
     private final String screenPath;
     private Stage screenStage;
@@ -19,6 +22,7 @@ public class BaseScreenHandler {
     public BaseScreenHandler(String screenPath) {
         this.screenPath = screenPath;
     };
+
     public BaseScreenHandler getPreviousScreen() {
         return previousScreen;
     }
