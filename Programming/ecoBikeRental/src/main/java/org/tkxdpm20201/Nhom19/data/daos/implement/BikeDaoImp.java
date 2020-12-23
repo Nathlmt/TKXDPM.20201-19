@@ -9,14 +9,22 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author LeTuan
+/** Class provides method to get data from database;
+ * @author LeMinhTuan
  */
 public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
+    //*
 
     public BikeDaoImp(){
         super(Bike.class);
     }
+
+    /**
+     * Method use for get bike when have id
+     * @param bikeCode:
+     * @return bike:
+     * @throws SQLException
+     */
     @Override
     public Bike getById(int bikeCode) throws SQLException {
         String sqlQuery = "SELECT * FROM BIKES WHERE id = ?";
@@ -38,10 +46,16 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
         return null;
     }
 
+    /**
+     *  method use for get bikes in a station
+     * @param stationId:
+     * @return
+     * @throws SQLException
+     */
     @Override
     public List<Bike> getAllBikeInStation(int stationId) throws SQLException {
         List<Bike> bikeList = new ArrayList<>();
-        String sqlQuery = "SELECT * from BIKES WHERE present_station = ? AND status = 'available'";
+        String sqlQuery = "SELECT * from BIKES WHERE present_station = ?";
         PreparedStatement ps = DBHelper.getConnection().prepareStatement(sqlQuery);
         ps.setInt(1,stationId);
         ResultSet rs = ps.executeQuery();
@@ -60,6 +74,13 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
         return bikeList;
     }
 
+    /**
+     *
+     * @param id
+     * @param idStation
+     * @return
+     * @throws SQLException
+     */
     @Override
     public boolean updateCurrentStation(int id, int idStation) throws SQLException {
         String status = Constants.AVAILABLE;

@@ -9,6 +9,7 @@ import org.tkxdpm20201.Nhom19.data.model.Caching;
 import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
 import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
+import org.tkxdpm20201.Nhom19.exception.BikeNotAvailableException;
 import org.tkxdpm20201.Nhom19.exception.EcobikeException;
 import org.tkxdpm20201.Nhom19.exception.InvalidBikeCodeException;
 import org.tkxdpm20201.Nhom19.exception.PaymentException;
@@ -22,10 +23,10 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 
 /**
- * @author tuan.lm
+ * Class user for renting operation
+ * @author LeMinhTuan
  */
 public class RentBikeController extends BaseController {
-
     private final StationDao stationDao;
     private final BikeDao bikeDao;
     private final TransactionDao transactionDao;
@@ -49,23 +50,30 @@ public class RentBikeController extends BaseController {
 
     }
 
+    /**
+     * Get bike info when has bike code
+     * @param bikeCode
+     * @return bike
+     * @throws SQLException
+     * @throws EcobikeException: Throw exception when invalid bike code or bike not available
+     */
     public Bike getBikeInfo(int bikeCode) throws SQLException, EcobikeException {
         Bike bike =  bikeDao.getById(bikeCode);
         if (bike == null) {
             throw new InvalidBikeCodeException();
         };
-//        if (!bike.getStatus().equals("available")) {
-//            throw new BikeNotAvailableException();
-//        }
+        if (!bike.getStatus().equals("available")) {
+            throw new BikeNotAvailableException();
+        }
         return bike;
     }
 
     /**
-     * Thuc thi sau khi nguoi dung bam thanh toan
+     * Run when user click payment
      *
      * @param bike:
-     * @param customerId:    id cua khach hang
-     * @param rentStationId: id cua tram thue xe
+     * @param customerId:
+     * @param rentStationId:
      */
     public void handleRentBike(Bike bike, int customerId,
                                int rentStationId,
@@ -83,7 +91,7 @@ public class RentBikeController extends BaseController {
     }
 
     /**
-     * update/create data into database
+     * update/create data into database when renting
      * @param bike: bike object
      * @param customerId: customer id
      * @param rentStationId: rent station id
@@ -112,9 +120,9 @@ public class RentBikeController extends BaseController {
     }
 
     /**
-     *
-     * @param content
-     * @return
+     * validate transaction content
+     * @param content: validate content transaction
+     * @return String format like: "Trả tiền cọc" + content
      */
     private String validateContent(String content) {
         return "Trả tiền cọc:" +content;
@@ -122,8 +130,8 @@ public class RentBikeController extends BaseController {
 
     /**
      *
-     * @param card
-     * @return
+     * @param card: card information
+     * @return true if card is valid
      */
     public boolean validateCartInfo(Card card) {
         if (validateCcv(card.getCvvCode())
@@ -139,8 +147,8 @@ public class RentBikeController extends BaseController {
 
     /**
      *
-     * @param cardCode
-     * @return
+     * @param cardCode:
+     * @return: true if cardCode valid
      */
     public boolean validateCardCode(String cardCode) {
 
@@ -148,7 +156,7 @@ public class RentBikeController extends BaseController {
     }
 
     /**
-     *
+     * validate owner of card
      * @param owner
      * @return
      */

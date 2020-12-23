@@ -1,5 +1,6 @@
 package org.tkxdpm20201.Nhom19.presentation.screen;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -15,6 +16,7 @@ import java.util.ResourceBundle;
 
 public class BikeInfo implements Initializable {
     private static final BaseScreenHandler bikeInfoHandler = new BaseScreenHandler(Constants.BIKE_INFO_PATH);
+
     @FXML
     private Label name, licensePlate, bikeCode, battery, deposit, type, updateAt;
     @FXML

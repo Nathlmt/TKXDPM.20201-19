@@ -3,8 +3,8 @@ package org.tkxdpm20201.Nhom19.data.model;
 import org.tkxdpm20201.Nhom19.utils.Constants;
 
 /**
- * @author ly ba tuan
- * usinng for storage share data when application run
+ * @author Ly Ba Tuan
+ * usinng for storage share data like bike info, station info,... when application run
  */
 public class Caching {
 
@@ -36,6 +36,9 @@ public class Caching {
         this.status = status;
     }
 
+    /**
+     *
+     */
     public void resetCache(){
         this.rentingBike = null;
         this.status = Constants.NOT_RENT_STATUS;

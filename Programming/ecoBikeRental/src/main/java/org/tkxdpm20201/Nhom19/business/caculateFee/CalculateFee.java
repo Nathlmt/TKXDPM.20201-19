@@ -7,4 +7,5 @@ import java.sql.Timestamp;
 
 public interface CalculateFee {
     BigDecimal run(Timestamp startDate, Timestamp endDate, Bike bike);
+    double run(Bike bike, long epoch);
 }

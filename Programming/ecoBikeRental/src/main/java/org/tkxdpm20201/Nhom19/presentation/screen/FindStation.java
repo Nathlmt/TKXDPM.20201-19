@@ -47,8 +47,6 @@ public class FindStation implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listStation.setItems(stationObservableList);
-        listStation.setCellFactory(stationListView -> new ItemStation());
         try {
             showStationList();
         } catch (SQLException throwables) {

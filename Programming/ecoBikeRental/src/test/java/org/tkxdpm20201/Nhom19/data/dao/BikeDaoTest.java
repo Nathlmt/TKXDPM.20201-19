@@ -22,6 +22,7 @@ public class BikeDaoTest {
     @Test
     void getAllBikeInStation() throws SQLException {
         List<Bike> bikeList = this.bikeDao.getAllBikeInStation(3);
+        System.out.println(bikeList.get(0).getName());
     }
     @Test
     void updateBikeStatus() throws SQLException {

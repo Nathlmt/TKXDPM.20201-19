@@ -1,6 +1,8 @@
 package org.tkxdpm20201.Nhom19.presentation.screen;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,15 +11,23 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.tkxdpm20201.Nhom19.business.caculateFee.CalculateFee;
+import org.tkxdpm20201.Nhom19.business.caculateFee.CalculateFeeImp;
 import org.tkxdpm20201.Nhom19.data.model.Caching;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
 import static org.tkxdpm20201.Nhom19.utils.Constants.HOME_PATH;
 
 import java.net.URL;
+import java.sql.Time;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class Home implements Initializable {
-
+    private Timeline animation;
+    private CalculateFee caculator = new CalculateFeeImp();
+    private long time;
     @FXML
     private Label rentedTime;
 
@@ -70,7 +80,24 @@ public class Home implements Initializable {
         }
     }
 
+    private void plusTime() {
+        time++;
+        LocalTime lt = LocalTime.MIN.plusSeconds( time  ) ;
+        DateTimeFormatter f = DateTimeFormatter.ofPattern( "HH:mm:ss" ) ;
+        String timeFormated = lt.format( f ) ;
+        if (time%60 == 0) {
+            rentedTime.setText(timeFormated);
+            Double currentFee = caculator.run(Caching.getInstance().getRentingBike().getBike(), time * 1000L);
+            fee.setText(String.valueOf(currentFee));
+        }
+    }
 
+    private void clock() {
+        animation = new Timeline(new KeyFrame(Duration.seconds(1), e->plusTime()));
+        animation.setCycleCount(Timeline.INDEFINITE);
+        animation.play();
+
+    }
     public void returnBikeSuccessfully() {
         rentingBikeInfoPane.setDisable(true);
         rentingBikeInfoPane.setVisible(false);
@@ -84,6 +111,8 @@ public class Home implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(!Caching.getInstance().getStatus()){
             rentingBikeInfoPane.setVisible(false);
+        } else {
+            clock();
         }
     }
 }

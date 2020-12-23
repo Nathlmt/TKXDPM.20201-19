@@ -11,9 +11,14 @@ public class CalculateFeeImp implements CalculateFee{
     @Override
     public BigDecimal run(Timestamp startDate, Timestamp endDate, Bike bike) {
         long epoch = endDate.getTime() - startDate.getTime();
+        double rentFee = run(bike, epoch);
+        return new BigDecimal(rentFee);
+    }
+
+    public double run(Bike bike, long epoch) {
         double rentFee = 0;
-        System.out.println("time second rented: " + epoch/ 1000L);
-        long minutes = epoch/(1000*60);
+        System.out.println("time second rented: " + epoch / 1000L);
+        long minutes = epoch /(1000*60);
         rentFee = 10;
         if(minutes > Evaluation.INITIALLY){
             long count = minutes/Evaluation.STEP + 1;
@@ -21,7 +26,6 @@ public class CalculateFeeImp implements CalculateFee{
         }
         if(bike instanceof ElectricBike)
             rentFee = rentFee*Evaluation.SPECIAL_BIKE;
-
-        return new BigDecimal(rentFee);
+        return rentFee;
     }
 }
