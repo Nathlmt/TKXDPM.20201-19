@@ -61,6 +61,7 @@ public class FindStation implements Initializable {
         Station station = listStation.getSelectionModel().getSelectedItem();
         if (station == null) return;
         BaseScreenHandler stationInfoHandler = StationInfo.getStationHandler();
+        stationInfoHandler.setEntityData(station);
         stationInfoHandler.setScreenStage(findStationHandler.getScreenStage());
         stationInfoHandler.setPreviousScreen(findStationHandler);
         stationInfoHandler.show();
