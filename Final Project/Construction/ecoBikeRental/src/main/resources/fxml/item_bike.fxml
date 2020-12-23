@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<FlowPane fx:id="flowPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="73.0" prefWidth="104.0">
+         <children>
+            <ImageView fx:id="imageView" fitHeight="68.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/regular-bike.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <GridPane prefHeight="73.0" prefWidth="98.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="nameLabel" prefHeight="33.0" prefWidth="142.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <Pane prefHeight="73.0" prefWidth="119.0">
+         <children>
+            <Label fx:id="pinLabel" layoutX="14.0" layoutY="14.0" text="Kiểu xe: ">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="typeLabel" layoutX="59.0" layoutY="14.0" text="Label" />
+            <Label fx:id="pinLabel" layoutX="14.0" layoutY="37.0" text="Label" />
+         </children>
+      </Pane>
+   </children>
+</FlowPane>
