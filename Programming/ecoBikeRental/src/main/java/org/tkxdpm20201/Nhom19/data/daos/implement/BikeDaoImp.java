@@ -55,9 +55,10 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
     @Override
     public List<Bike> getAllBikeInStation(int stationId) throws SQLException {
         List<Bike> bikeList = new ArrayList<>();
-        String sqlQuery = "SELECT * from BIKES WHERE present_station = ?";
+        String sqlQuery = "SELECT * from BIKES WHERE present_station = ? AND status = ?";
         PreparedStatement ps = DBHelper.getConnection().prepareStatement(sqlQuery);
         ps.setInt(1,stationId);
+        ps.setString(2, "available");
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Bike bike = new Bike(rs.getInt("id"),

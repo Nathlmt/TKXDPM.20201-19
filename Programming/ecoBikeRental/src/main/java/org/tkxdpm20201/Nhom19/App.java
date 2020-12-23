@@ -36,22 +36,4 @@ public class App extends Application {
         stage.setHeight(HEIGHT);
     }
 
-//    private static void test(){
-//        Rental rental = new Rental();
-//        rental.setStatus(Constants.RENTING_BIKE);
-//        rental.setBikeId(12);
-//        rental.setCustomerId(13);
-//        rental.setTimeStart(DateUtil.format(java.time.LocalDateTime.now()));
-//        rental.setId(1);
-//
-//        Bike bike = new Bike();
-//        bike.setId(12);
-//        bike.setName("Xe test");
-//        bike.setPrice(new BigDecimal("1200000"));
-//        Card card = new Card(1, new BigDecimal("123"), "123", "Ly tuan", "111", "111234");
-//        RentingBike rentingBike = new RentingBike(bike, card, rental);
-//        Caching.getInstance().setRentingBike(rentingBike, Constants.RENTING_STATUS);
-//    }
-
-
 }

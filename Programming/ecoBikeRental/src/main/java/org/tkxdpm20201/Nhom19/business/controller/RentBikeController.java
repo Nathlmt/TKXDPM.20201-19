@@ -172,6 +172,12 @@ public class RentBikeController extends BaseController {
      * @return
      */
     public boolean validateCcv(String cvvCode) {
+        if (cvvCode.length() != 3) return false;
+        try {
+            Integer.parseInt(cvvCode);
+        } catch (NumberFormatException e) {
+            return false;
+        }
         return true;
     }
 

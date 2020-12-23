@@ -85,8 +85,8 @@ public class Home implements Initializable {
         LocalTime lt = LocalTime.MIN.plusSeconds( time  ) ;
         DateTimeFormatter f = DateTimeFormatter.ofPattern( "HH:mm:ss" ) ;
         String timeFormated = lt.format( f ) ;
+        rentedTime.setText(timeFormated);
         if (time%60 == 0) {
-            rentedTime.setText(timeFormated);
             Double currentFee = caculator.run(Caching.getInstance().getRentingBike().getBike(), time * 1000L);
             fee.setText(String.valueOf(currentFee));
         }

@@ -1,8 +1,6 @@
 package org.tkxdpm20201.Nhom19.business.caculateFee;
 
 import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
-import org.tkxdpm20201.Nhom19.data.entities.bike.ElectricBike;
-import org.tkxdpm20201.Nhom19.utils.Constants;
 import org.tkxdpm20201.Nhom19.utils.Evaluation;
 
 import java.math.BigDecimal;
@@ -19,13 +17,13 @@ public class CalculateFeeImp implements CalculateFee{
     public double run(Bike bike, long epoch) {
         double rentFee = 0;
         System.out.println("time second rented: " + epoch / 1000L);
-        long minutes = epoch /(1000);
+        long minutes = epoch /(1000*60);
         rentFee = Evaluation.INITIAL_PRICE;
         if(minutes > Evaluation.INITIALLY){
             long count = minutes/Evaluation.STEP + 1;
             rentFee += count*Evaluation.PLUS_STEP;
         }
-        if(bike instanceof ElectricBike)
+        if(!(bike.getType().equals("Xe đạp")))
             rentFee = rentFee*Evaluation.SPECIAL_BIKE;
         return rentFee;
     }

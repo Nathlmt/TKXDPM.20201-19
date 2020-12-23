@@ -9,6 +9,8 @@ import org.tkxdpm20201.Nhom19.data.entities.RentalTransaction;
 
 import java.sql.SQLException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class RentalTransactionDaoTest {
     private RentalTransactionDao rentalTransactionDao;
     @BeforeEach
@@ -18,8 +20,9 @@ public class RentalTransactionDaoTest {
     }
     @Test
     void createRentalTransactionTest() throws SQLException {
-            RentalTransaction rentalTransaction = new RentalTransaction(12,1);
-            this.rentalTransactionDao.create(rentalTransaction);
+            RentalTransaction rentalTransaction = new RentalTransaction(55,1);
+            RentalTransaction testRentalTransaction = this.rentalTransactionDao.create(rentalTransaction);
             DBHelper.commit();
+            assertEquals(testRentalTransaction.getRentalId(),55);
     }
 }

@@ -34,5 +34,12 @@ public class BikeDaoTest {
         Bike testBike = bikeDao.getById(2);
         assertEquals(testBike.getStatus(), "renting");
     }
+    @Test
+    void updateCurrentStation() throws SQLException {
+        bikeDao.updateCurrentStation(5,2);
+        DBHelper.commit();
+        Bike testBike = bikeDao.getById(5);
+        assertEquals(testBike.getPresentStation(), 2);
+    }
 }
 

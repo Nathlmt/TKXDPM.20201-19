@@ -23,4 +23,5 @@ public class InterbankSubsystemTest {
         TransactionResponse transactionResponse = interbankInterface.refund(card, BigDecimal.valueOf(1000.00), "Hello");
         assertEquals("00", transactionResponse.getErrorCode());
     }
+
 }

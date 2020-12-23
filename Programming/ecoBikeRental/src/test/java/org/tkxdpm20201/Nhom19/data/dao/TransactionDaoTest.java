@@ -28,7 +28,6 @@ public class TransactionDaoTest {
         TransactionResponse transactionResponse = interbankInterface.refund(card, BigDecimal.valueOf(1000.00), "Hello");
         Transaction transaction = new Transaction(transactionResponse.getTransaction(), card.getCardCode());
         this.transactionDao.create(transaction);
-        System.out.println(transaction.getId());
         DBHelper.commit();
     }
 
