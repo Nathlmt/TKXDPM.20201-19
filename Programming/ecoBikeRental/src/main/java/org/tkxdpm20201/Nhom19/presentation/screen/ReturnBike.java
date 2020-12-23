@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import org.tkxdpm20201.Nhom19.business.controller.ReturnBikeController;
 import org.tkxdpm20201.Nhom19.data.entities.station.Station;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
+import org.tkxdpm20201.Nhom19.presentation.dialog.ErrorDialog;
 import org.tkxdpm20201.Nhom19.presentation.dialog.NotificationDialog;
 
 import java.io.IOException;
@@ -48,6 +49,8 @@ public class ReturnBike implements Initializable {
             showStationList();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            ErrorDialog errorDialog = new ErrorDialog("lỗi Database, xin lỗi vì sự bất tiện này!");
+            errorDialog.show();
         }
 
     }

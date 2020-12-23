@@ -57,7 +57,11 @@ public class FindStation implements Initializable {
     public void chooseStation(MouseEvent mouseEvent) {
 
         Station station = listStation.getSelectionModel().getSelectedItem();
-        if (station == null) return;
+        if (station == null){
+            System.out.println("clike null");
+            return;
+        }
+
         BaseScreenHandler stationInfoHandler = StationInfo.getStationHandler();
         stationInfoHandler.setEntityData(station);
         stationInfoHandler.setScreenStage(findStationHandler.getScreenStage());
