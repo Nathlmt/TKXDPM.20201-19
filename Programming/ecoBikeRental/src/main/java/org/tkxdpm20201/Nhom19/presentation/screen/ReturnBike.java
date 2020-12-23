@@ -10,8 +10,9 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import org.tkxdpm20201.Nhom19.business.controller.ReturnBikeController;
-import org.tkxdpm20201.Nhom19.data.entities.Station;
+import org.tkxdpm20201.Nhom19.data.entities.station.Station;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
+import org.tkxdpm20201.Nhom19.presentation.dialog.NotificationDialog;
 
 import java.io.IOException;
 import java.net.URL;
@@ -78,19 +79,13 @@ public class ReturnBike implements Initializable {
             Optional<ButtonType> option = alert.showAndWait();
             if (option.get() == ButtonType.OK) {
                 returnBikeController.returnBike(station);
-//                if(notification.isStatus()){
-                    backHomeWhenSuccessfully(event);
-                    System.out.println("OKKKKK successfully!");
-//                }
-//                else{
-//                    alert = new Alert(AlertType.ERROR);
-//                    alert.setContentText(notification.getMessage());
-//                    alert.setTitle("Error");
-//                    alert.showAndWait();
-//                }
+                NotificationDialog notificationDialog = new NotificationDialog("Trả xe thành công!");
+                notificationDialog.show();
+                System.out.println("Return bike successfully!");
+                backHomeWhenSuccessfully(event);
             }
             else if (option.get() == ButtonType.CANCEL) {
-                System.out.println("cho chon lai");
+                System.out.println("Chọn lại!");
             }
             else {
                 System.out.println("else ------------------");

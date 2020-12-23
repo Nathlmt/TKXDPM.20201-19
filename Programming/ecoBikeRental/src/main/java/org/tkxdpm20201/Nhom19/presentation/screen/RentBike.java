@@ -6,7 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.tkxdpm20201.Nhom19.data.entities.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
 import org.tkxdpm20201.Nhom19.business.controller.RentBikeController;
 import org.tkxdpm20201.Nhom19.presentation.dialog.ErrorDialog;

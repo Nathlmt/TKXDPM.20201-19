@@ -19,7 +19,7 @@ public class BaseDaoImp<T> implements BaseDao<T> {
     }
 
     @Override
-    public T getById(Integer id) {
+    public T getById(int id) throws SQLException {
         return null;
     }
 

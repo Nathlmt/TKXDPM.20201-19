@@ -54,7 +54,7 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="price" layoutX="200.0" layoutY="424.0" prefHeight="16.0" prefWidth="107.0" text="123$">
+      <Label fx:id="deposit" layoutX="200.0" layoutY="424.0" prefHeight="16.0" prefWidth="107.0" text="123$">
          <font>
             <Font size="14.0" />
          </font></Label>

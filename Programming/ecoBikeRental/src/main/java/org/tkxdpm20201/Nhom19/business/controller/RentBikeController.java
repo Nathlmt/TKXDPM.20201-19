@@ -3,11 +3,12 @@ package org.tkxdpm20201.Nhom19.business.controller;
 import org.tkxdpm20201.Nhom19.data.daos.*;
 import org.tkxdpm20201.Nhom19.data.daos.implement.*;
 import org.tkxdpm20201.Nhom19.data.entities.*;
+import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.station.Station;
 import org.tkxdpm20201.Nhom19.data.model.Caching;
 import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.data.model.TransactionRequest;
 import org.tkxdpm20201.Nhom19.data.model.TransactionResponse;
-import org.tkxdpm20201.Nhom19.exception.BikeNotAvailableException;
 import org.tkxdpm20201.Nhom19.exception.EcobikeException;
 import org.tkxdpm20201.Nhom19.exception.InvalidBikeCodeException;
 import org.tkxdpm20201.Nhom19.exception.PaymentException;
@@ -25,18 +26,31 @@ import java.sql.Timestamp;
  */
 public class RentBikeController extends BaseController {
 
-    /**
-     * Caching information when renting bike
-     */
-    private static RentingBike rentingBike;
-    private final BikeDao bikeDao = new BikeDaoImp();
+    private final StationDao stationDao;
+    private final BikeDao bikeDao;
+    private final TransactionDao transactionDao;
+    private final InterbankInterface interBankApiSystem;
+    private final RentalDao rentalDao;
+    private final RentalTransactionDao rentalTransactionDao;
+
+
+
+    public RentBikeController() {
+        this.rentalDao = new RentalDaoImp();
+        this.stationDao = new StationDaoImp();
+        this.bikeDao = new BikeDaoImp();
+        this.transactionDao = new TransactionDaoImp();
+        this.rentalTransactionDao = new RentalTransactionDaoImp();
+        this.interBankApiSystem = new InterbankSubsystem();
+
+    }
 
     public void handleBikeInfo(TransactionRequest transactionRequest, Bike bike, Station station) {
 
     }
 
     public Bike getBikeInfo(int bikeCode) throws SQLException, EcobikeException {
-        Bike bike =  bikeDao.getBikeById(bikeCode);
+        Bike bike =  bikeDao.getById(bikeCode);
         if (bike == null) {
             throw new InvalidBikeCodeException();
         };
@@ -61,8 +75,7 @@ public class RentBikeController extends BaseController {
         //validate content
         String contentAfterCheck = validateContent(content);
         //query api to pay deposit
-        InterbankInterface interbankSubsystem = new InterbankSubsystem();
-        TransactionResponse transactionPay = interbankSubsystem.pay(card, price, contentAfterCheck);
+        TransactionResponse transactionPay = interBankApiSystem.pay(card, price, contentAfterCheck);
         //save or update renting operion data (update bike, station,....)
         RentingBike rentingBike  = saveRentingData(bike, customerId, rentStationId, card, transactionPay);
         //update bike caches
@@ -82,20 +95,17 @@ public class RentBikeController extends BaseController {
         //create rental (rental table save data about renting operation)
         Timestamp startTime = new Timestamp(System.currentTimeMillis());
         Rental rental = new Rental(bike.getId(), customerId, rentStationId, "renting", startTime);
-        RentalDao rentalDao = new RentalDaoImp();
         rentalDao.create(rental);
         //update table bike (Change status bike from available to renting)
-        bikeDao.updateStatusBike(bike.getId(), "renting");
+        bikeDao.updateStatusBike(bike.getId(), Constants.RENTING);
         //update table station (Change station status)
-        StationDao stationDao = new StationDaoImp();
         stationDao.updateStationWhenRentBike(rentStationId);
         // save Transaction (save all transaction when pay or refund)
-        TransactionDao transactionDao = new TransactionDaoImp();
         Transaction transaction = new Transaction(transactionPay.getTransaction(), card.getCardCode());
         transactionDao.create(transaction);
         //update rental transaction table (table link rental, transaction)
-        RentalTransactionDao rentalTransactionDao = new RentalTransactionDaoImp();
         RentalTransaction rentalTransaction = new RentalTransaction(rental.getId(), transaction.getId());
+        rentalTransactionDao.create(rentalTransaction);
         //commit database
         DBHelper.commit();
         return new RentingBike(bike, card, rental);

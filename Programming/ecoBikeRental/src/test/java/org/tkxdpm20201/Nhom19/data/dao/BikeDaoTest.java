@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.tkxdpm20201.Nhom19.data.daos.BikeDao;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.daos.implement.BikeDaoImp;
-import org.tkxdpm20201.Nhom19.data.entities.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
 
 import java.sql.SQLException;
 import java.util.List;

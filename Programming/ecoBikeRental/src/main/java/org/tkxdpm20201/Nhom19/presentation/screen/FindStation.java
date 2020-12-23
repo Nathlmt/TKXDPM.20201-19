@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import org.tkxdpm20201.Nhom19.business.controller.FindStationController;
-import org.tkxdpm20201.Nhom19.data.entities.Station;
+import org.tkxdpm20201.Nhom19.data.entities.station.Station;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
 
 import static org.tkxdpm20201.Nhom19.utils.Constants.FIND_STATION_PATH;

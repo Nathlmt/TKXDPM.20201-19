@@ -5,9 +5,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.tkxdpm20201.Nhom19.data.entities.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
 import org.tkxdpm20201.Nhom19.utils.Constants;
+import org.tkxdpm20201.Nhom19.utils.RoundingDeposit;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +16,7 @@ import java.util.ResourceBundle;
 public class BikeInfo implements Initializable {
     private static final BaseScreenHandler bikeInfoHandler = new BaseScreenHandler(Constants.BIKE_INFO_PATH);
     @FXML
-    private Label name, licensePlate, bikeCode, battery, price, type, updateAt;
+    private Label name, licensePlate, bikeCode, battery, deposit, type, updateAt;
     @FXML
     private AnchorPane bikeInfoAnchor;
 
@@ -27,7 +28,7 @@ public class BikeInfo implements Initializable {
         name.setText(bike.getName());
         licensePlate.setText( bike.getLicensePlate());
         bikeCode.setText(bike.getId().toString());
-        price.setText(bike.getPrice().toString() + " đ");
+        deposit.setText(RoundingDeposit.up(bike.getPrice()) + " đ");
         type.setText(bike.getType());
 //        updateAt.setText(bike.getLastUpdate().toString());
     }
