@@ -43,7 +43,7 @@
             <Label fx:id="availableRack" layoutX="167.0" layoutY="54.0" text="......." />
          </children>
       </Pane>
-      <ListView fx:id="bikeListView" layoutX="13.0" layoutY="321.0" prefHeight="326.0" prefWidth="353.0" />
+      <ListView fx:id="bikeListView" layoutX="13.0" layoutY="321.0" onMouseClicked="#chooseBike" prefHeight="326.0" prefWidth="353.0" />
       <Label layoutX="17.0" layoutY="276.0" prefHeight="31.0" prefWidth="96.0" text="Danh sách xe">
          <font>
             <Font name="System Bold" size="14.0" />
