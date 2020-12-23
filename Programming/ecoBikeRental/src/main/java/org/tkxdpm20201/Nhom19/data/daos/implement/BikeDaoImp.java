@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Class provides method to get data from database;
+/** Class provides method to get/insert/update data from bike table;
  * @author LeMinhTuan
  */
 public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {

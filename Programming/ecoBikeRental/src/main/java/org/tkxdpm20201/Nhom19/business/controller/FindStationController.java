@@ -10,7 +10,10 @@ import org.tkxdpm20201.Nhom19.data.entities.station.Station;
 import java.sql.SQLException;
 import java.util.List;
 
-
+/**
+ * @author LeMinhTuan
+ * Class provide method for find station
+ */
 public class FindStationController extends BaseController{
     private final StationDao stationDao = new StationDaoImp();
     private final BikeDao bikeDao = new BikeDaoImp();

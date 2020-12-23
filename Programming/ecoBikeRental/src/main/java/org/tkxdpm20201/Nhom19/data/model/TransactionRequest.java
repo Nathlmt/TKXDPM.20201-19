@@ -6,6 +6,10 @@ import org.tkxdpm20201.Nhom19.utils.Constants;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * @author LyBaTuan
+ *
+ */
 public class TransactionRequest {
 
     private String transactionContent;

@@ -8,6 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Class use for rental transaction table
+ */
 public class RentalTransactionDaoImp extends BaseDaoImp<RentalTransaction> implements RentalTransactionDao {
 
     public RentalTransactionDaoImp() {

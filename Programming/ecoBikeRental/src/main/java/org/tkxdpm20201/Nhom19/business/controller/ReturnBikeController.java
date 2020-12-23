@@ -24,6 +24,10 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * Class provide methods for return bike operations
+ * @author LyBaTuan
+ */
 public class ReturnBikeController extends BaseController {
 
     private final StationDao stationDao;
