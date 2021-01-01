@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="homeScreenAnchor" prefHeight="660.0" prefWidth="400.0" styleClass="bg-color" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tkxdpm20201.Nhom19.presentation.screen.Home">
    <children>
@@ -24,7 +19,7 @@
       <Label layoutX="162.0" layoutY="66.0" prefHeight="25.0" prefWidth="153.0" text="+09876543321" />
       <Pane fx:id="rentingBikeInfoPane" layoutX="16.0" layoutY="275.0" prefHeight="357.0" prefWidth="363.0">
          <children>
-            <GridPane layoutX="22.0" layoutY="151.0" prefHeight="101.0" prefWidth="309.0">
+            <GridPane layoutX="24.0" layoutY="118.0" prefHeight="139.0" prefWidth="315.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="102.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.0" minWidth="10.0" prefWidth="207.0" />
@@ -47,37 +42,42 @@
                   </Label>
                   <Label fx:id="rentedTime" text="0" GridPane.columnIndex="1" />
                   <Label fx:id="fee" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="Trạng thái" GridPane.rowIndex="2">
+                  <Label text="kiểu xe" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="status" text="100% pin" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="typeLabel" text="100% pin" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <ImageView fx:id="bikeImageView" fitHeight="186.0" fitWidth="192.0" layoutX="84.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="bikeImageView" fitHeight="154.0" fitWidth="174.0" layoutX="100.0" layoutY="-37.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/regular-bike.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="btnReturnBike" layoutX="108.0" layoutY="290.0" onAction="#handleButtonClicks" prefHeight="40.0" prefWidth="134.0" text="Trả xe">
+            <JFXButton fx:id="btnReturnBike" layoutX="110.0" layoutY="284.0" onAction="#handleButtonClicks" prefHeight="40.0" prefWidth="134.0" text="Trả xe">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
+            <Label fx:id="nameBikeLabel" layoutX="157.0" layoutY="93.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <JFXButton fx:id="btnFindStation" layoutX="121.0" layoutY="145.0" onAction="#handleButtonClicks" prefHeight="40.0" prefWidth="109.0" text="Tìm trạm">
+      <JFXButton fx:id="btnFindStation" layoutX="134.0" layoutY="136.0" onAction="#handleButtonClicks" prefHeight="40.0" prefWidth="109.0" text="Tìm trạm">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnRentBike" layoutX="119.0" layoutY="184.0" onAction="#handleButtonClicks" prefHeight="39.0" prefWidth="103.0" text="Thuê xe">
+      <JFXButton fx:id="btnRentBike" layoutX="128.0" layoutY="176.0" onAction="#handleButtonClicks" prefHeight="39.0" prefWidth="103.0" text="Thuê xe">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnPrice" layoutX="129.0" layoutY="223.0" onAction="#handleButtonClicks" text="Thông tin">
+      <JFXButton fx:id="btnPrice" layoutX="138.0" layoutY="209.0" onAction="#handleButtonClicks" text="Thông tin">
          <font>
             <Font size="18.0" />
          </font>

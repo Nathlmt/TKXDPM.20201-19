@@ -48,39 +48,17 @@ public class Card extends BaseEntity{
         return balance;
     }
 
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
-
     public String getCardCode() {
         return cardCode;
     }
-
-    public void setCardCode(String cardCode) {
-        this.cardCode = cardCode;
-    }
-
     public String getOwner() {
         return owner;
     }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
     public String getCvvCode() {
         return cvvCode;
     }
-
-    public void setCvvCode(String cvvCode) {
-        this.cvvCode = cvvCode;
-    }
-
     public String getDateExpired() {
         return dateExpired;
     }
 
-    public void setDateExpired(String dateExpired) {
-        this.dateExpired = dateExpired;
-    }
 }

@@ -13,16 +13,8 @@ public class RentalTransaction extends BaseEntity{
     public int getTransactionId() {
         return transactionId;
     }
-
-    public void setTransactionId(int transactionId) {
-        this.transactionId = transactionId;
-    }
-
     public int getRentalId() {
         return rentalId;
     }
 
-    public void setRentalId(int rentalId) {
-        this.rentalId = rentalId;
-    }
 }

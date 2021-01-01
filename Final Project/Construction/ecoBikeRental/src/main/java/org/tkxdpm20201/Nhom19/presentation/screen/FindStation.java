@@ -47,6 +47,7 @@ public class FindStation implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("Find Station ");
         try {
             showStationList();
         } catch (SQLException throwables) {

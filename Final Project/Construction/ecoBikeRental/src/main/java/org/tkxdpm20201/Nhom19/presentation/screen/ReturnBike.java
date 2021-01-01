@@ -45,6 +45,7 @@ public class ReturnBike implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("return BIke ================");
         try {
             showStationList();
         } catch (SQLException throwables) {

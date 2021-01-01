@@ -44,16 +44,8 @@ public class Rental extends BaseEntity {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
     public int getRentStationId() {
         return rentStationId;
-    }
-
-    public void setRentStationId(int rentStationId) {
-        this.rentStationId = rentStationId;
     }
 
     public int getReturnStationId() {

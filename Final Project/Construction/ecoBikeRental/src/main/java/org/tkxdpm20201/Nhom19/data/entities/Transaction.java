@@ -39,10 +39,6 @@ public class Transaction extends BaseEntity {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public String getTransactionContent() {
         return transactionContent;
     }
@@ -55,27 +51,15 @@ public class Transaction extends BaseEntity {
         return command;
     }
 
-    public void setCommand(String command) {
-        this.command = command;
-    }
-
     public String getCardCode() {
         return cardCode;
     }
-
-    public void setCardCode(String cardCode) {
-        this.cardCode = cardCode;
-    };
 
     public void setId(int id) {
         this.id = id;
     };
     public Integer getId() {
         return id;
-    };
-
-    public void setApiId(String apiId) {
-        this.apiId = apiId;
     };
 
     public String getApiId() {

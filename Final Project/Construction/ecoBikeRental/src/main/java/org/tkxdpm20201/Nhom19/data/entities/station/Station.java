@@ -46,10 +46,6 @@ public class Station extends BaseEntity {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getStationName() {
         return stationName;
     }
