@@ -1,5 +1,6 @@
 package org.tkxdpm20201.Nhom19.data.daos.implement;
 
+import org.tkxdpm20201.Nhom19.data.daos.BaseDao;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.daos.RentalDao;
 import org.tkxdpm20201.Nhom19.data.entities.Rental;
@@ -8,15 +9,23 @@ import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Class provide method insert/update rental table
  * @author LeMinhTuan, LyBaTuan
  */
-public class RentalDaoImp extends BaseDaoImp<Rental> implements RentalDao {
+public class RentalDaoImp implements RentalDao {
 
-    public RentalDaoImp() {
-        super(Rental.class);
+
+    @Override
+    public List<Rental> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Rental getById(int id) throws SQLException {
+        return null;
     }
 
     /**

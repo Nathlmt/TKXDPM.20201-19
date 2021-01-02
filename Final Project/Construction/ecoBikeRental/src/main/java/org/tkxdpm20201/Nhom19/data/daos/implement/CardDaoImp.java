@@ -1,5 +1,6 @@
 package org.tkxdpm20201.Nhom19.data.daos.implement;
 
+import org.tkxdpm20201.Nhom19.data.daos.BaseDao;
 import org.tkxdpm20201.Nhom19.data.daos.CardDao;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.entities.Card;
@@ -8,15 +9,18 @@ import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
-public class CardDaoImp extends BaseDaoImp<Card> implements CardDao {
+public class CardDaoImp implements CardDao {
 
-    public CardDaoImp() {
-        super(Card.class);
-    }
 
     public void insertCard(Card card) throws SQLException {
     //Insert Card To Database
+    }
+
+    @Override
+    public List<Card> getAll() throws SQLException {
+        return null;
     }
 
     @Override
@@ -36,6 +40,16 @@ public class CardDaoImp extends BaseDaoImp<Card> implements CardDao {
             return card;
         }
         return null;
+    }
+
+    @Override
+    public Card create(Card object) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public boolean update(Card object) throws SQLException {
+        return false;
     }
 
 

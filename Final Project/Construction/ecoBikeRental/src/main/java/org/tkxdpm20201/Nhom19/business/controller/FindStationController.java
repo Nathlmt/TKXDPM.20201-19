@@ -1,5 +1,6 @@
 package org.tkxdpm20201.Nhom19.business.controller;
 
+import org.tkxdpm20201.Nhom19.data.daos.BaseDao;
 import org.tkxdpm20201.Nhom19.data.daos.BikeDao;
 import org.tkxdpm20201.Nhom19.data.daos.StationDao;
 import org.tkxdpm20201.Nhom19.data.daos.implement.BikeDaoImp;
@@ -15,7 +16,7 @@ import java.util.List;
  * Class provide method for find station
  */
 public class FindStationController extends BaseController{
-    private final StationDao stationDao = new StationDaoImp();
+    private final BaseDao<Station> stationDao = new StationDaoImp();
     private final BikeDao bikeDao = new BikeDaoImp();
 
     /**

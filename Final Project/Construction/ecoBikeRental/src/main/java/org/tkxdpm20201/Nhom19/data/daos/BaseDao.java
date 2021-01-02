@@ -9,8 +9,6 @@ public interface BaseDao<T> {
 
      T getById(int id) throws SQLException;
 
-     T deleteById(Integer id);
-
      T create(T object) throws SQLException;
 
      boolean update(T object) throws SQLException;

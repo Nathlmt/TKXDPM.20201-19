@@ -1,5 +1,6 @@
 package org.tkxdpm20201.Nhom19.data.daos.implement;
 
+import org.tkxdpm20201.Nhom19.data.daos.BaseDao;
 import org.tkxdpm20201.Nhom19.data.daos.BikeDao;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
@@ -12,11 +13,11 @@ import java.util.List;
 /** Class provides method to get/insert/update data from bike table;
  * @author LeMinhTuan
  */
-public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
-    //*
+public class BikeDaoImp implements BikeDao {
 
-    public BikeDaoImp(){
-        super(Bike.class);
+    @Override
+    public List<Bike> getAll() throws SQLException {
+        return null;
     }
 
     /**
@@ -44,6 +45,16 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
             return bike;
         }
         return null;
+    }
+
+    @Override
+    public Bike create(Bike object) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public boolean update(Bike object) throws SQLException {
+        return false;
     }
 
     /**

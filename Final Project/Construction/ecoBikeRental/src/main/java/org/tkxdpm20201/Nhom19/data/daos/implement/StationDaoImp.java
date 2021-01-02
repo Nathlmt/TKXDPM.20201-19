@@ -1,5 +1,6 @@
 package org.tkxdpm20201.Nhom19.data.daos.implement;
 
+import org.tkxdpm20201.Nhom19.data.daos.BaseDao;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.daos.StationDao;
 import org.tkxdpm20201.Nhom19.data.entities.station.Station;
@@ -15,11 +16,7 @@ import java.util.List;
  * @author LeMinhTuan, LyBaTuan
  * Class use for station table
  */
-public class StationDaoImp extends BaseDaoImp<Station> implements StationDao{
-
-    public StationDaoImp(){
-        super(Station.class);
-    }
+public class StationDaoImp implements StationDao{
 
     /**
      * get all stations
@@ -44,6 +41,21 @@ public class StationDaoImp extends BaseDaoImp<Station> implements StationDao{
             stationList.add(station);
         }
         return stationList;
+    }
+
+    @Override
+    public Station getById(int id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Station create(Station object) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public boolean update(Station object) throws SQLException {
+        return false;
     }
 
     /**

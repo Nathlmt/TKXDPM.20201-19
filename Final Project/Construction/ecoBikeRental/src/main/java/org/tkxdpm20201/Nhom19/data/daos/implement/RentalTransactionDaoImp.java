@@ -1,5 +1,6 @@
 package org.tkxdpm20201.Nhom19.data.daos.implement;
 
+import org.tkxdpm20201.Nhom19.data.daos.BaseDao;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.daos.RentalTransactionDao;
 import org.tkxdpm20201.Nhom19.data.entities.RentalTransaction;
@@ -7,14 +8,21 @@ import org.tkxdpm20201.Nhom19.data.entities.RentalTransaction;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Class use for rental transaction table
  */
-public class RentalTransactionDaoImp extends BaseDaoImp<RentalTransaction> implements RentalTransactionDao {
+public class RentalTransactionDaoImp implements RentalTransactionDao {
 
-    public RentalTransactionDaoImp() {
-        super(RentalTransaction.class);
+    @Override
+    public List<RentalTransaction> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public RentalTransaction getById(int id) throws SQLException {
+        return null;
     }
 
     /**
@@ -38,5 +46,10 @@ public class RentalTransactionDaoImp extends BaseDaoImp<RentalTransaction> imple
             rentalTransaction.setId(id);
         }
         return rentalTransaction;
+    }
+
+    @Override
+    public boolean update(RentalTransaction object) throws SQLException {
+        return false;
     }
 }

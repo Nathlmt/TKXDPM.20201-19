@@ -5,6 +5,7 @@ import org.tkxdpm20201.Nhom19.utils.Constants;
 /**
  * @author Ly Ba Tuan
  * usinng for storage share data like bike info, station info,... when application run
+ * information of rented bike will be stored here
  */
 public class Caching {
 

@@ -1,5 +1,6 @@
 package org.tkxdpm20201.Nhom19.data.daos.implement;
 
+import org.tkxdpm20201.Nhom19.data.daos.BaseDao;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.daos.TransactionDao;
 import org.tkxdpm20201.Nhom19.data.entities.Transaction;
@@ -9,15 +10,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Class provide method for CU transaction table
  * @author LeMinhTuan
  */
-public class TransactionDaoImp extends BaseDaoImp<Transaction> implements TransactionDao {
+public class TransactionDaoImp implements TransactionDao {
 
-    public TransactionDaoImp() {
-        super(Transaction.class);
+    @Override
+    public List<Transaction> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Transaction getById(int id) throws SQLException {
+        return null;
     }
 
     /**
@@ -45,5 +53,10 @@ public class TransactionDaoImp extends BaseDaoImp<Transaction> implements Transa
             transaction.setId(id);
         }
         return transaction;
+    }
+
+    @Override
+    public boolean update(Transaction object) throws SQLException {
+        return false;
     }
 }
