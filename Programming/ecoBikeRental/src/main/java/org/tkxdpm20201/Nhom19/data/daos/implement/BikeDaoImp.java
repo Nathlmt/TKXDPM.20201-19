@@ -38,7 +38,7 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
                     rs.getBigDecimal("price"),
                     rs.getString("bike_type"),
                     rs.getString("status"),
-                    rs.getDate("latest_update"),
+                    rs.getTimestamp("latest_update"),
                     rs.getInt("present_station")
                     );
             return bike;
@@ -67,7 +67,7 @@ public class BikeDaoImp extends BaseDaoImp<Bike> implements BikeDao {
                     rs.getBigDecimal("price"),
                     rs.getString("bike_type"),
                     rs.getString("status"),
-                    rs.getDate("latest_update"),
+                    rs.getTimestamp("latest_update"),
                     rs.getInt("present_station")
             );
             bikeList.add(bike);
