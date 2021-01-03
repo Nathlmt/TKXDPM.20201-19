@@ -30,6 +30,11 @@ public class Rental extends BaseEntity {
         this.timeEnd = timeEnd;
     }
 
+    public void updateRentalWhenReturnBike(int rentStationId, String status, Timestamp timeEnd){
+        this.rentStationId = rentStationId;
+        this.status = status;
+        this.timeEnd = timeEnd;
+    }
 
 
     public int getBikeId() {
@@ -52,28 +57,16 @@ public class Rental extends BaseEntity {
         return returnStationId;
     }
 
-    public void setReturnStationId(int returnStationId) {
-        this.returnStationId = returnStationId;
-    }
-
     public String getStatus() {
         return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Timestamp getTimeStart() {
         return timeStart;
     }
 
-
     public Timestamp getTimeEnd() {
         return timeEnd;
     }
 
-    public void setTimeEnd(Timestamp timeEnd) {
-        this.timeEnd = timeEnd;
-    }
 }

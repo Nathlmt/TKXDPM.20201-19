@@ -65,6 +65,7 @@ public class ReturnBikeController extends BaseController {
         Timestamp localDateTimeEnd = DateUtil.toTimestamp(java.time.LocalDateTime.now());
         RentingBike rentingBike = Caching.getInstance().getRentingBike();
         if (rentingBike != null) {
+            // setup
             Rental rental = rentingBike.getRental();
             Bike bikeReturn = rentingBike.getBike();
             Card card = rentingBike.getCard();
@@ -73,10 +74,9 @@ public class ReturnBikeController extends BaseController {
             BigDecimal rentFee = calculateFee.run(startDate, localDateTimeEnd, bikeReturn);
             BigDecimal amount = calculateAmount(deposit, rentFee);
 
-            rental.setReturnStationId(station.getId());
-            rental.setTimeEnd(localDateTimeEnd);
-            rental.setStatus(Constants.RETURNED_BIKE);
+            rental.updateRentalWhenReturnBike(station.getId(), Constants.RETURNED_BIKE, localDateTimeEnd);
 
+            // carry on transaction
             try {
                 TransactionResponse transactionResponse;
                 if(amount.compareTo(BigDecimal.ZERO) < 0)
