@@ -19,7 +19,9 @@ import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
 import org.tkxdpm20201.Nhom19.data.model.Caching;
 import org.tkxdpm20201.Nhom19.data.model.RentingBike;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
+import org.tkxdpm20201.Nhom19.presentation.dialog.BaseDialog;
 import org.tkxdpm20201.Nhom19.presentation.dialog.ErrorDialog;
+import org.tkxdpm20201.Nhom19.presentation.dialog.NotificationDialog;
 import org.tkxdpm20201.Nhom19.utils.DateUtil;
 
 import static org.tkxdpm20201.Nhom19.utils.Constants.HOME_PATH;
@@ -87,8 +89,15 @@ public class Home implements Initializable {
             goToStage(returnBikeHandler, homeScreenStage);
         };
         if (mouseEvent.getSource() == btnRentBike) {
-            BaseScreenHandler rentBikeHandler = RentBike.getRentBikeHandler();
-            goToStage(rentBikeHandler, homeScreenStage);
+            if(!Caching.getInstance().getStatus()){
+                BaseScreenHandler rentBikeHandler = RentBike.getRentBikeHandler();
+                goToStage(rentBikeHandler, homeScreenStage);
+            }
+            else{
+                BaseDialog alert = new NotificationDialog("Bạn đang thuê xe! không thể thuê xe khác!");
+                alert.show();
+            }
+
         }
     }
 

@@ -7,7 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
+import org.tkxdpm20201.Nhom19.data.model.Caching;
 import org.tkxdpm20201.Nhom19.presentation.BaseScreenHandler;
+import org.tkxdpm20201.Nhom19.presentation.dialog.BaseDialog;
+import org.tkxdpm20201.Nhom19.presentation.dialog.NotificationDialog;
 import org.tkxdpm20201.Nhom19.utils.Constants;
 import org.tkxdpm20201.Nhom19.utils.RoundingDeposit;
 
@@ -35,12 +38,19 @@ public class BikeInfo implements Initializable {
 //        updateAt.setText(bike.getLastUpdate().toString());
     }
     public void handleButton1Action() {
-        BaseScreenHandler paymentHandler = PaymentForm.getPaymentFormHandler();
-        paymentHandler.setEntityData(bikeInfoHandler.getEntityData());
-        Stage bikeInfo = (Stage) bikeInfoAnchor.getScene().getWindow();
-        paymentHandler.setScreenStage(bikeInfo);
-        paymentHandler.setPreviousScreen(bikeInfoHandler);
-        paymentHandler.show();
+        if(!Caching.getInstance().getStatus()){
+            BaseScreenHandler paymentHandler = PaymentForm.getPaymentFormHandler();
+            paymentHandler.setEntityData(bikeInfoHandler.getEntityData());
+            Stage bikeInfo = (Stage) bikeInfoAnchor.getScene().getWindow();
+            paymentHandler.setScreenStage(bikeInfo);
+            paymentHandler.setPreviousScreen(bikeInfoHandler);
+            paymentHandler.show();
+        }
+        else{
+            BaseDialog alert = new NotificationDialog("Bạn đang thuê xe! không thể thuê xe khác!");
+            alert.show();
+        }
+
     }
     public void back() {
         bikeInfoHandler.getPreviousScreen().show();
