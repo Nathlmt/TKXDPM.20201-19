@@ -6,7 +6,7 @@ import org.tkxdpm20201.Nhom19.utils.Evaluation;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class CalculateFeeImp implements CalculateFee{
+public class CalculateFeeSpecialBike extends CalculateFeeImp implements CalculateFee{
     @Override
     public BigDecimal run(Timestamp startDate, Timestamp endDate, Bike bike) {
         long epoch = endDate.getTime() - startDate.getTime();
@@ -14,15 +14,10 @@ public class CalculateFeeImp implements CalculateFee{
         return new BigDecimal(rentFee);
     }
 
+    @Override
     public double run(Bike bike, long epoch) {
-        double rentFee = 0;
-        System.out.println("time second rented: " + epoch / 1000L);
-        long minutes = epoch /(1000*60);
-        rentFee = Evaluation.INITIAL_PRICE;
-        if(minutes > Evaluation.INITIALLY){
-            long count = minutes/Evaluation.STEP + 1;
-            rentFee += count*Evaluation.PLUS_STEP;
-        }
-        return rentFee;
+        double rentFee = super.run(bike, epoch);
+        return rentFee * Evaluation.SPECIAL_BIKE;
+
     }
 }

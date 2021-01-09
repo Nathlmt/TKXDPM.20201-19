@@ -36,7 +36,6 @@ import java.util.ResourceBundle;
 
 public class Home implements Initializable {
     private Timeline animation;
-    private final CalculateFee caculator = new CalculateFeeImp();
     private final RentBikeController rentBikeController = new RentBikeController();
     private long time;
     @FXML
@@ -108,8 +107,8 @@ public class Home implements Initializable {
         String timeFormated = lt.format( f );
         rentedTime.setText(timeFormated);
         if (time%60 == 0) {
-            Double currentFee = caculator.run(Caching.getInstance().getRentingBike().getBike(), time * 1000L);
-
+//            Double currentFee = caculator.run(Caching.getInstance().getRentingBike().getBike(), time * 1000L);
+            Double currentFee = Caching.getInstance().getRentingBike().getBike().calculateFee(time*1000L);
             fee.setText(String.valueOf(currentFee) + " đồng");
         }
     }
@@ -155,7 +154,8 @@ public class Home implements Initializable {
         } else {
             setRentingBike();
             this.time = getEpochTime()/1000;
-            Double currentFee = caculator.run(Caching.getInstance().getRentingBike().getBike(), time * 1000L);
+//            Double currentFee = caculator.run(Caching.getInstance().getRentingBike().getBike(), time * 1000L);
+            Double currentFee = Caching.getInstance().getRentingBike().getBike().calculateFee(time * 1000L);
             fee.setText(String.valueOf(currentFee) + " đồng");
             clock();
         }

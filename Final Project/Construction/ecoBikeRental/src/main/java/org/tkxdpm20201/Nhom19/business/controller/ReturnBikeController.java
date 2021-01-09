@@ -36,8 +36,6 @@ public class ReturnBikeController extends BaseController {
     private final InterbankInterface interBankApiSystem;
     private final RentalDao rentalDao;
     private final RentalTransactionDao rentalTransactionDao;
-    private  final CalculateFee calculateFee;
-
 
     public ReturnBikeController() {
         this.rentalDao = new RentalDaoImp();
@@ -46,8 +44,6 @@ public class ReturnBikeController extends BaseController {
         this.transactionDao = new TransactionDaoImp();
         this.rentalTransactionDao = new RentalTransactionDaoImp();
         this.interBankApiSystem = new InterbankSubsystem();
-        this.calculateFee = new CalculateFeeImp();
-
     }
 
     public List<Station> getStationList() throws SQLException {
@@ -71,7 +67,7 @@ public class ReturnBikeController extends BaseController {
             Card card = rentingBike.getCard();
             Timestamp startDate = rentingBike.getStartDate();
             BigDecimal deposit = rentingBike.getDeposit();
-            BigDecimal rentFee = calculateFee.run(startDate, localDateTimeEnd, bikeReturn);
+            BigDecimal rentFee = bikeReturn.calculateFee(startDate, localDateTimeEnd);
             BigDecimal amount = calculateAmount(deposit, rentFee);
 
             rental.updateRentalWhenReturnBike(station.getId(), Constants.RETURNED_BIKE, localDateTimeEnd);

@@ -1,11 +1,14 @@
 package org.tkxdpm20201.Nhom19.data.entities.bike;
 
+import org.tkxdpm20201.Nhom19.business.caculateFee.CalculateFeeSpecialBike;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class ElectricBike extends Bike {
 
     private Integer battery;
+
 
     public Integer getBattery() {
         return battery;
@@ -14,6 +17,7 @@ public class ElectricBike extends Bike {
 
     public ElectricBike(Integer id, String name, String licensePlate, BigDecimal price, String type, String status, Date lastest_update, Integer presentStation) {
         super(id, name, licensePlate, price, type, status, lastest_update, presentStation);
+        super.calculateFee = new CalculateFeeSpecialBike();
     }
 
     public ElectricBike(Integer id, String type) {

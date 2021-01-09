@@ -48,9 +48,6 @@ public class RentBikeController extends BaseController {
         this.cardDao = new CardDaoImp();
     }
 
-    public void handleBikeInfo(TransactionRequest transactionRequest, Bike bike, Station station) {
-
-    }
 
     /**
      * Get bike info when has bike code

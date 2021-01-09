@@ -4,6 +4,8 @@ import org.tkxdpm20201.Nhom19.data.daos.BaseDao;
 import org.tkxdpm20201.Nhom19.data.daos.BikeDao;
 import org.tkxdpm20201.Nhom19.data.daos.DBHelper;
 import org.tkxdpm20201.Nhom19.data.entities.bike.Bike;
+import org.tkxdpm20201.Nhom19.data.entities.bike.DoubleBike;
+import org.tkxdpm20201.Nhom19.data.entities.bike.ElectricBike;
 import org.tkxdpm20201.Nhom19.utils.Constants;
 
 import java.sql.*;
@@ -14,6 +16,10 @@ import java.util.List;
  * @author LeMinhTuan
  */
 public class BikeDaoImp implements BikeDao {
+
+    private final String BIKE = "Xe đạp";
+    private final String ELECTRIC_BIKE = "Xe đạp điện";
+    private final String DOUBLE_BIKE = "Xe đạp đôi";
 
     @Override
     public List<Bike> getAll() throws SQLException {
@@ -33,16 +39,7 @@ public class BikeDaoImp implements BikeDao {
         preparedStatement.setInt(1, bikeCode);
         ResultSet rs = preparedStatement.executeQuery();
         if (rs.next()) {
-            Bike bike = new Bike(rs.getInt("id"),
-                    rs.getString("bike_name"),
-                    rs.getString("license_plate"),
-                    rs.getBigDecimal("price"),
-                    rs.getString("bike_type"),
-                    rs.getString("status"),
-                    rs.getDate("latest_update"),
-                    rs.getInt("present_station")
-                    );
-            return bike;
+            return getResultSetBike(rs);
         }
         return null;
     }
@@ -72,7 +69,17 @@ public class BikeDaoImp implements BikeDao {
         ps.setString(2, "available");
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
-            Bike bike = new Bike(rs.getInt("id"),
+            Bike bike = getResultSetBike(rs);
+            bikeList.add(bike);
+        }
+        return bikeList;
+    }
+
+    private Bike getResultSetBike(ResultSet rs) throws SQLException {
+        String bikeType = rs.getString("bike_type");
+        Bike bike = null;
+        if(bikeType.equals(BIKE)){
+            bike = new Bike(rs.getInt("id"),
                     rs.getString("bike_name"),
                     rs.getString("license_plate"),
                     rs.getBigDecimal("price"),
@@ -81,9 +88,31 @@ public class BikeDaoImp implements BikeDao {
                     rs.getDate("latest_update"),
                     rs.getInt("present_station")
             );
-            bikeList.add(bike);
+
         }
-        return bikeList;
+        else if(bikeType.equals(ELECTRIC_BIKE)){
+            bike = new ElectricBike(rs.getInt("id"),
+                    rs.getString("bike_name"),
+                    rs.getString("license_plate"),
+                    rs.getBigDecimal("price"),
+                    rs.getString("bike_type"),
+                    rs.getString("status"),
+                    rs.getDate("latest_update"),
+                    rs.getInt("present_station")
+            );
+        }
+        else if(bikeType.equals(DOUBLE_BIKE)){
+            bike = new DoubleBike(rs.getInt("id"),
+                    rs.getString("bike_name"),
+                    rs.getString("license_plate"),
+                    rs.getBigDecimal("price"),
+                    rs.getString("bike_type"),
+                    rs.getString("status"),
+                    rs.getDate("latest_update"),
+                    rs.getInt("present_station")
+            );
+        }
+        return bike;
     }
 
     /**
