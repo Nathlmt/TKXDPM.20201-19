@@ -12,13 +12,14 @@ import org.tkxdpm20201.Nhom19.utils.Constants;
 import org.tkxdpm20201.Nhom19.utils.RoundingDeposit;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 public class BikeInfo implements Initializable {
     private static final BaseScreenHandler bikeInfoHandler = new BaseScreenHandler(Constants.BIKE_INFO_PATH);
 
     @FXML
-    private Label name, licensePlate, bikeCode, battery, deposit, type, updateAt;
+    private Label name, licensePlate, bikeCode, battery, deposit, type, updateAt, licensePlateTitle;
     @FXML
     private AnchorPane bikeInfoAnchor;
 
@@ -32,7 +33,11 @@ public class BikeInfo implements Initializable {
         bikeCode.setText(bike.getId().toString());
         deposit.setText(RoundingDeposit.up(bike.getPrice()) + " đ");
         type.setText(bike.getType());
-//        updateAt.setText(bike.getLastUpdate().toString());
+        updateAt.setText(new SimpleDateFormat("HH:mm:ss dd/MM/yyyy").format(bike.getLastUpdate()));
+        if (bike.getLicensePlate() == null) {
+            licensePlateTitle.setVisible(false);
+            battery.setText("Khi bạn mỏi");
+        }
     }
     public void handleButton1Action() {
         BaseScreenHandler paymentHandler = PaymentForm.getPaymentFormHandler();

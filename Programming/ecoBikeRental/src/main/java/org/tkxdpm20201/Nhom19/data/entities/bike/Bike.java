@@ -3,6 +3,7 @@ package org.tkxdpm20201.Nhom19.data.entities.bike;
 import org.tkxdpm20201.Nhom19.data.entities.BaseEntity;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Bike extends BaseEntity {
@@ -11,10 +12,10 @@ public class Bike extends BaseEntity {
     private BigDecimal price;
     private String type;
     private String status;
-    private Date lastUpdate;
+    private Timestamp lastUpdate;
     private Integer presentStation;
 
-    public Bike(Integer id,String name, String licensePlate, BigDecimal price, String type, String status, Date last_update, Integer presentStation) {
+    public Bike(Integer id,String name, String licensePlate, BigDecimal price, String type, String status, Timestamp last_update, Integer presentStation) {
         super(id);
         this.name = name;
         this.licensePlate = licensePlate;
@@ -32,8 +33,6 @@ public class Bike extends BaseEntity {
 
     }
 
-
-
     public String getName() {
         return name;
     }
@@ -46,24 +45,11 @@ public class Bike extends BaseEntity {
         return licensePlate;
     }
 
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
-    }
-
     public BigDecimal getPrice() {
         return price;
     }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
     public String getType() {
         return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getStatus() {
@@ -74,19 +60,11 @@ public class Bike extends BaseEntity {
         this.status = status;
     }
 
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
     public Integer getPresentStation() {
         return presentStation;
     }
 
-    public void setPresentStation(Integer presentStation) {
-        this.presentStation = presentStation;
+    public Timestamp getLastUpdate() {
+        return lastUpdate;
     }
 }
