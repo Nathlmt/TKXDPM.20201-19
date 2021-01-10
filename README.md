@@ -1,3 +1,7 @@
+# Update sau Bảo vệ:
+* Thay đổi thiết kế phần Bike và Cách tính phí xe để dễ mở rộng như yêu cầu (dùng composition over inheritance)
+
+
 # LAB 00 - ECOBIKE RENTAL
 ## Tasks
 * Task 1: Đặc tả usecase
