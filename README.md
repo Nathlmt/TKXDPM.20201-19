@@ -1,3 +1,5 @@
+# Bài tập lớn thiết kế xây dựng phần mềm
+## Bài tập mang tính tham khảo, nghiêm cấm sao chép dưới mọi hình thức
 # Update sau Bảo vệ:
 * Thay đổi thiết kế phần Bike và Cách tính phí xe để dễ mở rộng như yêu cầu (dùng composition over inheritance)
 
